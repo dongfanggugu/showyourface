@@ -7,7 +7,7 @@
   </view>
 
   <view class='shareContainer'>
-    <button>保存图片</button>
-    <button>分享給好友</button>
+    <button bindtap='saveImageToLocal'>保存图片</button>
+    <button open-type='share'>分享給好友</button>
   </view>
 </view>
