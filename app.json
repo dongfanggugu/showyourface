@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/show/show",
-    "pages/tabbar/tabbar"
+    "pages/tabbar/tabbar",
+    "pages/my/my"
   ],
   "window": {
     "backgroundTextStyle": "light",
