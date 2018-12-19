@@ -1,0 +1,13 @@
+<!--pages/show.wxml-->
+<view class="container">
+    <view>
+        <button bindtap='chooseImage'>choose image</button>
+    </view>
+    <view class="listItem" wx:for="{{array}}" wx:for-index="index" wx:for-item="itemName">
+        <text>{{index}}</text>
+        <text>{{itemName.unique}}</text>
+       <image class="img" wx:if="{{itemName.url}}" mode="aspectFit" src="{{url}}"></image>
+    </view>
+</view>
+
+

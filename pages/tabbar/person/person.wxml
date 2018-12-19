@@ -1,0 +1,8 @@
+<view class="person_global">
+        <view id="person_top" class="person_info"></view>
+        <view id="{{itemName.id}}" class="person_list" wx:for="{{array}}" wx:for-index="index"  wx:for-item="itemName">
+              <text>{{index}}</text>
+              <text>{{itemName.unique}}</text>
+          </view>
+      
+      </view>

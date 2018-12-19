@@ -1,0 +1,28 @@
+<!--pages/tabbar/tabbar.wxml-->
+<view class="container">
+    <view class="content">
+
+      <scroll-view wx:if="{{first}}" scroll-y scroll-info-view="mainpage" class="scroll">
+                    <include src="./mainpage/mainpage.wxml"></include>
+      </scroll-view>
+                
+        <scroll-view wx:if="{{third}}" scroll-y scroll-info-view="person" class="scroll">
+                        <include src="./person/person.wxml"></include>
+                    </scroll-view>
+    </view>
+    
+
+    <view class="bottom">
+        <view class="item">
+            <include src="tabitem/record.wxml" />
+        </view>
+        <view class="item">
+            <include src="tabitem/record.wxml" />
+        </view>
+        <view class="item">
+            <include src="tabitem/record.wxml" />
+        </view>
+        
+        </view>
+
+</view>

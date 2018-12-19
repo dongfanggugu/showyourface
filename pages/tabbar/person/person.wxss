@@ -1,0 +1,25 @@
+.person_globla {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.person_info {
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 240rpx;
+    width: 100%;
+    background-color: bisque;
+}
+
+.person_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 66rpx;
+    padding: 4rpx;
+}

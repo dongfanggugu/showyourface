@@ -1,0 +1,38 @@
+.global {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.loop {
+    display: flex;
+    width: 100%;
+    height: 240rpx;
+    background-color:red;
+}
+
+.showinfo {
+    display: flex;
+    width: 100%;
+    height: 240rpx;
+    background-color:blue; 
+}
+
+.operation {
+    display: flex;
+    width: 100%;
+    height: 66rpx;
+    background-color:green;  
+}
+
+.list {
+    display: flex;
+    width: 100%;
+    height: 66rpx;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rpx;
+    background-color: bisque;
+}
