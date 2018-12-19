@@ -15,6 +15,7 @@
   <view class="nextPage">
     <button bindtap="goNextPage">next page</button>
     <button bindtap="goMy">我的</button>
+    <button bindtap="goSaveImg">保存图片</button>
   </view>
 
   <view class="bottom">

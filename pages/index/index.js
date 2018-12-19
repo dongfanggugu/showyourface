@@ -70,5 +70,10 @@ Page({
     wx.navigateTo({
       url: '/pages/my/my',
     })
+  },
+  goSaveImg: function () {
+    wx.navigateTo({
+      url: '/pages/saveImg/saveImg',
+    })
   }
 })
