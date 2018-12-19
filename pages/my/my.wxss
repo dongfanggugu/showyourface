@@ -1,0 +1,26 @@
+/* pages/my/my.wxss */
+@import '../index/index.wxss';
+
+.itemContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 50rpx;
+}
+
+.itemTextContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.imgItem {
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.lableItem {
+  margin-top: 3rpx;
+  display: inline-table;
+}

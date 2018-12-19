@@ -1,0 +1,13 @@
+<!--pages/saveImg/saveImg.wxml-->
+
+<view>
+
+  <view class='img'>
+    <image src='../../images/sharedemo.jpeg' mode='widthFix' class='img'></image>
+  </view>
+
+  <view class='shareContainer'>
+    <button bindtap='saveImageToLocal'>保存图片</button>
+    <button open-type='share'>分享給好友</button>
+  </view>
+</view>

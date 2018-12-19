@@ -5,6 +5,7 @@
     "pages/show/show",
     "pages/tabbar/tabbar",
     "pages/postpage/postpage"
+    "pages/my/my"
   ],
   "window": {
     "backgroundTextStyle": "light",
