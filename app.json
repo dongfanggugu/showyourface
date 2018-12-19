@@ -4,8 +4,9 @@
     "pages/logs/logs",
     "pages/show/show",
     "pages/tabbar/tabbar",
-    "pages/postpage/postpage"
-    "pages/my/my"
+    "pages/postpage/postpage",
+    "pages/my/my",
+    "pages/saveImg/saveImg"
   ],
   "window": {
     "backgroundTextStyle": "light",
