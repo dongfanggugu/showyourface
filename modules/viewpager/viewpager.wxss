@@ -1,0 +1,14 @@
+.swiper {
+  height: 240rpx;
+  width: 100%;
+  background-color: azure;
+}
+
+.swiper-image {
+  height: 100%;
+  width: 100%;
+}
+.slide-image{
+  height: 100%;
+  width: 100%;
+}

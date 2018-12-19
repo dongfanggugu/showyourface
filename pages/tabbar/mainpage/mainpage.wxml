@@ -1,10 +1,13 @@
 <view class="main_global">
-  <view id="mainpage" class="main_loop"></view>
-  <view class="main_showinfo"></view>
+  <view id="mainpage" class="main_loop">
+      <include src="/modules/viewpager/viewpager.wxml"/>
+  </view>
+  <view class="main_showinfo">
+    <include src="/modules/statisticspage/statisticspage.wxml"/>
+  </view>
   <view class="main_operation"></view>
   <view id="{{itemName.id}}" class="main_list" wx:for="{{array}}" wx:for-index="index"  wx:for-item="itemName">
         <text>{{index}}</text>
         <text>{{itemName.unique}}</text>
     </view>
-
 </view>

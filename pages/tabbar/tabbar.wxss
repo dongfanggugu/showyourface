@@ -2,6 +2,7 @@
 @import "./tabitem/record.wxss";
 @import "./mainpage/mainpage.wxss";
 @import "./person/person.wxss";
+@import "/modules/viewpager/viewpager.wxss";
 
 .content {
   display: flex;

@@ -1,0 +1,15 @@
+<view class="statis_global">
+    <view class="first_row">
+        <text class="title_label">已记录</text>
+    </view>
+    <view class="second_row">
+        <text class="total_number_label">{{totalNumber}}</text>
+        <text class="total_text_label">张照片</text>
+    </view>
+    <view class="third_row">
+        <text class="day_label">{{continuedDays}}天</text>
+        <text class="product_label">{{totalProduct}}个产品</text>
+        <text class="last_record_label">上次记录{{lastDay}}天前</text>
+    </view>
+
+</view>

@@ -30,47 +30,64 @@ Page({
       {id: "a1", unique: 'unique_1'},
       {id: "a0", unique: 'unique_0'},
     ],
-    url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"
+    url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg",
+
+    //轮播页数据
+    imgUrls: [
+      'https://improxy.starmakerstudios.com/tools/im/200/production/users/6755399448702845/profile.jpg/ts1542811614',
+      'https://improxy.starmakerstudios.com/tools/im/120x/files/3639608919/cover_0efde37fd5188316c02267353d6e14cf.jpg',
+      'https://improxy.starmakerstudios.com/tools/im/200/production/cover_img/6583d91e626a15d4ca4fe3b0632ca845.jpg'
+  ],
+    //是否显示指适点
+    indicatorDots: true,
+    //是否轮播
+    autoplay: true,
+    interval: 5000,
+    duration: 1000,
+    inputShowed: false,
+    inputVal: "",
+    //轮播页当前index
+    swiperCurrent: 0,
+
+    //详细信息
+    totalNumber: 34,
+    continuedDays: 23,
+    totalProduct: 4,
+    lastDay: 2,
   },
 
   tapItem: function (e) {
     var index = e.currentTarget.dataset.id;
     switch (index) {
       case 0:
-          this.setData({
-            first: true,
-            second: false,
-            third: false
-          });
-          break;
+        this.setData({
+          first: true,
+          second: false,
+          third: false
+        });
+        break;
       case 1:
-          // this.setData({
-          //   first: false,
-          //   second: true,
-          //   third: false
-          // });
+        wx.navigateTo({
+          url: '/pages/postpage/postpage',
+          success: function (res) {
+            // success
+          },
+          fail: function () {
+            // fail
+          },
+          complete: function () {
+            // complete
+          }
+        })
 
-          wx.navigateTo({
-            url: '/pages/postpage/postpage',
-            success: function(res){
-              // success
-            },
-            fail: function() {
-              // fail
-            },
-            complete: function() {
-              // complete
-            }
-          })
-
-          break;
+        break;
       case 2:
-          this.setData({
-            first: false,
-            second: false,
-            third: true
-          });
-          break;
+        this.setData({
+          first: false,
+          second: false,
+          third: true
+        });
+        break;
     }
   },
 
@@ -128,5 +145,15 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  //轮播图的切换事件
+  swiperChange: function (e) {
+    this.setData({
+      swiperCurrent: e.detail.current
+    })
+  },
+  //轮播图点击事件
+  swipclick: function (e) {
+    console.log(this.data.swiperCurrent)
   }
 })

@@ -1,3 +1,5 @@
+@import "/modules/viewpager/viewpager.wxss";
+@import "/modules/statisticspage/statisticspage.wxss";
 .main_global {
     display: flex;
     flex-direction: column;
@@ -7,16 +9,21 @@
 
 .main_loop {
     display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
     width: 100%;
-    height: 240rpx;
-    background-color:red;
+    height: 150px;
 }
 
 .main_showinfo {
     display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
     width: 100%;
-    height: 240rpx;
-    background-color:blue; 
+    height: 200px;
+    background-color: white;
 }
 
 .main_operation {

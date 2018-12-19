@@ -1,0 +1,63 @@
+.statis_global {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.first_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+}
+
+.second_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center; 
+}
+
+.third_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.title_label {
+    font-size: 20rpx;
+    width: 100rpx;
+    height: 40rpx;
+}
+
+.total_number_label {
+    font-size: 50rpx;
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.total_text_label {
+    font-size: 25rpx;
+    width: 80rpx;
+    height: 30rpx;
+}
+
+.day_label {
+    font-size: 20rpx;
+    width: 100rpx;
+    height: 40rpx;
+}
+
+.product_label {
+    font-size: 20rpx;
+    width: 150rpx;
+    height: 40rpx; 
+}
+
+.last_record_label {
+    font-size: 20rpx;
+    width: 150rpx;
+    height: 40rpx;  
+}
