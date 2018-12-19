@@ -1,4 +1,4 @@
 <view class="tabitem">
-    <image class="image" src="/images/icon_tab_1.png"></image>
-    <text class="text">日记</text>
+    <image class="image" src="{{item.image}}"></image>
+    <text class="text">{{item.name}}</text>
 </view>

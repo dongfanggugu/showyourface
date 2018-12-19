@@ -1,32 +1,32 @@
-.global {
+.main_global {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
 }
 
-.loop {
+.main_loop {
     display: flex;
     width: 100%;
     height: 240rpx;
     background-color:red;
 }
 
-.showinfo {
+.main_showinfo {
     display: flex;
     width: 100%;
     height: 240rpx;
     background-color:blue; 
 }
 
-.operation {
+.main_operation {
     display: flex;
     width: 100%;
     height: 66rpx;
     background-color:green;  
 }
 
-.list {
+.main_list {
     display: flex;
     width: 100%;
     height: 66rpx;

@@ -5,9 +5,16 @@ Page({
    * 页面的初始数据
    */
   data: {
+    tabItem: "发布",
+    first: true,
+    second:false,
+    third: false,
 
-    first: false,
-    third: true,
+    itemArray: [
+      {"name": "日记", image: "/images/icon_tab_1.png"},
+      {"name": "", image: "/images/icon_main_add.png"},
+      {"name": "我的", image: "/images/icon_tab_1.png"}
+    ],
     array: [
       {id: "a12", unique: 'unique_5'},
       {id: "a11", unique: 'unique_5'},
@@ -24,6 +31,47 @@ Page({
       {id: "a0", unique: 'unique_0'},
     ],
     url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"
+  },
+
+  tapItem: function (e) {
+    var index = e.currentTarget.dataset.id;
+    switch (index) {
+      case 0:
+          this.setData({
+            first: true,
+            second: false,
+            third: false
+          });
+          break;
+      case 1:
+          // this.setData({
+          //   first: false,
+          //   second: true,
+          //   third: false
+          // });
+
+          wx.navigateTo({
+            url: '/pages/postpage/postpage',
+            success: function(res){
+              // success
+            },
+            fail: function() {
+              // fail
+            },
+            complete: function() {
+              // complete
+            }
+          })
+
+          break;
+      case 2:
+          this.setData({
+            first: false,
+            second: false,
+            third: true
+          });
+          break;
+    }
   },
 
   /**

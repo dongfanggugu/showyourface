@@ -1,8 +1,8 @@
-<view class="global">
-  <view id="mainpage" class="loop"></view>
-  <view class="showinfo"></view>
-  <view class="operation"></view>
-  <view id="{{itemName.id}}" class="list" wx:for="{{array}}" wx:for-index="index"  wx:for-item="itemName">
+<view class="main_global">
+  <view id="mainpage" class="main_loop"></view>
+  <view class="main_showinfo"></view>
+  <view class="main_operation"></view>
+  <view id="{{itemName.id}}" class="main_list" wx:for="{{array}}" wx:for-index="index"  wx:for-item="itemName">
         <text>{{index}}</text>
         <text>{{itemName.unique}}</text>
     </view>

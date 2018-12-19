@@ -1,0 +1,5 @@
+<view class="post_global">
+    <view id="post_head" class="post_product_photo"></view>
+    <view class="post_skin_photo"></view>
+    <view class="post_other_info"></view>
+  </view>

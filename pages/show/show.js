@@ -73,7 +73,7 @@ Page({
 
   },
   chooseImage: function() {
-    var _this =this;
+    var _this = this;
     wx.chooseImage({
       count: 9,
       sizeType: ['original', 'compressed'],
