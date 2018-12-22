@@ -22,24 +22,76 @@
     justify-content: stretch;
     align-items: stretch;
     width: 100%;
-    height: 200px;
     background-color: white;
+    border-bottom: 1px solid gray;
 }
 
 .main_operation {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    height: 66rpx;
-    background-color:green;  
+    height: 80rpx;
+    border-bottom: 1px solid gray;
+}
+
+.main_add_rocord_label {
+    font-size: 28rpx;
+    margin: 8rpx;
+}
+
+.main_add_record_button {
+    border-radius: 8rpx;
+    border: 1px solid gray;
+    font-size: 28rpx;
+    margin: 8rpx;
+    padding-left: 8rpx;
+    padding-right: 8rpx;
 }
 
 .main_list {
     display: flex;
     width: 100%;
-    height: 66rpx;
+    height: 100rpx;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: stretch;
     align-items: center;
     padding: 4rpx;
-    background-color: bisque;
+}
+
+.main_separation {
+    background-color: lightgray;
+    width: 100%;
+    height: 1px;
+}
+
+.main_avatar_image {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius:  40rpx;
+    margin: 10rpx;
+}
+
+.main_list_part2 {
+    flex: 1 1 auto;
+    font-size: 25rpx;
+}
+
+.main_list_part3 {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    align-items: center;
+    padding: 8rpx;
+}
+
+.main_list_info {
+    border: 1px solid red;
+    width: 80rpx;
+    height: 50rpx;
+}
+
+.main_list_tip {
+    font-size: 25rpx;
 }

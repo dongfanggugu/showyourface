@@ -9,27 +9,30 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    align-content: center;
+    align-items:  center;
 }
 
 .second_row {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-content: center; 
+    align-items: baseline; 
+    padding: 16rpx;
 }
 
 .third_row {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-content: center;
+    align-items: center;
+    margin-top: 40rpx;
 }
 
 .title_label {
-    font-size: 20rpx;
+    font-size: 25rpx;
     width: 100rpx;
     height: 40rpx;
+    padding: 8rpx;
 }
 
 .total_number_label {
@@ -40,24 +43,30 @@
 
 .total_text_label {
     font-size: 25rpx;
-    width: 80rpx;
     height: 30rpx;
+    text-align: center;
 }
 
 .day_label {
-    font-size: 20rpx;
-    width: 100rpx;
+    font-size: 25rpx;
     height: 40rpx;
+    padding: 8rpx;
+    flex: 1 1 0;
+    text-align: left;
 }
 
 .product_label {
-    font-size: 20rpx;
-    width: 150rpx;
+    font-size: 25rpx;
+    padding: 8rpx;
     height: 40rpx; 
+    flex: 1 1 0;
+    text-align: center;
 }
 
 .last_record_label {
-    font-size: 20rpx;
-    width: 150rpx;
-    height: 40rpx;  
+    font-size: 25rpx;
+    padding: 8rpx;
+    height: 40rpx;
+    flex: 1 1 0;
+    text-align: right;
 }
