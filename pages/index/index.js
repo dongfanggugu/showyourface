@@ -40,14 +40,15 @@ Page({
           console.log('code:' + res.code)
           // 发起网络请求
           wx.request({
-            url: 'http://www.skinrec.com:33333',
+            // url: 'http://www.skinrec.com:33333',
+            url: 'http://127.0.0.1:8080/login/test',
             data: {
               code: res.code
             },
             header: {
-              "content-type": "application/json"
+              "content-type": "application/x-www-form-urlencoded"
             },
-            method: 'GET',
+            method: 'POST',
             success: function (res) {
               console.log(res)
               wx.setStorage({
