@@ -16,6 +16,8 @@
     <button bindtap="goNextPage">next page</button>
     <button bindtap="goMy">我的</button>
     <button bindtap="goSaveImg">保存图片</button>
+    <button bindtap="goLogin">微信登录</button>
+    <!-- <button  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权用户信息</button> -->
   </view>
 
   <view class="bottom">
