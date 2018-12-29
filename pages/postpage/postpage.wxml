@@ -1,6 +1,25 @@
-<view class="post_global">
-    <view id="post_head" class="post_product_photo">
+<scrollView scroll-y class="post_global" scroll-info-view="post_head">
+    <view id="post_head" class="post_sel">
+      <picker range="{{brandArray}}" value="{{index}}" bindchange="brandSel" class="post_brand_sel">
+        <view>
+          {{brandName}}
+        </view>
+      </picker>
+      <picker range="{{brandArray}}" value="{{index}}" bindchange="brandSel" class="post_product_sel">
+          <view>
+            {{brandName}}
+          </view>
+        </picker>
+
     </view>
+    <view class="post_product_photo">
+      <text class="post_product_text">产品照片</text>
+      <view class="post_product_image_view">
+        <image src="{{productSrc}}" class="post_product_image"></image>
+        <text class="post_product_image_sel" bindtap="chooseImage">选取图片</text>
+      </view>
+    </view>
+
     <view class="post_skin_photo"></view>
     <view class="post_other_info"></view>
-  </view>
+</scrollView>

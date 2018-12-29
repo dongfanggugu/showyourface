@@ -5,7 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+      //产品选择
+      brandArray: [
+        "雅诗兰黛",
+        "cocach",
+        "香奈儿" 
+      ],
+      brandName: '品牌',
+      productSrc: '/images/icon_image_default.png',
   },
 
   /**
@@ -62,5 +69,31 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  brandSel: function(e) {
+    console.log("sel");
+    let index = e.detail.value;
+    let pro = this.data.brandArray[index];
+    this.setData({
+      brandName: pro
+    });
+  },
+  chooseImage: function() {
+    var _this = this;
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: function(res) {
+        _this.setData({
+          productSrc: res.tempFilePaths
+        });
+      }, fail: function() {
+
+      }, complete: function() {
+
+      }
+    });
   }
 })

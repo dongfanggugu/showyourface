@@ -55,7 +55,6 @@ Page({
     totalProduct: 4,
     lastDay: 2,
   },
-
   tapItem: function (e) {
     var index = e.currentTarget.dataset.id;
     switch (index) {
