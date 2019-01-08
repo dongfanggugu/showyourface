@@ -1,4 +1,7 @@
 // pages/tabbar/tabbar.js
+const app = getApp();
+var AppId = "wxd1fa6ab7d81d10e7";
+var AppSecret = "d59db949fd967bff0e30b73480edd71e";
 Page({
 
   /**
@@ -54,7 +57,57 @@ Page({
     continuedDays: 23,
     totalProduct: 4,
     lastDay: 2,
+
+     //个人页
+     motto: 'Hello World',
+     userInfo: {},
+     hasUserInfo: false,
+     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+     recordInfo: [
+      {
+       first: "/images/icon_image_default.png",
+       last: "/images/icon_image_default.png",
+       product: "产品名称"
+      },
+      {
+        first: "/images/icon_image_default.png",
+        last: "/images/icon_image_default.png",
+        product: "产品名称"
+       },
+       {
+        first: "/images/icon_image_default.png",
+        last: "/images/icon_image_default.png",
+        product: "产品名称"
+       },
+       {
+        first: "/images/icon_image_default.png",
+        last: "/images/icon_image_default.png",
+        product: "产品名称"
+       },
+       {
+        first: "/images/icon_image_default.png",
+        last: "/images/icon_image_default.png",
+        product: "产品名称"
+       },
+       {
+        first: "/images/icon_image_default.png",
+        last: "/images/icon_image_default.png",
+        product: "产品名称"
+       },
+       {
+        first: "/images/icon_image_default.png",
+        last: "/images/icon_image_default.png",
+        product: "产品名称"
+       }
+    ],
   },
+  //事件处理函数
+  bindViewTap: function () {
+    wx.navigateTo({
+      url: '../logs/logs'
+    })
+  },
+
   tapItem: function (e) {
     var index = e.currentTarget.dataset.id;
     switch (index) {
@@ -94,6 +147,38 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //login
+    this.wxLogin();
+
+    if (app.globalData.userInfo) {
+      console.log(app.globalData.userInfo);
+      this.setData({
+        userInfo: app.globalData.userInfo,
+        hasUserInfo: true
+      })
+    } else if (this.data.canIUse) {
+      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+      // 所以此处加入 callback 以防止这种情况
+      app.userInfoReadyCallback = res => {
+        console.log(res.userInfo);
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+      }
+    } else {
+      // 在没有 open-type=getUserInfo 版本的兼容处理
+      wx.getUserInfo({
+        success: res => {
+          app.globalData.userInfo = res.userInfo
+          console.log(res.userInfo);
+          this.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true
+          })
+        }
+      })
+    }
 
   },
 
@@ -154,5 +239,44 @@ Page({
   //轮播图点击事件
   swipclick: function (e) {
     console.log(this.data.swiperCurrent)
+  },
+  addRecord: function() {
+    wx.navigateTo({
+      url: '/pages/postpage/postpage',
+      success: function (res) {
+        // success
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    });
+  },
+  wxLogin: function() {
+    wx.login({
+      success(res) {
+        if (res.code) {
+          var code = res.code;
+          wx.request({
+            url: 'https://api.weixin.qq.com/sns/jscode2session?appid=' + AppId + '&secret=' + AppSecret + '&js_code='+ code +'&grant_type=authorization_code',
+            data: {},
+            header: {
+                'content-type': 'application/json'
+            },
+            success: function(res) {
+              console.log(res);
+              var openid = res.data.openid //返回openid
+              app.globalData.openid = openid;
+              console.log("ppp_openid:" + openid);
+            }
+          })
+         
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    })
   }
 })

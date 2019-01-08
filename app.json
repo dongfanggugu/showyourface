@@ -1,12 +1,13 @@
 {
   "pages": [
+    "pages/tabbar/tabbar",
     "pages/index/index",
     "pages/logs/logs",
     "pages/show/show",
-    "pages/tabbar/tabbar",
+
     "pages/postpage/postpage",
-    "pages/my/my",
-    "pages/saveImg/saveImg"
+    "pages/saveImg/saveImg",
+    "pages/photocompare/photocompare"
   ],
   "window": {
     "backgroundTextStyle": "light",

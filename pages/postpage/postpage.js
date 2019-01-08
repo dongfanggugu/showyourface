@@ -13,6 +13,15 @@ Page({
       ],
       brandName: '品牌',
       productSrc: '/images/icon_image_default.png',
+      skinSrc: '/images/icon_image_default.png',
+      tagArray:[
+        '护肤',
+        '锁水',
+        '紧致',
+        '效果明显',
+        '见效快',
+        '便宜'
+      ],
   },
 
   /**
@@ -95,5 +104,37 @@ Page({
 
       }
     });
+  },
+  chooseSkinImage: function() {
+    var _this = this;
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: function(res) {
+        _this.setData({
+          skinSrc: res.tempFilePaths
+        });
+      }, fail: function() {
+
+      }, complete: function() {
+
+      }
+    }); 
+  },
+  completePost: function() {
+    var _this = this;
+    wx.navigateTo({
+      url: '/pages/photocompare/photocompare',
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
   }
 })

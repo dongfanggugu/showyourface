@@ -18,8 +18,25 @@
         <image src="{{productSrc}}" class="post_product_image"></image>
         <text class="post_product_image_sel" bindtap="chooseImage">选取图片</text>
       </view>
+     
     </view>
-
-    <view class="post_skin_photo"></view>
-    <view class="post_other_info"></view>
+    <view class="post_product_input_parent">
+        <input placeholder="功效(选填)" class="post_product_input1"/>
+        <input placeholder="价格(选填)" class="post_product_input2"/>
+     </view>
+     <view class="post_product_tag_parent">
+      <text class="post_product_tag"  wx:for="{{tagArray}}" wx:for-index="index" wx:for-item="item">{{item}}</text>
+     </view>
+   
+    <view class="post_skin_photo">
+        <text class="post_product_text">皮肤照片</text>
+        <view class="post_product_image_view">
+          <image src="{{skinSrc}}" class="post_product_image"></image>
+          <text class="post_product_image_sel" bindtap="chooseSkinImage">选取图片</text>
+        </view>
+    </view>
+    <input class="post_daily_des" placeholder="今日纪要(选填)"></input>
+    <view class="post_complete_parent">
+      <view class="post_complete" bindtap='completePost'>完成</view>
+    </view>
 </scrollView>

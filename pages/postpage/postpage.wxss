@@ -28,20 +28,8 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
-    height: 200rpx;
-    padding: 4rpx;
-    background-color: aquamarine;
-}
-
-.post_other_info {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    height: 800rpx;
-    padding: 4rpx; 
-    background-color: green;
+    align-items: start;
+    padding: 16rpx;
 }
 
 .post_brand_sel {
@@ -93,4 +81,72 @@
     padding-right: 16rpx;
     padding-top: 8rpx;
     padding-bottom: 8rpx;
+}
+
+.post_product_input_parent {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 16rpx;
+}
+
+.post_product_input1 {
+    border: 1px solid gray;
+    height: 30rpx;
+    font-size: 25rpx;
+    margin-right: 8rpx;
+    width: 47%;
+}
+
+.post_product_input2 {
+    border: 1px solid gray;
+    height: 30rpx;
+    font-size: 25rpx;
+    margin-left: 8rpx;
+    width: 47%;
+}
+
+.post_product_tag_parent {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.post_product_tag {
+    border: 1px solid gray;
+    border-radius: 24rpx;
+    padding-left: 16rpx;
+    padding-right: 16rpx;
+    margin: 16rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    font-size: 25rpx;
+    text-align: center;
+}
+
+.post_daily_des {
+    border: 1px solid gray;
+    font-size: 25rpx;
+    margin: 16rpx;
+}
+
+.post_complete_parent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.post_complete {
+    margin: 32rpx;
+    font: medium;
+    font-size: 35rpx;
+    text-align: center;
+    width: 300rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    background-color:#FF4081;
 }

@@ -1,0 +1,21 @@
+<view class="compare_container">
+    <view class="compare_left">
+            <swiper vertical="true" current="0" class="compare_swiper" circular="true">
+                    <block wx:for="{{imageArray}}" wx:for-index="index" wx:for-item="item">
+                      <swiper-item>
+                        <image src="{{item.src}}" mode="aspectFit" style="width:100%;height:100%"/>
+                      </swiper-item>
+                    </block>
+                  </swiper>
+    </view>
+    <view class="compare_right">
+            <swiper vertical="true" current="0" class="compare_swiper" circular="true">
+                    <block wx:for="{{imageArray}}" wx:for-index="index" wx:for-item="item">
+                      <swiper-item>
+                        <image src="{{item.src}}" mode="aspectFit" style="width:100%;height:100%" />
+                      </swiper-item>
+                    </block>
+                  </swiper>
+    </view>
+
+</view>

@@ -1,8 +1,27 @@
-<view class="person_global">
-        <view id="person_top" class="person_info"></view>
-        <view id="{{itemName.id}}" class="person_list" wx:for="{{array}}" wx:for-index="index"  wx:for-item="itemName">
-              <text>{{index}}</text>
-              <text>{{itemName.unique}}</text>
-          </view>
-      
-      </view>
+<scroll-view scroll-y class="person_global">
+              <view>
+                  <view class="userinfo">
+                            <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" style="font-size:30rpx">
+                                   获取头像昵称 </button>
+                            <block wx:else>
+                                   <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+                                   <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+                            </block>
+                     </view>
+                     <view class="usermotto">
+                     </view>
+              
+                     <view class="my-content" wx:for="{{recordInfo}}" wx:for-index="index" wx:for-item="item">
+                            <view class="itemContainer">
+                                   <view class="person_separator"></view>
+                                   <image src='{{item.first}}' class='imgItem'></image>
+                                   <image src='{{item.last}}' class='imgItem'></image>
+                                   <view class='itemTextContainer'>
+                                          <label class="lableItem">{{item.product}}</label>
+                                          <button class="person_effect_btn">功效</button>
+                                   </view>
+              
+                            </view>
+                     </view>
+              </view>
+</scroll-view>

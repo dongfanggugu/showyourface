@@ -7,7 +7,7 @@
   </view>
   <view class="main_operation">
       <text class="main_add_rocord_label">我的日记</text>
-      <text class="main_add_record_button">添加日记</text>
+      <text class="main_add_record_button" bindtap='addRecord'>添加日记</text>
   </view>
   <view id="{{itemName.id}}" wx:for="{{array}}" wx:for-index="index"  wx:for-item="itemName">
     <view class="main_list">
