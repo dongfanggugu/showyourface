@@ -1,21 +1,43 @@
-<view class="compare_container">
+<view class="compare_origin">
+  <view class="compare_container">
     <view class="compare_left">
-            <swiper vertical="true" current="0" class="compare_swiper" circular="true">
-                    <block wx:for="{{imageArray}}" wx:for-index="index" wx:for-item="item">
-                      <swiper-item>
-                        <image src="{{item.src}}" mode="aspectFit" style="width:100%;height:100%"/>
-                      </swiper-item>
-                    </block>
-                  </swiper>
+      <swiper vertical="true" current="0" class="compare_swiper" circular="true" bindchange='swiperLeftChange'>
+        <block wx:for="{{imageArray}}" wx:for-index="index" wx:for-item="item">
+          <swiper-item>
+            <image src="{{item.src}}" mode="aspectFit" style="width:100%;height:175px" />
+          </swiper-item>
+        </block>
+      </swiper>
+      <view class="right_label">{{leftLabel}}</view>
     </view>
     <view class="compare_right">
-            <swiper vertical="true" current="0" class="compare_swiper" circular="true">
-                    <block wx:for="{{imageArray}}" wx:for-index="index" wx:for-item="item">
-                      <swiper-item>
-                        <image src="{{item.src}}" mode="aspectFit" style="width:100%;height:100%" />
-                      </swiper-item>
-                    </block>
-                  </swiper>
+      <!-- <view class='compare_up_2'>
+        <image src="{{up_2_item}}" mode="top" style="width:100%;height:100%" />
+      </view>
+      <view class='compare_up_1' animation="{{animationChange}}">
+        <image src="{{up_1_item}}" mode="top" style="width:100%;height:100%" />
+      </view> -->
+
+      <swiper vertical="true" current="1" class="compare_swiper" circular="true" bindchange='swiperRightChange'>
+        <block wx:for="{{imageArray}}" wx:for-index="index" wx:for-item="item">
+          <swiper-item>
+            <image src="{{item.src}}" mode="aspectFit" style="width:100%;height:100%" />
+          </swiper-item>
+        </block>
+      </swiper>
+      <view class="right_label">{{rightLabel}}</view>
+      <!-- <view class='compare_up_1'>
+        <image src="{{down_1_item}}" mode="top" style="width:100%;height:100%" />
+      </view>
+      <view class='compare_up_2'>
+        <image class="compare_up_2" src="{{down_2_item}}" mode="top" style="width:100%;height:100%" />
+      </view> -->
+
     </view>
+  </view>
+
+  <view class="post_complete_parent">
+    <view class="post_complete" bindtap='comparePic'>保存日记</view>
+  </view>
 
 </view>

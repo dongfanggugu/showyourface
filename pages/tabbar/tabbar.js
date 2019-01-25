@@ -1,5 +1,6 @@
 // pages/tabbar/tabbar.js
 const app = getApp();
+const baseURL = 'http://www.skinrec.com';
 var AppId = "wxd1fa6ab7d81d10e7";
 var AppSecret = "d59db949fd967bff0e30b73480edd71e";
 Page({
@@ -14,9 +15,9 @@ Page({
     third: false,
 
     itemArray: [
-      {"name": "日记", image: "/images/icon_tab_1.png"},
-      {"name": "", image: "/images/icon_main_add.png"},
-      {"name": "我的", image: "/images/icon_tab_1.png"}
+      { "name": "日记", image: "/images/tab_add_sel.png", image_width: '40rpx', text_height: '25rpx', text_color:'rgb(255,109,138)'},
+      { "name": "", image: "/images/tab_add.png", image_width: '75rpx', text_height: '0rpx', text_color: '#333333'},
+      { "name": "我的", image: "/images/tab_person_nor.png", image_width: '40rpx', text_height: '25rpx', text_color: 'rgb(177,177,177)'}
     ],
     array: [
       {if: "a12", info: '产品名称', unique: 'unique_5', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
@@ -110,17 +111,26 @@ Page({
 
   tapItem: function (e) {
     var index = e.currentTarget.dataset.id;
+    var that = this;
     switch (index) {
+      //选中 0
       case 0:
+        
         this.setData({
           first: true,
           second: false,
-          third: false
+          third: false,
+          'itemArray[0].image' : '/images/tab_add_sel.png',
+          'itemArray[0].text_color': 'rgb(255,109,138)',
+          'itemArray[2].image': '/images/tab_person_nor.png',
+          'itemArray[2].text_color': 'rgb(177,177,177)'
         });
         break;
       case 1:
+      
         wx.navigateTo({
-          url: '/pages/postpage/postpage',
+          // url: '/pages/postpage/postpage',
+          url: '/pages/appendpost/appendpost',
           success: function (res) {
             // success
           },
@@ -137,7 +147,11 @@ Page({
         this.setData({
           first: false,
           second: false,
-          third: true
+          third: true,
+          'itemArray[0].image': '/images/tab_add_nor.png',
+          'itemArray[0].text_color': 'rgb(177,177,177)',
+          'itemArray[2].image': '/images/tab_person_sel.png',
+          'itemArray[2].text_color': 'rgb(255,109,138)'
         });
         break;
     }
@@ -242,7 +256,8 @@ Page({
   },
   addRecord: function() {
     wx.navigateTo({
-      url: '/pages/postpage/postpage',
+      // url: '/pages/postpage/postpage',
+      url: '/pages/appendpost/appendpost',
       success: function (res) {
         // success
       },
@@ -276,6 +291,56 @@ Page({
         } else {
           console.log('登录失败！' + res.errMsg)
         }
+      }
+    })
+  },
+  getServerInfo: function () {
+    var token = app.token;
+
+  },
+  getTotoalInfo: function (token) {
+    var that = this;
+    wx.request({
+      url: baseURL + "/user_record?token=" + token,
+      data: {},
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
+      success: function(res){
+        // success
+        picCount = parseInt(res['pic_count']);
+        dayCount = parseInt(res['day_count']);
+        productCount = parseInt(res['product_count']);
+        lastRecord = parseInt(res['last_record_time']);
+        that.setData({
+          totalNumber: picCount,
+          continuedDays: dayCount,
+          totalProduct: productCount,
+          lastDay:lastRecord
+        });
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
+  },
+  getRecordInfo: function (token) {
+    var that = this;
+    wx.request({
+      url: baseURL + "/use_record_list?token=" + token,
+      data: {},
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
       }
     })
   }

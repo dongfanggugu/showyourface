@@ -5,25 +5,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-      productSrc: '/images/icon_add_pic.png',
-      skinSrc1: '/images/icon_add_pic.png',
-      skinSrc2: '/images/icon_add_pic.png',
-      tagArray:[
-        {ids: "0", name: '护肤', sel: false},
-        { ids: "1", name: '锁水', sel: false },
-        { ids: "2", name: '紧致', sel: false },
-        { ids: "3", name: '效果明显', sel: false },
-        { ids: "4", name: '见效快', sel: false },
-        { ids: "5", name: '便宜', sel: false }
-      ],
-      effectArray:[
-        {ids: "0", name: '吃辣', sel: false},
-        { ids: "1", name: '牛羊肉', sel: false },
-        { ids: "2", name: '运动', sel: false },
-        { ids: "3", name: '油炸食品', sel: false },
-        { ids: "4", name: '心情愉悦', sel: false },
-        { ids: "5", name: '发痒', sel: false },
-      ],
+    //产品选择
+    brandArray: [
+      "雅诗兰黛",
+      "cocach",
+      "香奈儿"
+    ],
+    brandName: '品牌',
+    productSrc: 'https://improxy.starmakerstudios.com/tools/im/200/production/users/5629499487141392/profile.jpg?ts=1548287810',
+    skinSrc1: '/images/icon_add_pic.png',
+    skinSrc2: '/images/icon_add_pic.png',
+    tagArray:[
+      { ids: "0", name: '护肤', sel: true },
+      { ids: "1", name: '锁水', sel: true },
+      { ids: "2", name: '紧致', sel: true },
+      { ids: "3", name: '效果明显', sel: true },
+      { ids: "4", name: '见效快', sel: false }
+    ],
+    effectArray:[
+      {ids: "0", name: '吃辣', sel: false},
+      { ids: "1", name: '牛羊肉', sel: false },
+      { ids: "2", name: '运动', sel: false },
+      { ids: "3", name: '油炸食品', sel: false },
+      { ids: "4", name: '心情愉悦', sel: false },
+      { ids: "5", name: '发痒', sel: false },
+    ],
   },
 
   /**
@@ -82,7 +88,7 @@ Page({
 
   },
 
-  brandSel: function(e) {
+  brandSel: function (e) {
     console.log("sel");
     let index = e.detail.value;
     let pro = this.data.brandArray[index];
@@ -90,63 +96,54 @@ Page({
       brandName: pro
     });
   },
-  chooseImage: function() {
+  chooseImage: function () {
     var _this = this;
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
-      success: function(res) {
+      success: function (res) {
         _this.setData({
           productSrc: res.tempFilePaths
         });
-      }, fail: function() {
+      }, fail: function () {
 
-      }, complete: function() {
+      }, complete: function () {
 
       }
     });
   },
-  chooseSkinImage: function() {
+  chooseSkinImage: function () {
     var _this = this;
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
-      success: function(res) {
+      success: function (res) {
         _this.setData({
           skinSrc: res.tempFilePaths
         });
-      }, fail: function() {
+      }, fail: function () {
 
-      }, complete: function() {
+      }, complete: function () {
 
       }
-    }); 
+    });
   },
-  completePost: function() {
+  completePost: function () {
     var _this = this;
     wx.navigateTo({
       url: '/pages/photocompare/photocompare',
-      success: function(res){
+      success: function (res) {
         // success
       },
-      fail: function() {
+      fail: function () {
         // fail
       },
-      complete: function() {
+      complete: function () {
         // complete
       }
     })
-  },
-  clickTag: function(e) {
-    var index = parseInt(e.currentTarget.id);
-    console.log(index);
-    var sel = this.data.tagArray[index].sel;
-    var selKey = "tagArray[" + index + "].sel";
-    this.setData({
-      [selKey] : !sel
-    });
   },
   clickEffect: function(e) {
     var index = parseInt(e.currentTarget.id);

@@ -1,4 +1,4 @@
 <view class="tabitem">
-    <image class="image" src="{{item.image}}"></image>
-    <text class="text">{{item.name}}</text>
+    <image style="width:{{item.image_width}};height:{{item.image_width}}" src="{{item.image}}"></image>
+    <text class="text" style="height:{{item.text_height}};color:{{item.text_color}}">{{item.name}}</text>
 </view>

@@ -1,7 +1,6 @@
 .tabitem {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
     width: 90rpx;
     height: 90rpx;
@@ -13,7 +12,6 @@
 }
 
 .text {
-    width: 60rpx;
-    height: 30rpx;
     font-size: 25rpx;
+    color: #333333
 }

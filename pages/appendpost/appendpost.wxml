@@ -1,0 +1,44 @@
+<scrollView scroll-y class="post_global" scroll-info-view="post_head">
+    <view id="post_head" class="post_sel">
+    </view>
+    <view class="post_product_photo">
+      <text class="post_product_text">产品照片</text>
+      <view class="post_product_image_view">
+        <image src="{{productSrc}}" style="width:90px;height:90px;flex:0 0 auto"></image>
+        <view>
+      <view style="font-size:15px;margin:8px">兰蔻小黑瓶肌底液</view>
+      <view class="post_product_tag_parent">
+      <text class="post_product_tag_sel"  wx:for="{{tagArray}}" wx:for-index="index" wx:for-item="item">{{item.name}}</text>
+     </view>
+     </view>
+      </view> 
+    </view>
+
+     
+   
+    <view class="post_skin_photo">
+        <text class="post_product_text">皮肤照片</text>
+        <view class="post_product_image_view">
+          <image src="{{skinSrc1}}" style="width:90px;height:90px;flex:0 0 auto"></image>
+          <image src="{{skinSrc2}}" style="width:90px;height:90px;flex:0 0 auto;margin-left:8px"></image>
+        </view>
+
+    <view class="post_product_tag_parent">
+      <view wx:for="{{effectArray}}" wx:for-index="index" wx:for-item="item">
+        <view id="{{index}}" bindtap="clickEffect">
+        <block wx:if="{{item.sel}}">
+          <text  class="post_product_tag_sel">{{item.name}}</text>
+        </block>
+        <block wx:else>
+          <text class="post_product_tag">{{item.name}}</text>
+        </block>
+      </view>
+      </view>
+     </view>
+
+    </view>
+    
+    <view class="post_complete_parent">
+      <view class="post_complete" bindtap='completePost'>保存日记</view>
+    </view>
+</scrollView>

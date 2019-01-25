@@ -4,10 +4,11 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/show/show",
-
     "pages/postpage/postpage",
     "pages/saveImg/saveImg",
-    "pages/photocompare/photocompare"
+    "pages/photocompare/photocompare",
+    "pages/appendpost/appendpost",
+    "pages/comparepage/comparepage"
   ],
   "window": {
     "backgroundTextStyle": "light",
