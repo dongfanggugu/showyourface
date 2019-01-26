@@ -1,12 +1,12 @@
 <scrollView scroll-y class="post_global" scroll-info-view="post_head">
     <view id="post_head" class="post_sel">
-      <input placeholder='产品名称 如: 兰蔻小黑瓶精华肌底液' style='background-color:rgb(250, 250, 250);width:100%;margin:16px;font-size:15px'></input>
+      <input name="product_name" bindinput="inputProductName" placeholder='产品名称 如: 兰蔻小黑瓶精华肌底液' style='background-color:rgb(250, 250, 250);width:100%;margin:16px;font-size:15px'></input>
     
     </view>
     <view class="post_product_photo">
       <text class="post_product_text">产品照片</text>
       <view class="post_product_image_view">
-        <image src="{{productSrc}}" style="width:90px;height:90px;flex:0 0 auto"></image>
+        <image src="{{productSrc}}" style="width:90px;height:90px;flex:0 0 auto" bindtap="chooseImage"></image>
         <view class="post_product_tag_parent">
           <view wx:for="{{tagArray}}" wx:for-index="index" wx:for-item="item">
             <view id="{{index}}" bindtap="clickTag">
@@ -27,8 +27,8 @@
     <view class="post_skin_photo">
       <text class="post_product_text">皮肤照片</text>
       <view class="post_product_image_view">
-        <image src="{{skinSrc1}}" style="width:90px;height:90px;flex:0 0 auto"></image>
-        <image src="{{skinSrc2}}" style="width:90px;height:90px;flex:0 0 auto;margin-left:8px"></image>
+        <image src="{{skinSrc1}}" style="width:90px;height:90px;flex:0 0 auto" bindtap="chooseSkinImage1"></image>
+        <image src="{{skinSrc2}}" style="width:90px;height:90px;flex:0 0 auto;margin-left:8px" bindtap="chooseSkinImage2"></image>
       </view>
     
       <view class="post_product_tag_parent">
@@ -47,6 +47,6 @@
     </view>
     
     <view class="post_complete_parent">
-      <view class="post_complete" bindtap='comparePic'>对比</view>
+      <view class="post_complete" bindtap='completePost'>保存日记</view>
     </view>
     </scrollView>

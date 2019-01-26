@@ -1,8 +1,8 @@
 // pages/tabbar/tabbar.js
 const app = getApp();
-const baseURL = 'http://www.skinrec.com';
-var AppId = "wxd1fa6ab7d81d10e7";
-var AppSecret = "d59db949fd967bff0e30b73480edd71e";
+const baseURL = 'http://www.skinrec.com:33333';
+// var AppId = "wxd1fa6ab7d81d10e7";
+// var AppSecret = "d59db949fd967bff0e30b73480edd71e";
 Page({
 
   /**
@@ -129,8 +129,7 @@ Page({
       case 1:
       
         wx.navigateTo({
-          // url: '/pages/postpage/postpage',
-          url: '/pages/appendpost/appendpost',
+          url: '/pages/postpage/postpage',
           success: function (res) {
             // success
           },
@@ -270,24 +269,47 @@ Page({
     });
   },
   wxLogin: function() {
+    var that = this;
     wx.login({
       success(res) {
         if (res.code) {
           var code = res.code;
           wx.request({
-            url: 'https://api.weixin.qq.com/sns/jscode2session?appid=' + AppId + '&secret=' + AppSecret + '&js_code='+ code +'&grant_type=authorization_code',
-            data: {},
-            header: {
-                'content-type': 'application/json'
+            url: baseURL + "/login",
+            data: {
+              code: code
             },
-            success: function(res) {
+            header:{
+              "content-type": "application/x-www-form-urlencoded"
+            },
+            method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+            // header: {}, // 设置请求的 header
+            success: function (res) {
+              // success
               console.log(res);
-              var openid = res.data.openid //返回openid
-              app.globalData.openid = openid;
-              console.log("ppp_openid:" + openid);
+              app.globalData.token = res.data.token;
+              that.getServerInfo();
+              wx.setStorage({
+                key: 'remote_token',
+                data: res.token,
+                success: function(res){
+                  // success
+                },
+                fail: function() {
+                  // fail
+                },
+                complete: function() {
+                  // complete
+                }
+              })
+            },
+            fail: function () {
+              // fail
+            },
+            complete: function () {
+              // complete
             }
           })
-         
         } else {
           console.log('登录失败！' + res.errMsg)
         }
@@ -295,14 +317,16 @@ Page({
     })
   },
   getServerInfo: function () {
-    var token = app.token;
-
+    var token = app.globalData.token;
+    this.getRecordInfo(token)
   },
   getTotoalInfo: function (token) {
     var that = this;
     wx.request({
-      url: baseURL + "/user_record?token=" + token,
-      data: {},
+      url: baseURL + "/user_record?",
+      data: {
+        token: token
+      },
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       // header: {}, // 设置请求的 header
       success: function(res){
@@ -329,12 +353,15 @@ Page({
   getRecordInfo: function (token) {
     var that = this;
     wx.request({
-      url: baseURL + "/use_record_list?token=" + token,
-      data: {},
+      url: baseURL + "/use_record_list",
+      data: {
+        token: token
+      },
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       // header: {}, // 设置请求的 header
       success: function(res){
         // success
+        console.log(res);
       },
       fail: function() {
         // fail

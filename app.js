@@ -34,7 +34,8 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    token: ""
   },
   getUserInfo: function (e) {
     console.log(e)

@@ -1,3 +1,5 @@
+const app = getApp();
+const baseURL = 'http://www.skinrec.com:33333';
 // pages/postpage.js
 Page({
 
@@ -5,32 +7,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-      productSrc: '/images/icon_add_pic.png',
-      skinSrc1: '/images/icon_add_pic.png',
-      skinSrc2: '/images/icon_add_pic.png',
-      tagArray:[
-        {ids: "0", name: '护肤', sel: false},
-        { ids: "1", name: '锁水', sel: false },
-        { ids: "2", name: '紧致', sel: false },
-        { ids: "3", name: '效果明显', sel: false },
-        { ids: "4", name: '见效快', sel: false },
-        { ids: "5", name: '便宜', sel: false }
-      ],
-      effectArray:[
-        {ids: "0", name: '吃辣', sel: false},
-        { ids: "1", name: '牛羊肉', sel: false },
-        { ids: "2", name: '运动', sel: false },
-        { ids: "3", name: '油炸食品', sel: false },
-        { ids: "4", name: '心情愉悦', sel: false },
-        { ids: "5", name: '发痒', sel: false },
-      ],
+    productName: '',
+    productSrc: '/images/icon_add_pic.png',
+    productURL: "",
+    skinSrc1: '/images/icon_add_pic.png',
+    skinSrc1URL: '',
+    skinSrc2: '/images/icon_add_pic.png',
+    skinSrc2URL: '',
+    tagArray: [],
+    effectArray: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getHotTags();
   },
 
   /**
@@ -91,15 +83,18 @@ Page({
     });
   },
   chooseImage: function() {
-    var _this = this;
+    var that = this;
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: function(res) {
-        _this.setData({
-          productSrc: res.tempFilePaths
+        that.productSrc = res.tempFilePaths[0];
+        that.setData({
+          productSrc: that.productSrc
         });
+        that.uploadImage(that.productSrc, 'product');
+
       }, fail: function() {
 
       }, complete: function() {
@@ -107,16 +102,18 @@ Page({
       }
     });
   },
-  chooseSkinImage: function() {
-    var _this = this;
+  chooseSkinImage1: function() {
+    var that = this;
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: function(res) {
-        _this.setData({
-          skinSrc: res.tempFilePaths
+        that.skinSrc1 = res.tempFilePaths[0];
+        that.setData({
+          skinSrc1: that.skinSrc1
         });
+        that.uploadImage(that.skinSrc1, 'face1');
       }, fail: function() {
 
       }, complete: function() {
@@ -124,10 +121,67 @@ Page({
       }
     }); 
   },
-  completePost: function() {
-    var _this = this;
-    wx.navigateTo({
-      url: '/pages/photocompare/photocompare',
+  chooseSkinImage2: function() {
+    var that = this;
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: function(res) {
+        that.skinSrc2 = res.tempFilePaths[0];
+        that.setData({
+          skinSrc2: that.skinSrc2
+        });
+        that.uploadImage(that.skinSrc2, 'face2');
+      }, fail: function () {
+
+      }, complete: function () {
+
+      }
+    }); 
+  },
+  inputProductName: function (e) {
+    this.data.productName = e.detail.value;
+  },
+  completePost: function(e) {
+    var that = this;
+    //获取选中的产品标签
+    var proTags = [];
+    for (var i = 0; i < this.data.tagArray.length; i++) {
+      var sel = this.data.tagArray[i].sel;
+      if (sel) {
+        proTags.push(this.data.tagArray[i].name);
+      }
+    }
+
+    //获取选中的皮肤标签
+    var skinTags = [];
+    for (var i = 0; i < this.data.effectArray.length; i++) {
+      var sel = this.data.effectArray[i].sel;
+      if (sel) {
+        skinTags.push(this.data.effectArray[i].name);
+      }
+    }
+
+    console.log("product name:" + this.data.productName);
+    console.log("product:" + proTags);
+    console.log("skin:" + skinTags);
+    console.log("product url:" + this.data.productURL);
+    console.log("skin url1:" + this.data.skinSrc1URL);
+    console.log("skin url2:" + this.data.skinSrc2URL);
+
+    wx.request({
+      url: baseURL + "/upload_product_record",
+      data: {
+        token: app.globalData.token,
+        product_name: that.data.productName,
+        product_image: that.data.productURL,
+        product_tags:proTags,
+        skin_images:[that.data.skinSrc1URL, that.data.skinSrc2URL],
+        summary_tags: skinTags
+      },
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
       success: function(res){
         // success
       },
@@ -138,11 +192,26 @@ Page({
         // complete
       }
     })
+
+
+    // wx.navigateTo({
+    //   url: '/pages/photocompare/photocompare',
+    //   success: function(res){
+    //     // success
+    //   },
+    //   fail: function() {
+    //     // fail
+    //   },
+    //   complete: function() {
+    //     // complete
+    //   }
+    // })
   },
   clickTag: function(e) {
     var index = parseInt(e.currentTarget.id);
     console.log(index);
     var sel = this.data.tagArray[index].sel;
+    this.data.tagArray[index].sel = !sel; 
     var selKey = "tagArray[" + index + "].sel";
     this.setData({
       [selKey] : !sel
@@ -150,11 +219,84 @@ Page({
   },
   clickEffect: function(e) {
     var index = parseInt(e.currentTarget.id);
-    console.log(index);
     var sel = this.data.effectArray[index].sel;
+    this.data.effectArray[index].sel = !sel;
     var selKey = "effectArray[" + index + "].sel";
     this.setData({
       [selKey] : !sel
     }); 
-  }
+  },
+  getHotTags: function (e) {
+    console.log("token:" + app.globalData.token);
+    var that = this;
+    wx.request({
+      url: baseURL + "/get_hot_tags",
+      data: {
+        token: app.globalData.token
+      },
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
+      success: function(res){
+        // success
+        that.showEffectTags(res.data.effect_tags);
+        that.showSummaryTags(res.data.summary_tags);
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
+  },
+  showEffectTags: function (array) {
+    for (var i = 0; i < array.length; i++) {
+        var name = array[i];
+        var tag = {ids: i, name: name, sel: false};
+        this.data.tagArray.push(tag);
+    }
+    this.setData({
+      tagArray: this.data.tagArray 
+    });
+  },
+  showSummaryTags: function (array) {
+    for (var i = 0; i < array.length; i++) {
+      var name = array[i];
+      var tag = { ids: i, name: name, sel: false };
+      this.data.effectArray.push(tag);
+    }
+    this.setData({
+      effectArray: this.data.effectArray
+    });
+  },
+  uploadImage: function (path, imageType) {
+    var that = this;
+    wx.uploadFile({
+      url: baseURL + '/image/upload?name=' + imageType,
+      filePath:path,
+      name: imageType,
+      // header: {}, // 设置请求的 header
+      // formData: {}, // HTTP 请求中其他额外的 form data
+      success: function(res){
+        // success
+        console.log(res);
+        var dataStr = res.data;
+        var dataJSON = JSON.parse(dataStr);
+        var url = dataJSON.url;
+        if (imageType == 'product') {
+          that.data.productURL = url;
+        } else if (imageType == 'face1') {
+          that.data.skinSrc1URL = url;
+        } else if (imageType == 'face2') {
+          that.data.skinSrc2URL = url;
+        }
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
+  },
 })
