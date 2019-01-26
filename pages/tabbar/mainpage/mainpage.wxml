@@ -13,17 +13,17 @@
       </view>
       
   </view>
-  <view id="{{itemName.id}}" wx:for="{{array}}" wx:for-index="index"  wx:for-item="itemName">
+  <view id="{{itemName.product_id}}" wx:for="{{array}}" wx:for-index="index"  wx:for-item="itemName">
     <view class="main_list">
-        <image class="main_avatar_image" src="{{itemName.url}}"/>
+        <image class="main_avatar_image" src="{{path}}/static/{{itemName.product_image}}"/>
         <view class='main_list_part2'>
-         <text>{{itemName.info}}</text>
+         <text>{{itemName.product_name}}</text>
         <text>{{itemName.info}}</text>
         </view>
        
         <view class="main_list_part3">
             <image class='main_list_info' src='/images/icon_camera.png'></image>
-            <text class='main_list_tip'>{{itemName.unique}}</text>
+            <text class='main_list_tip'>{{itemName.description}}</text>
         </view>
     </view>
     <view class="main_separation"></view>

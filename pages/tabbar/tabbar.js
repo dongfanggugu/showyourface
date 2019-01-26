@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    path: baseURL,
     tabItem: "发布",
     first: true,
     second:false,
@@ -20,19 +21,19 @@ Page({
       { "name": "我的", image: "/images/tab_person_nor.png", image_width: '40rpx', text_height: '25rpx', text_color: 'rgb(177,177,177)'}
     ],
     array: [
-      {if: "a12", info: '产品名称', unique: 'unique_5', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
-      {id: "a11", info: '产品名称', unique: 'unique_5', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
-      {id: "a10", info: '产品名称', unique: 'unique_5', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
-      {id: "a9", info: '产品名称', unique: 'unique_5', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
-      {id: "a8", info: '产品名称', unique: 'unique_5', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
-      {id: "a7", info: '产品名称', unique: 'unique_5', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
-      {id: "a6", info: '产品名称', unique: 'unique_5', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
-      {id: "a5", info: '产品名称', unique: 'unique_5', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
-      {id: "a4", info: '产品名称', unique: 'unique_4', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
-      {id: "a3", info: '产品名称', unique: 'unique_3', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
-      {id: "a2", info: '产品名称', unique: 'unique_2', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
-      {id: "a1", info: '产品名称', unique: 'unique_1', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
-      {id: "a0", info: '产品名称', unique: 'unique_0', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
+      // {id: "a12", info: '产品名称', unique: 'unique_5', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
+      // {id: "a11", info: '产品名称', unique: 'unique_5', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
+      // {id: "a10", info: '产品名称', unique: 'unique_5', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
+      // {id: "a9", info: '产品名称', unique: 'unique_5', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
+      // {id: "a8", info: '产品名称', unique: 'unique_5', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
+      // {id: "a7", info: '产品名称', unique: 'unique_5', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
+      // {id: "a6", info: '产品名称', unique: 'unique_5', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
+      // {id: "a5", info: '产品名称', unique: 'unique_5', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
+      // {id: "a4", info: '产品名称', unique: 'unique_4', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
+      // {id: "a3", info: '产品名称', unique: 'unique_3', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
+      // {id: "a2", info: '产品名称', unique: 'unique_2', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
+      // {id: "a1", info: '产品名称', unique: 'unique_1', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
+      // {id: "a0", info: '产品名称', unique: 'unique_0', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
     ],
     url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg",
 
@@ -161,8 +162,7 @@ Page({
    */
   onLoad: function (options) {
     //login
-    this.wxLogin();
-
+    this.initToken();
     if (app.globalData.userInfo) {
       console.log(app.globalData.userInfo);
       this.setData({
@@ -268,6 +268,25 @@ Page({
       }
     });
   },
+  initToken: function () {
+    var that = this;
+    wx.getStorage({
+      key: 'remote_token',
+      success: function(res){
+        // success
+        app.globalData.token = res.data;
+        that.getServerInfo();
+      },
+      fail: function() {
+        // fail
+        that.wxLogin();
+      },
+      complete: function() {
+        // complete
+      }
+    })
+  }
+  ,
   wxLogin: function() {
     var that = this;
     wx.login({
@@ -291,7 +310,7 @@ Page({
               that.getServerInfo();
               wx.setStorage({
                 key: 'remote_token',
-                data: res.token,
+                data: res.data.token,
                 success: function(res){
                   // success
                 },
@@ -353,7 +372,7 @@ Page({
   getRecordInfo: function (token) {
     var that = this;
     wx.request({
-      url: baseURL + "/use_record_list",
+      url: baseURL + "/user_record_list",
       data: {
         token: token
       },
@@ -362,6 +381,11 @@ Page({
       success: function(res){
         // success
         console.log(res);
+        that.array = res.data;
+        that.setData({
+          array: that.array
+        });
+
       },
       fail: function() {
         // fail

@@ -183,6 +183,7 @@ Page({
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       // header: {}, // 设置请求的 header
       success: function(res){
+        console.log(res);
         // success
       },
       fail: function() {
@@ -271,8 +272,9 @@ Page({
   },
   uploadImage: function (path, imageType) {
     var that = this;
+    var uploadURL = baseURL + '/image/upload?name=' + imageType;
     wx.uploadFile({
-      url: baseURL + '/image/upload?name=' + imageType,
+      url: uploadURL,
       filePath:path,
       name: imageType,
       // header: {}, // 设置请求的 header
