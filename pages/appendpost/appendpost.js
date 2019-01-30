@@ -1,3 +1,6 @@
+
+const app = getApp();
+const baseURL = 'https://www.skinrec.com:33333';
 // pages/postpage.js
 Page({
 
@@ -5,38 +8,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-    //产品选择
-    brandArray: [
-      "雅诗兰黛",
-      "cocach",
-      "香奈儿"
-    ],
-    brandName: '品牌',
-    productSrc: 'https://improxy.starmakerstudios.com/tools/im/200/production/users/5629499487141392/profile.jpg?ts=1548287810',
+    product:'',
+    productSrc: '',
     skinSrc1: '/images/icon_add_pic.png',
     skinSrc2: '/images/icon_add_pic.png',
-    tagArray:[
-      { ids: "0", name: '护肤', sel: true },
-      { ids: "1", name: '锁水', sel: true },
-      { ids: "2", name: '紧致', sel: true },
-      { ids: "3", name: '效果明显', sel: true },
-      { ids: "4", name: '见效快', sel: false }
-    ],
-    effectArray:[
-      {ids: "0", name: '吃辣', sel: false},
-      { ids: "1", name: '牛羊肉', sel: false },
-      { ids: "2", name: '运动', sel: false },
-      { ids: "3", name: '油炸食品', sel: false },
-      { ids: "4", name: '心情愉悦', sel: false },
-      { ids: "5", name: '发痒', sel: false },
-    ],
+    skinSrc1URL: '',
+    skinSrc2URL: '',
+    tagArray:[],
+    effectArray:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getHotTags();
   },
 
   /**
@@ -50,7 +36,22 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var product = app.globalData.appendProduct;
+    this.data.product = product;
+    for (var i = 0; i < product.product_tags.length; i++) {
+      var tag = {
+        id: i,
+        name: product.product_tags[i]
+      }
+      this.data.tagArray.push(tag);
+    }
+    console.log(this.data.tagArray);
+    var that = this;
+    this.setData({
+      productSrc: baseURL + "/static/" + product.product_image,
+      productName: product.product_name,
+      tagArray: that.data.tagArray
+    });
   },
 
   /**
@@ -131,11 +132,45 @@ Page({
     });
   },
   completePost: function () {
-    var _this = this;
-    wx.navigateTo({
-      url: '/pages/photocompare/photocompare',
-      success: function (res) {
-        // success
+    var that = this;
+   
+    //获取选中的皮肤标签
+    var skinTags = [];
+    for (var i = 0; i < this.data.effectArray.length; i++) {
+      var sel = this.data.effectArray[i].sel;
+      if (sel) {
+        skinTags.push(this.data.effectArray[i].name);
+      }
+    }
+
+    console.log("skin:" + skinTags);
+    console.log("skin url1:" + this.data.skinSrc1URL);
+    console.log("skin url2:" + this.data.skinSrc2URL);
+    app.globalData.pageDelta = 3;
+    wx.request({
+      url: baseURL + "/upload_skin_record",
+      data: {
+        token: app.globalData.token,
+        product_record_id: that.data.product.product_id,
+        skin_images:[that.data.skinSrc1URL, that.data.skinSrc2URL],
+        summary_tags: skinTags
+      },
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
+      success: function(res){
+        console.log(res);
+        wx.navigateTo({
+          url: '/pages/photocompare/photocompare?product_id=' + that.data.product.product_id,
+          success: function (res) {
+            // success
+          },
+          fail: function () {
+            // fail
+          },
+          complete: function () {
+            // complete
+          }
+        })
       },
       fail: function () {
         // fail
@@ -153,5 +188,106 @@ Page({
     this.setData({
       [selKey] : !sel
     }); 
+  },
+  getHotTags: function (e) {
+    console.log("token:" + app.globalData.token);
+    var that = this;
+    wx.request({
+      url: baseURL + "/get_hot_tags",
+      data: {
+        token: app.globalData.token
+      },
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
+      success: function (res) {
+        // success
+        that.showSummaryTags(res.data.summary_tags);
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
+  },
+  showSummaryTags: function (array) {
+    for (var i = 0; i < array.length; i++) {
+      var name = array[i];
+      var tag = { ids: i, name: name, sel: false };
+      this.data.effectArray.push(tag);
+    }
+    this.setData({
+      effectArray: this.data.effectArray
+    });
+  },
+  chooseSkinImage1: function() {
+    var that = this;
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: function(res) {
+        that.skinSrc1 = res.tempFilePaths[0];
+        that.setData({
+          skinSrc1: that.skinSrc1
+        });
+        that.uploadImage(that.skinSrc1, 'face1');
+      }, fail: function() {
+
+      }, complete: function() {
+
+      }
+    }); 
+  },
+  chooseSkinImage2: function() {
+    var that = this;
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: function(res) {
+        that.skinSrc2 = res.tempFilePaths[0];
+        that.setData({
+          skinSrc2: that.skinSrc2
+        });
+        that.uploadImage(that.skinSrc2, 'face2');
+      }, fail: function () {
+
+      }, complete: function () {
+
+      }
+    }); 
+  },
+  uploadImage: function (path, imageType) {
+    var that = this;
+    var uploadURL = baseURL + '/image/upload?name=' + imageType;
+    wx.uploadFile({
+      url: uploadURL,
+      filePath: path,
+      name: imageType,
+      // header: {}, // 设置请求的 header
+      // formData: {}, // HTTP 请求中其他额外的 form data
+      success: function (res) {
+        // success
+        console.log(res);
+        var dataStr = res.data;
+        var dataJSON = JSON.parse(dataStr);
+        var url = dataJSON.url;
+        if (imageType == 'product') {
+          that.data.productURL = url;
+        } else if (imageType == 'face1') {
+          that.data.skinSrc1URL = url;
+        } else if (imageType == 'face2') {
+          that.data.skinSrc2URL = url;
+        }
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
   }
 })

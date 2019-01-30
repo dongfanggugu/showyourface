@@ -1,5 +1,5 @@
 const app = getApp();
-const baseURL = 'http://www.skinrec.com:33333';
+const baseURL = 'https://www.skinrec.com:33333';
 // pages/postpage.js
 Page({
 
@@ -169,7 +169,7 @@ Page({
     console.log("product url:" + this.data.productURL);
     console.log("skin url1:" + this.data.skinSrc1URL);
     console.log("skin url2:" + this.data.skinSrc2URL);
-
+    app.globalData.pageDelta = 3;
     wx.request({
       url: baseURL + "/upload_product_record",
       data: {
@@ -184,48 +184,45 @@ Page({
       // header: {}, // 设置请求的 header
       success: function(res){
         console.log(res);
-        // success
+        wx.navigateTo({
+          url: '/pages/photocompare/photocompare?product_id=' + res.data.product_record_id,
+          success: function (res) {
+            // success
+          },
+          fail: function () {
+            // fail
+          },
+          complete: function () {
+            // complete
+          }
+        })
       },
-      fail: function() {
+      fail: function () {
         // fail
       },
-      complete: function() {
+      complete: function () {
         // complete
       }
     })
-
-
-    // wx.navigateTo({
-    //   url: '/pages/photocompare/photocompare',
-    //   success: function(res){
-    //     // success
-    //   },
-    //   fail: function() {
-    //     // fail
-    //   },
-    //   complete: function() {
-    //     // complete
-    //   }
-    // })
   },
-  clickTag: function(e) {
+  clickTag: function (e) {
     var index = parseInt(e.currentTarget.id);
     console.log(index);
     var sel = this.data.tagArray[index].sel;
-    this.data.tagArray[index].sel = !sel; 
+    this.data.tagArray[index].sel = !sel;
     var selKey = "tagArray[" + index + "].sel";
     this.setData({
-      [selKey] : !sel
+      [selKey]: !sel
     });
   },
-  clickEffect: function(e) {
+  clickEffect: function (e) {
     var index = parseInt(e.currentTarget.id);
     var sel = this.data.effectArray[index].sel;
     this.data.effectArray[index].sel = !sel;
     var selKey = "effectArray[" + index + "].sel";
     this.setData({
-      [selKey] : !sel
-    }); 
+      [selKey]: !sel
+    });
   },
   getHotTags: function (e) {
     console.log("token:" + app.globalData.token);
@@ -237,27 +234,27 @@ Page({
       },
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       // header: {}, // 设置请求的 header
-      success: function(res){
+      success: function (res) {
         // success
         that.showEffectTags(res.data.effect_tags);
         that.showSummaryTags(res.data.summary_tags);
       },
-      fail: function() {
+      fail: function () {
         // fail
       },
-      complete: function() {
+      complete: function () {
         // complete
       }
     })
   },
   showEffectTags: function (array) {
     for (var i = 0; i < array.length; i++) {
-        var name = array[i];
-        var tag = {ids: i, name: name, sel: false};
-        this.data.tagArray.push(tag);
+      var name = array[i];
+      var tag = { ids: i, name: name, sel: false };
+      this.data.tagArray.push(tag);
     }
     this.setData({
-      tagArray: this.data.tagArray 
+      tagArray: this.data.tagArray
     });
   },
   showSummaryTags: function (array) {
@@ -275,11 +272,11 @@ Page({
     var uploadURL = baseURL + '/image/upload?name=' + imageType;
     wx.uploadFile({
       url: uploadURL,
-      filePath:path,
+      filePath: path,
       name: imageType,
       // header: {}, // 设置请求的 header
       // formData: {}, // HTTP 请求中其他额外的 form data
-      success: function(res){
+      success: function (res) {
         // success
         console.log(res);
         var dataStr = res.data;

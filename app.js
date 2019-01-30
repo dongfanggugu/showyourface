@@ -35,7 +35,9 @@ App({
   },
   globalData: {
     userInfo: null,
-    token: ""
+    token: "",
+    appendProduct:"",
+    pageDelta: 1
   },
   getUserInfo: function (e) {
     console.log(e)

@@ -1,8 +1,6 @@
 // pages/tabbar/tabbar.js
 const app = getApp();
-const baseURL = 'http://www.skinrec.com:33333';
-// var AppId = "wxd1fa6ab7d81d10e7";
-// var AppSecret = "d59db949fd967bff0e30b73480edd71e";
+const baseURL = 'https://www.skinrec.com:33333';
 Page({
 
   /**
@@ -20,29 +18,11 @@ Page({
       { "name": "", image: "/images/tab_add.png", image_width: '75rpx', text_height: '0rpx', text_color: '#333333'},
       { "name": "我的", image: "/images/tab_person_nor.png", image_width: '40rpx', text_height: '25rpx', text_color: 'rgb(177,177,177)'}
     ],
-    array: [
-      // {id: "a12", info: '产品名称', unique: 'unique_5', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
-      // {id: "a11", info: '产品名称', unique: 'unique_5', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
-      // {id: "a10", info: '产品名称', unique: 'unique_5', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
-      // {id: "a9", info: '产品名称', unique: 'unique_5', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
-      // {id: "a8", info: '产品名称', unique: 'unique_5', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
-      // {id: "a7", info: '产品名称', unique: 'unique_5', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
-      // {id: "a6", info: '产品名称', unique: 'unique_5', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
-      // {id: "a5", info: '产品名称', unique: 'unique_5', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
-      // {id: "a4", info: '产品名称', unique: 'unique_4', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
-      // {id: "a3", info: '产品名称', unique: 'unique_3', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
-      // {id: "a2", info: '产品名称', unique: 'unique_2', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
-      // {id: "a1", info: '产品名称', unique: 'unique_1', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
-      // {id: "a0", info: '产品名称', unique: 'unique_0', url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg"},
-    ],
+    array: [],
     url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg",
 
     //轮播页数据
-    imgUrls: [
-      'https://improxy.starmakerstudios.com/tools/im/200/production/users/6755399448702845/profile.jpg/ts1542811614',
-      'https://improxy.starmakerstudios.com/tools/im/120x/files/3639608919/cover_0efde37fd5188316c02267353d6e14cf.jpg',
-      'https://improxy.starmakerstudios.com/tools/im/200/production/cover_img/6583d91e626a15d4ca4fe3b0632ca845.jpg'
-  ],
+    imgUrls: [],
     //是否显示指适点
     indicatorDots: true,
     //是否轮播
@@ -65,43 +45,43 @@ Page({
      userInfo: {},
      hasUserInfo: false,
      canIUse: wx.canIUse('button.open-type.getUserInfo'),
-     recordInfo: [
-      {
-       first: "/images/icon_image_default.png",
-       last: "/images/icon_image_default.png",
-       product: "产品名称"
-      },
-      {
-        first: "/images/icon_image_default.png",
-        last: "/images/icon_image_default.png",
-        product: "产品名称"
-       },
-       {
-        first: "/images/icon_image_default.png",
-        last: "/images/icon_image_default.png",
-        product: "产品名称"
-       },
-       {
-        first: "/images/icon_image_default.png",
-        last: "/images/icon_image_default.png",
-        product: "产品名称"
-       },
-       {
-        first: "/images/icon_image_default.png",
-        last: "/images/icon_image_default.png",
-        product: "产品名称"
-       },
-       {
-        first: "/images/icon_image_default.png",
-        last: "/images/icon_image_default.png",
-        product: "产品名称"
-       },
-       {
-        first: "/images/icon_image_default.png",
-        last: "/images/icon_image_default.png",
-        product: "产品名称"
-       }
-    ],
+    //  recordInfo: [
+    //   {
+    //    first: "/images/icon_image_default.png",
+    //    last: "/images/icon_image_default.png",
+    //    product: "产品名称"
+    //   },
+    //   {
+    //     first: "/images/icon_image_default.png",
+    //     last: "/images/icon_image_default.png",
+    //     product: "产品名称"
+    //    },
+    //    {
+    //     first: "/images/icon_image_default.png",
+    //     last: "/images/icon_image_default.png",
+    //     product: "产品名称"
+    //    },
+    //    {
+    //     first: "/images/icon_image_default.png",
+    //     last: "/images/icon_image_default.png",
+    //     product: "产品名称"
+    //    },
+    //    {
+    //     first: "/images/icon_image_default.png",
+    //     last: "/images/icon_image_default.png",
+    //     product: "产品名称"
+    //    },
+    //    {
+    //     first: "/images/icon_image_default.png",
+    //     last: "/images/icon_image_default.png",
+    //     product: "产品名称"
+    //    },
+    //    {
+    //     first: "/images/icon_image_default.png",
+    //     last: "/images/icon_image_default.png",
+    //     product: "产品名称"
+    //    }
+    // ],
   },
   //事件处理函数
   bindViewTap: function () {
@@ -206,7 +186,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getServerInfo();
   },
 
   /**
@@ -255,8 +235,7 @@ Page({
   },
   addRecord: function() {
     wx.navigateTo({
-      // url: '/pages/postpage/postpage',
-      url: '/pages/appendpost/appendpost',
+      url: '/pages/postpage/postpage',
       success: function (res) {
         // success
       },
@@ -269,16 +248,18 @@ Page({
     });
   },
   initToken: function () {
+    console.log("init token");
     var that = this;
     wx.getStorage({
       key: 'remote_token',
       success: function(res){
         // success
         app.globalData.token = res.data;
-        console.log("token:" + res.data);
+        console.log("local token:" + res.data);
         that.getServerInfo();
       },
       fail: function() {
+        console.log("wxlogin failed");
         // fail
         that.wxLogin();
       },
@@ -306,7 +287,7 @@ Page({
             // header: {}, // 设置请求的 header
             success: function (res) {
               // success
-              console.log(res);
+              console.log("remote token:" + res.data.token);
               app.globalData.token = res.data.token;
               that.getServerInfo();
               wx.setStorage({
@@ -325,6 +306,7 @@ Page({
             },
             fail: function () {
               // fail
+              console.log("wxlogin failed");
             },
             complete: function () {
               // complete
@@ -338,7 +320,12 @@ Page({
   },
   getServerInfo: function () {
     var token = app.globalData.token;
-    this.getRecordInfo(token)
+    if(typeof token == "undefined" || token == null || token == ""){
+      return;
+    }
+    this.getLoopPicture(token);
+    this.getRecordInfo(token);
+    this.getTotoalInfo(token);
   },
   getTotoalInfo: function (token) {
     var that = this;
@@ -351,10 +338,12 @@ Page({
       // header: {}, // 设置请求的 header
       success: function(res){
         // success
-        picCount = parseInt(res['pic_count']);
-        dayCount = parseInt(res['day_count']);
-        productCount = parseInt(res['product_count']);
-        lastRecord = parseInt(res['last_record_time']);
+        console.log(res);
+        var picCount = parseInt(res.data.pic_num);
+        var dayCount = parseInt(res.data.day_count);
+        var productCount = parseInt(res.data.product_count);
+        var lastCreateTime = parseInt(res['last_record_time']);
+        var lastRecord = "上次记录" + that.getInterval(lastCreateTime * 1000);
         that.setData({
           totalNumber: picCount,
           continuedDays: dayCount,
@@ -385,8 +374,10 @@ Page({
         that.data.array = res.data;
         for (var i = 0; i < that.data.array.length; i++) {
           var seconds = that.data.array[i].create_time;
-          that.data.array[i].createTime = that.formatDateTime(seconds * 1000);
+          that.data.array[i].createTime = that.getInterval(seconds * 1000);
         }
+        var moreData = {};
+        that.data.array.push(moreData);
         
         that.setData({
           array: that.data.array
@@ -401,19 +392,98 @@ Page({
       }
     })
   },
-  formatDateTime: function (inputTime) {
-    var date = new Date(inputTime);
-    var y = date.getFullYear();
-    var m = date.getMonth() + 1;
-    m = m < 10 ? ('0' + m) : m;
-    var d = date.getDate();
-    d = d < 10 ? ('0' + d) : d;
-    var h = date.getHours();
-    h = h < 10 ? ('0' + h) : h;
-    var minute = date.getMinutes();
-    var second = date.getSeconds();
-    minute = minute < 10 ? ('0' + minute) : minute;
-    second = second < 10 ? ('0' + second) : second;
-    return y+'-'+m+'-'+d+' '+' '+h+':'+minute+':'+second;
+  getInterval: function (inputTime) {
+    var today = new Date();
+    var interval = today.getTime() - inputTime;
+    console.log(interval);
+    if (interval <= 0) {
+      return "刚刚";
+    }
+    var days = parseInt(interval / (24 * 3600 * 1000));
+    if (days > 0) {
+      return days + "天前";
+    } else {
+      var hours = parseInt(interval / (3600 * 1000));
+      if (hours > 1) {
+        return hours + "小时前";
+      } else {
+        var minutes = parseInt(interval / (60 * 1000));
+        if (minutes > 1) {
+          return minutes = "分钟前";
+        } else {
+          return "刚刚";
+        }
+      }
+    }
+  },
+  getLoopPicture: function (token) {
+    var that = this;
+    wx.request({
+      url: baseURL + "/loop_picture",
+      data: {
+        token: token
+      },
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
+      success: function(res){
+        // success
+        console.log(res);
+        that.data.imgUrls = [];
+        for (var i = 0; i < res.data.length; i++) {
+          that.data.imgUrls.push(baseURL + "/static/images/banner/" + res.data[i].image);
+        }
+        that.setData({
+          imgUrls: that.data.imgUrls
+        });
+       
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
+  },
+  appendRecord: function (e) {
+    var index = e.currentTarget.id;
+    if (index >= this.data.array.length) {
+        return;
+    }
+    var product = this.data.array[index];
+    app.globalData.appendProduct = product;
+    wx.navigateTo({
+      url: '/pages/appendpost/appendpost',
+      success: function (res) {
+        // success
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    });
+  },
+  compareRecord: function (e) {
+    var index = e.currentTarget.id;
+    console.log(index);
+    if (index >= this.data.array.length) {
+      return;
+    }
+    var productId = this.data.array[index].product_id;
+    app.globalData.pageDelta = 2;
+    wx.navigateTo({
+      url: '/pages/photocompare/photocompare?product_id=' + productId,
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
   }
 })

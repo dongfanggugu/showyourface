@@ -1,27 +1,40 @@
 <scroll-view scroll-y class="person_global">
-              <view>
-                  <view class="userinfo">
-                            <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" style="font-size:30rpx">
-                                   获取头像昵称 </button>
-                            <block wx:else>
-                                   <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-                                   <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-                            </block>
-                     </view>
-                     <view class="usermotto">
-                     </view>
-              
-                     <view class="my-content" wx:for="{{recordInfo}}" wx:for-index="index" wx:for-item="item">
+       <view>
+              <view class="userinfo">
+                     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"
+                            style="font-size:30rpx">
+                            获取头像昵称 </button>
+                     <block wx:else>
+                            <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+                            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+                     </block>
+              </view>
+              <view class="usermotto">
+              </view>
+
+              <view class="my-content" wx:for="{{array}}" wx:for-index="index" wx:for-item="item">
+                     <view id="{{index}}" style="display: flex; flex-direction:column" bindtap="compareRecord">
+                            <view class="person_separator"></view>
+
                             <view class="itemContainer">
-                                   <view class="person_separator"></view>
-                                   <image src='{{item.first}}' class='imgItem'></image>
-                                   <image src='{{item.last}}' class='imgItem'></image>
+                                   <!-- <view class="person_separator"></view> -->
+                                   <image src='{{path}}/static/{{item.skin_record.skin_record_new_iamge}}' class='imgItem'></image>
+
+                                   <image src='{{path}}/static/{{item.skin_record.skin_record_old_iamge}}' class='imgItem'></image>
                                    <view class='itemTextContainer'>
-                                          <label class="lableItem">{{item.product}}</label>
-                                          <button class="person_effect_btn">功效</button>
+                                          <label class="lableItem">{{item.product_name}}</label>
+                                          <view style="display:flex;flex-direction:row;justify-content:flex-start;align-items:flex-end; margin-right: 4px">
+                                                 <view class="person_product_tag_parent">
+                                                        <view wx:for="{{item.product_tags}}" wx:for-index="in"
+                                                               wx:for-item="tag">
+                                                               <text class="person_product_tag">{{tag}}</text>
+                                                        </view>
+                                                 </view>
+                                                 <view class="person_item_label"></view>
+                                          </view>
                                    </view>
-              
                             </view>
                      </view>
               </view>
+       </view>
 </scroll-view>

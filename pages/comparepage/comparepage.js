@@ -1,14 +1,15 @@
 // pages/comparepage/comparepage.js
-Page({
+const app = getApp();
+const baseURL = 'https://www.skinrec.com:33333';
 
+Page({
   /**
    * 页面的初始数据
    */
   data: {
-
     showVertical: true,
-    imageLeft: "https://improxy.starmakerstudios.com/tools/im/200/production/users/6755399379224130/profile.jpg?ts=1538651568",
-    imageRight: "https://improxy.starmakerstudios.com/tools/im/200/production/users/6755399377822167/profile.jpg?ts=1548079926",
+    imageLeft: "",
+    imageRight: "",
     touch: {
       distance: 0,
       scale: 1,
@@ -24,7 +25,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.imageLeft = baseURL + "/static/" + options.left;
+    this.imageRight = baseURL + "/static/" + options.right;
+    var that = this;
+    this.setData({
+      imageLeft: that.imageLeft,
+      imageRight: that.imageRight
+    });
   },
 
   /**
@@ -180,7 +187,19 @@ Page({
                         success() {
                           wx.showToast({
                             title: '图片保存成功'
-                          })
+                          });
+                          wx.navigateBack({
+                            delta: app.globalData.pageDelta, // 回退前 delta(默认为1) 页面
+                            success: function(res){
+                              // success
+                            },
+                            fail: function() {
+                              // fail
+                            },
+                            complete: function() {
+                              // complete
+                            }
+                          });
                         }
                       })
                     }
@@ -232,6 +251,18 @@ Page({
                         success() {
                           wx.showToast({
                             title: '图片保存成功'
+                          });
+                          wx.navigateBack({
+                            delta: app.globalData.pageDelta, // 回退前 delta(默认为1) 页面
+                            success: function(res){
+                              // success
+                            },
+                            fail: function() {
+                              // fail
+                            },
+                            complete: function() {
+                              // complete
+                            }
                           })
                         }
                       })
@@ -245,7 +276,6 @@ Page({
       }
     });
   },
-
   calculateVScale: function (width, height) {
     if (0 == width || 0 == height) {
       return 1;

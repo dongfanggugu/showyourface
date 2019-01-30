@@ -10,7 +10,7 @@
     <view class="third_row">
         <text class="day_label">{{continuedDays}}天</text>
         <text class="product_label">{{totalProduct}}个产品</text>
-        <text class="last_record_label">上次记录{{lastDay}}天前</text>
+        <text class="last_record_label">{{lastDay}}</text>
     </view>
 
 </view>

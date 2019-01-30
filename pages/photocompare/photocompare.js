@@ -1,65 +1,27 @@
 // pages/photocompare/photocompare.js
+const app = getApp();
+const baseURL = 'https://www.skinrec.com:33333';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    path: baseURL,
     animationChange:"",
     leftLabel: "第1天",
-    rightLabel: "第2天",
-    imageArray: [
-      {
-        src: 'https://improxy.starmakerstudios.com/tools/im/200/production/users/6755399448702845/profile.jpg/ts1542811614',
-        selected: false,
-        marginLeft: 0,
-        width: 120
-      },
-
-      {
-        src: 'https://improxy.starmakerstudios.com/tools/im/200/production/users/6755399379224130/profile.jpg?ts=1538651568',
-        selected: false,
-        marginLeft: 0,
-        width: 120
-      },
-      {
-        src: 'https://improxy.starmakerstudios.com/tools/im/800x/production/promotion/banner/75f4c356df8c9f45d3202a7d56594d1c.jpg',
-        selected: false,
-        marginLeft: 0,
-        width: 120
-      },
-      {
-        src: 'https://improxy.starmakerstudios.com/tools/im/560/production/uploading/recordings/6755399294391976/cover_image_best.jpg/ts1538060272',
-        selected: false,
-        marginLeft: 0,
-        width: 120
-      },
-      {
-        src: 'https://improxy.starmakerstudios.com/tools/im/200/production/users/6755399377822167/profile.jpg?ts=1548079926',
-        selected: false,
-        marginLeft: 0,
-        width: 120
-      },
-      {
-        src: 'https://improxy.starmakerstudios.com/tools/im/200/production/users/5629499487141392/profile.jpg?ts=1548287810',
-        selected: false,
-        marginLeft: 0,
-        width: 120
-      },
-      {
-        src: 'https://improxy.starmakerstudios.com/tools/im/200/production/users/5910973793541840/profile.jpg?ts=1545226387',
-        selected: false,
-        marginLeft: 0,
-        width: 120
-      }
-    ],
+    rightLabel: "第1天",
+    imageArray: [],
+    leftSel:0,
+    rightSel:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var product_id = options.product_id;
+    this.getRecordInfo(app.globalData.token, product_id);
   },
 
   /**
@@ -111,23 +73,54 @@ Page({
 
   },
   swiperLeftChange: function (e) {
-    var current = e.detail.current;
+    var that = this;
+    that.data.leftSel = e.detail.current;
     this.setData({
-      leftLabel: '第' + (current + 1) + '天'
+      leftLabel: '第' + (that.data.leftSel + 1) + '天'
     });
   },
   swiperRightChange: function (e) {
-    var current = e.detail.current;
+    var that = this;
+    that.data.rightSel = e.detail.current;
     this.setData({
-      rightLabel: '第' + (current + 1) + '天'
+      rightLabel: '第' + (that.data.rightSel  + 1) + '天'
     });
   },
   comparePic: function(e) {
-    var _this = this;
+    var that = this;
+    var left = that.data.imageArray[that.data.leftSel].image;
+    var right = that.data.imageArray[that.data.rightSel].image;
     wx.navigateTo({
-      url: '/pages/comparepage/comparepage',
-      success: function(res){
+      url: '/pages/comparepage/comparepage?left=' + left + "&right=" + right,
+      success: function (res) {
         // success
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
+  },
+  getRecordInfo: function (token, product_id) {
+    var that = this;
+    wx.request({
+      url: baseURL + "/get_compare_pics",
+      data: {
+        token: token,
+        product_id: product_id
+      },
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
+      success: function(res) {
+        console.log(res);
+        that.data.imageArray = res.data;
+        // success
+        that.setData({
+          imageArray: that.data.imageArray
+        });
+
       },
       fail: function() {
         // fail
