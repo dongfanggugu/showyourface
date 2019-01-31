@@ -1,6 +1,6 @@
 // pages/comparepage/comparepage.js
 const app = getApp();
-const baseURL = 'https://www.skinrec.com:33333';
+let baseURL = app.globalData.baseURL;
 
 Page({
   /**
@@ -25,12 +25,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.imageLeft = baseURL + "/static/" + options.left;
-    this.imageRight = baseURL + "/static/" + options.right;
+    this.data.imageLeft = baseURL + "/static/" + options.left;
+    this.data.imageRight = baseURL + "/static/" + options.right;
+    console.log(this.data.imageLeft);
+    console.log(this.data.imageRight);
     var that = this;
     this.setData({
-      imageLeft: that.imageLeft,
-      imageRight: that.imageRight
+      imageLeft: that.data.imageLeft,
+      imageRight: that.data.imageRight
     });
   },
 
@@ -303,5 +305,16 @@ Page({
     this.setData({
       showVertical: true 
     });
+  },
+  onShareAppMessage: function (e) {
+    
+    return {
+      title: '分享',
+      success: function (res) {
+        wx.showToast({
+          title: '分享成功'
+        });
+      }
+    }
   }
 })

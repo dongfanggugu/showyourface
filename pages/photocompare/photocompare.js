@@ -1,6 +1,6 @@
 // pages/photocompare/photocompare.js
 const app = getApp();
-const baseURL = 'https://www.skinrec.com:33333';
+let baseURL = app.globalData.baseURL;
 Page({
 
   /**

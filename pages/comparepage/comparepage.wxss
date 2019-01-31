@@ -10,7 +10,7 @@
 
 .compare_container {
   height: 400px;
-  margin: 10px; 
+  margin: 10px;
   border: 1px solid rgb(255, 226, 227);
 }
 
@@ -20,15 +20,52 @@
   justify-content: stretch;
   align-items: center;
   height: 400px;
-  margin: 10px; 
+  margin: 10px;
   border: 1px solid rgb(255, 226, 227);
 }
 
 .compare_operaion {
-  display:flex;
-  flex-direction:row;
-  justify-content:flex-start;
-  align-items:center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
   height: 40px;
-  margin-top: 8px;
+  margin-top: 16px;
+  width: 100%;
+}
+
+.compare_direction {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 8px;
+  margin-left: 16px;
+}
+
+.compare_share_btn {
+  flex: 0 0 auto;
+  border: 2px solid rgb(255, 72, 27);
+  color:rgb(255, 72, 27);
+  width: 100px;
+  height: 26px;
+  line-height: 26px;
+  border-radius: 13px;
+  font-size: 15px;
+  text-align: center;
+  margin: 4px;
+}
+
+.compare_save_btn {
+  flex: 0 0 auto;
+  color: white;
+  width: 100px;
+  height: 28px;
+  line-height: 28px;
+  border-radius: 10px;
+  font-size: 14px;
+  text-align: center;
+  background-color: rgb(255, 72, 27);
+  margin: 4px;
 }

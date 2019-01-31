@@ -146,3 +146,13 @@
   height: 30rpx;
   left: 10rpx;
 }
+
+.person_pic_label {
+  margin-left:-150rpx;
+  margin-bottom: -75rpx;
+  width:150prx;
+  height:30rpx;
+  font-size: 12rpx;
+  text-align: center;
+  line-height: 30rpx;
+}

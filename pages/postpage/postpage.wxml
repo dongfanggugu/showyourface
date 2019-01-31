@@ -28,7 +28,7 @@
       <text class="post_product_text">皮肤照片</text>
       <view class="post_product_image_view">
         <image src="{{skinSrc1}}" style="width:90px;height:90px;flex:0 0 auto" bindtap="chooseSkinImage1"></image>
-        <image src="{{skinSrc2}}" style="width:90px;height:90px;flex:0 0 auto;margin-left:8px" bindtap="chooseSkinImage2"></image>
+        <image src="{{skinSrc2}}" style="width:90px;height:90px;flex:0 0 auto;margin-left:8px" bindtap="chooseSkinImage2" hidden="true"></image>
       </view>
     
       <view class="post_product_tag_parent">

@@ -11,7 +11,7 @@
         <view style="width:100%;height:1px;background-color:rgb(239,239,239)"></view>
         <scroll-view scroll-y scroll-x style="width:100%;height:200px;display: flex;flex-direction: column; justify-content: center;align-items: center;">
             <view style="display: flex;flex-direction: column; justify-content: center;align-items: center">
-                <image id="image1" mode='scaleToFill' src='{{imageLeft}}' bindtouchstart='touchStartHandle'
+                <image id="image1" mode='scaleToFill' src='{{imageRight}}' bindtouchstart='touchStartHandle'
                     bindtouchmove='touchMoveHandle' bindload='load' style="width:200px;height:200px"></image>
                 <!-- <image id="image2" mode='scaleToFill' src='{{imageRight}}' bindtouchstart='touchStartHandle'
                     bindtouchmove='touchMoveHandle' bindload='load' style="width:{{touch.scaleWidth}}px;height:{{touch.scaleHeight}}px"></image> -->
@@ -23,7 +23,7 @@
         <scroll-view scroll-x='true' scroll-y='true' style="width:49%;height:200px;">
             <view style="display: flex;flex-direction: column; justify-content: center;align-items: center">
                 <image id="image1" mode='scaleToFill' src='{{imageLeft}}' bindtouchstart='touchStartHandle'
-                bindtouchmove='touchMoveHandle' bindload='load' style="width:150px;height:150px"></image>
+                    bindtouchmove='touchMoveHandle' bindload='load' style="width:150px;height:150px"></image>
                 <!-- <image id="image1" mode='scaleToFill' src='{{imageLeft}}' bindtouchstart='touchStartHandle'
                     bindtouchmove='touchMoveHandle' bindload='load' style="width:{{touch.scaleWidth}}px;height:{{touch.scaleHeight}}px"></image> -->
             </view>
@@ -31,7 +31,7 @@
         <view style="width:1px;height:400px;background-color:rgb(239,239,239)"></view>
         <scroll-view scroll-y scroll-x style="width:49%;height:200px;display: flex;flex-direction: column; justify-content: center;align-items: center;">
             <view style="display: flex;flex-direction: column; justify-content: center;align-items: center">
-                <image id="image1" mode='scaleToFill' src='{{imageLeft}}' bindtouchstart='touchStartHandle'
+                <image id="image1" mode='scaleToFill' src='{{imageRight}}' bindtouchstart='touchStartHandle'
                     bindtouchmove='touchMoveHandle' bindload='load' style="width:150px;height:150px"></image>
                 <!-- <image id="image2" mode='scaleToFill' src='{{imageRight}}' bindtouchstart='touchStartHandle'
                     bindtouchmove='touchMoveHandle' bindload='load' style="width:{{touch.scaleWidth}}px;height:{{touch.scaleHeight}}px"></image> -->
@@ -40,9 +40,15 @@
     </view>
 
     <view class="compare_operaion">
+        <view class="compare_direction">
         <image src="/images/icon_camera.png" bindtap='verticalMode' style="width:45px;height:45px;margin:4px"></image>
         <image src="/images/icon_camera.png" bindtap='horizonMode' style="width:45px;height:45px;margin:4px"></image>
-        <view style="margin:4px" bindtap="savePic">保存图片</view>
+    </view>
+        <view style="display: flex;flex-direction: column;margin:8px">
+            <button class="compare_share_btn" open-type='share'>分享好友</button>
+            <view class="compare_save_btn" bindtap="savePic">保存图片</view>
+        </view>
+
     </view>
 
     <canvas style="width: 300px;height: 400px;background:red;position: fixed;top: -10000px;" canvas-id="drawVertical"></canvas>

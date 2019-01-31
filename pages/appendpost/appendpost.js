@@ -1,6 +1,8 @@
 
 const app = getApp();
-const baseURL = 'https://www.skinrec.com:33333';
+let baseURL = app.globalData.baseURL;
+var utils = require("../../utils/utils.js")
+
 // pages/postpage.js
 Page({
 
@@ -133,6 +135,14 @@ Page({
   },
   completePost: function () {
     var that = this;
+
+    if (utils.emptyStr(this.data.skinSrc1URL)) {
+      wx.showToast({
+        title: '请添加皮肤照片',
+        icon: ""
+      })
+      return;
+    }
    
     //获取选中的皮肤标签
     var skinTags = [];
@@ -141,6 +151,14 @@ Page({
       if (sel) {
         skinTags.push(this.data.effectArray[i].name);
       }
+    }
+    
+    if (0 == skinTags.length) {
+      wx.showToast({
+        title: '请选择日记标签',
+        icon: ""
+      })
+      return; 
     }
 
     console.log("skin:" + skinTags);
@@ -152,7 +170,7 @@ Page({
       data: {
         token: app.globalData.token,
         product_record_id: that.data.product.product_id,
-        skin_images:[that.data.skinSrc1URL, that.data.skinSrc2URL],
+        skin_images:[that.data.skinSrc1URL],
         summary_tags: skinTags
       },
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT

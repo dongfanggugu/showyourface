@@ -1,6 +1,6 @@
 const app = getApp();
-const baseURL = 'https://www.skinrec.com:33333';
-// pages/postpage.js
+let baseURL = app.globalData.baseURL;
+var utils = require("../../utils/utils.js")
 Page({
 
   /**
@@ -144,6 +144,30 @@ Page({
     this.data.productName = e.detail.value;
   },
   completePost: function(e) {
+    if (utils.emptyStr(this.data.productName)) {
+      wx.showToast({
+        title: '请填写产品名称',
+        icon: ""
+      })
+      return;
+    }
+
+    if (utils.emptyStr(this.data.productURL)) {
+      wx.showToast({
+        title: '请添加产品图片',
+        icon: ""
+      })
+      return; 
+    }
+
+    if (utils.emptyStr(this.data.skinSrc1URL)) {
+      wx.showToast({
+        title: '请添加皮肤照片',
+        icon: ""
+      })
+      return;
+    }
+    
     var that = this;
     //获取选中的产品标签
     var proTags = [];
@@ -154,6 +178,15 @@ Page({
       }
     }
 
+    if (0 == proTags.length) {
+      wx.showToast({
+        title: '请选择产品标签',
+        icon: ""
+      })
+      return;
+    }
+
+
     //获取选中的皮肤标签
     var skinTags = [];
     for (var i = 0; i < this.data.effectArray.length; i++) {
@@ -161,6 +194,14 @@ Page({
       if (sel) {
         skinTags.push(this.data.effectArray[i].name);
       }
+    }
+
+    if (0 == skinTags.length) {
+      wx.showToast({
+        title: '请选择日记标签',
+        icon: ""
+      })
+      return; 
     }
 
     console.log("product name:" + this.data.productName);
@@ -177,7 +218,7 @@ Page({
         product_name: that.data.productName,
         product_image: that.data.productURL,
         product_tags:proTags,
-        skin_images:[that.data.skinSrc1URL, that.data.skinSrc2URL],
+        skin_images:[that.data.skinSrc1URL],
         summary_tags: skinTags
       },
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT

@@ -1,6 +1,6 @@
 // pages/tabbar/tabbar.js
 const app = getApp();
-const baseURL = 'https://www.skinrec.com:33333';
+let baseURL = app.globalData.baseURL;
 Page({
 
   /**
@@ -44,44 +44,7 @@ Page({
      motto: 'Hello World',
      userInfo: {},
      hasUserInfo: false,
-     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    //  recordInfo: [
-    //   {
-    //    first: "/images/icon_image_default.png",
-    //    last: "/images/icon_image_default.png",
-    //    product: "产品名称"
-    //   },
-    //   {
-    //     first: "/images/icon_image_default.png",
-    //     last: "/images/icon_image_default.png",
-    //     product: "产品名称"
-    //    },
-    //    {
-    //     first: "/images/icon_image_default.png",
-    //     last: "/images/icon_image_default.png",
-    //     product: "产品名称"
-    //    },
-    //    {
-    //     first: "/images/icon_image_default.png",
-    //     last: "/images/icon_image_default.png",
-    //     product: "产品名称"
-    //    },
-    //    {
-    //     first: "/images/icon_image_default.png",
-    //     last: "/images/icon_image_default.png",
-    //     product: "产品名称"
-    //    },
-    //    {
-    //     first: "/images/icon_image_default.png",
-    //     last: "/images/icon_image_default.png",
-    //     product: "产品名称"
-    //    },
-    //    {
-    //     first: "/images/icon_image_default.png",
-    //     last: "/images/icon_image_default.png",
-    //     product: "产品名称"
-    //    }
-    // ],
+     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
   bindViewTap: function () {
@@ -174,6 +137,18 @@ Page({
     }
 
   },
+  getUserInfo: function(e) {
+    wx.getUserInfo({
+      success: res => {
+        app.globalData.userInfo = res.userInfo
+        console.log(res.userInfo);
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+      }
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -250,25 +225,25 @@ Page({
   initToken: function () {
     console.log("init token");
     var that = this;
-    wx.getStorage({
-      key: 'remote_token',
-      success: function(res){
-        // success
-        app.globalData.token = res.data;
-        console.log("local token:" + res.data);
-        that.getServerInfo();
-      },
-      fail: function() {
-        console.log("wxlogin failed");
-        // fail
-        that.wxLogin();
-      },
-      complete: function() {
-        // complete
-      }
-    })
-  }
-  ,
+    that.wxLogin();
+    // wx.getStorage({
+    //   key: 'remote_token',
+    //   success: function(res){
+    //     // success
+    //     app.globalData.token = res.data;
+    //     console.log("local token:" + res.data);
+    //     that.getServerInfo();
+    //   },
+    //   fail: function() {
+    //     console.log("wxlogin failed");
+    //     // fail
+    //     that.wxLogin();
+    //   },
+    //   complete: function() {
+    //     // complete
+    //   }
+    // })
+  },
   wxLogin: function() {
     var that = this;
     wx.login({

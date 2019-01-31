@@ -37,7 +37,8 @@ App({
     userInfo: null,
     token: "",
     appendProduct:"",
-    pageDelta: 1
+    pageDelta: 1,
+    baseURL: "https://www.skinrec.com"
   },
   getUserInfo: function (e) {
     console.log(e)
