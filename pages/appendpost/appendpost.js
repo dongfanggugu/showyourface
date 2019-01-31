@@ -38,6 +38,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.data.tagArray = [];
     var product = app.globalData.appendProduct;
     this.data.product = product;
     for (var i = 0; i < product.product_tags.length; i++) {
@@ -246,11 +247,11 @@ Page({
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: function(res) {
-        that.skinSrc1 = res.tempFilePaths[0];
+        that.data.skinSrc1 = res.tempFilePaths[0];
         that.setData({
-          skinSrc1: that.skinSrc1
+          skinSrc1: that.data.skinSrc1
         });
-        that.uploadImage(that.skinSrc1, 'face1');
+        that.uploadImage(that.data.skinSrc1, 'face1');
       }, fail: function() {
 
       }, complete: function() {
@@ -265,11 +266,11 @@ Page({
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: function(res) {
-        that.skinSrc2 = res.tempFilePaths[0];
+        that.data.skinSrc2 = res.tempFilePaths[0];
         that.setData({
-          skinSrc2: that.skinSrc2
+          skinSrc2: that.data.skinSrc2
         });
-        that.uploadImage(that.skinSrc2, 'face2');
+        that.uploadImage(that.data.skinSrc2, 'face2');
       }, fail: function () {
 
       }, complete: function () {

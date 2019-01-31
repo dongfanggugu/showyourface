@@ -384,7 +384,7 @@ Page({
       } else {
         var minutes = parseInt(interval / (60 * 1000));
         if (minutes > 1) {
-          return minutes = "分钟前";
+          return minutes + "分钟前";
         } else {
           return "刚刚";
         }
