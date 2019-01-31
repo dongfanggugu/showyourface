@@ -316,7 +316,9 @@ Page({
       filePath: path,
       name: imageType,
       // header: {}, // 设置请求的 header
-      // formData: {}, // HTTP 请求中其他额外的 form data
+      formData: {
+        token: app.globalData.token,
+      }, // HTTP 请求中其他额外的 form data
       success: function (res) {
         // success
         console.log(res);
