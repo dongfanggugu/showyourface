@@ -285,6 +285,9 @@ Page({
       url: uploadURL,
       filePath: path,
       name: imageType,
+      formData: {
+        token: app.globalData.token
+      },
       // header: {}, // 设置请求的 header
       // formData: {}, // HTTP 请求中其他额外的 form data
       success: function (res) {

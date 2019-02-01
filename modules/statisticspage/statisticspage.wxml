@@ -1,6 +1,6 @@
 <view class="statis_global">
     <view class="first_row">
-      <image src='/images/already_record.png' style="width:15px;height:15px;margin-left:16px;margin-top:8px"></image>
+      <image src='/images/already_record.png' style="width:15px;height:15px;margin-top:8px" mode="fi"></image>
         <text class="title_label">已记录</text>
     </view>
     <view class="second_row">

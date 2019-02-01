@@ -35,10 +35,10 @@ Page({
     swiperCurrent: 0,
 
     //详细信息
-    totalNumber: 34,
-    continuedDays: 23,
-    totalProduct: 4,
-    lastDay: 2,
+    totalNumber: 0,
+    continuedDays: 0,
+    totalProduct: 0,
+    lastDay: 0,
 
      //个人页
      motto: 'Hello World',
@@ -317,7 +317,8 @@ Page({
         var picCount = parseInt(res.data.pic_num);
         var dayCount = parseInt(res.data.day_count);
         var productCount = parseInt(res.data.product_count);
-        var lastCreateTime = parseInt(res['last_record_time']);
+        var lastCreateTime = parseInt(res.data.last_record_time);
+        console.log("last:" + lastCreateTime);
         var lastRecord = "上次记录" + that.getInterval(lastCreateTime * 1000);
         that.setData({
           totalNumber: picCount,
@@ -370,7 +371,6 @@ Page({
   getInterval: function (inputTime) {
     var today = new Date();
     var interval = today.getTime() - inputTime;
-    console.log(interval);
     if (interval <= 0) {
       return "刚刚";
     }

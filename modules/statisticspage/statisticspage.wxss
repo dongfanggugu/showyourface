@@ -4,6 +4,10 @@
     justify-content: space-between;
     align-items: stretch;
     background: linear-gradient(to right, rgb(252, 48, 97), rgb(252, 90, 65));
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 .first_row {
@@ -30,7 +34,7 @@
 }
 
 .title_label {
-    font-size: 25rpx;
+    font-size: 13px;
     width: 100rpx;
     height: 40rpx;
     padding: 8rpx;
@@ -39,30 +43,29 @@
 }
 
 .total_number_label {
-    font-size: 50rpx;
+    font-size: 25px;
     width: 60rpx;
     height: 60rpx;
     color: white;
 }
 
 .total_text_label {
-    font-size: 25rpx;
+    font-size: 13px;
     height: 30rpx;
     text-align: center;
     color: white;
 }
 
 .day_label {
-    font-size: 25rpx;
+    font-size: 13px;
     height: 40rpx;
-    padding: 8rpx;
     flex: 1 1 0;
     text-align: left;
     color: white;
 }
 
 .product_label {
-    font-size: 25rpx;
+    font-size: 13px;
     padding: 8rpx;
     height: 40rpx;
     flex: 1 1 0;
@@ -71,7 +74,7 @@
 }
 
 .last_record_label {
-    font-size: 25rpx;
+    font-size: 13px;
     padding: 8rpx;
     height: 40rpx;
     flex: 1 1 0;
