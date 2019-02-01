@@ -14,9 +14,9 @@ Page({
     third: false,
 
     itemArray: [
-      { "name": "日记", image: "/images/tab_add_sel.png", image_width: '40rpx', text_height: '25rpx', text_color:'rgb(255,109,138)'},
-      { "name": "", image: "/images/tab_add.png", image_width: '75rpx', text_height: '0rpx', text_color: '#333333'},
-      { "name": "我的", image: "/images/tab_person_nor.png", image_width: '40rpx', text_height: '25rpx', text_color: 'rgb(177,177,177)'}
+      { "name": "日记", image: "/images/tab_add_sel.png", image_width: '20px', image_height: '20px', text_height: '25rpx', text_color:'rgb(255,109,138)'},
+      { "name": "", image: "/images/tab_add.png", image_width: '38px', image_height: '35px', text_height: '0rpx', text_color: '#333333'},
+      { "name": "我的", image: "/images/tab_person_nor.png", image_width: '20px', image_height: '20px', text_height: '25rpx', text_color: 'rgb(177,177,177)'}
     ],
     array: [],
     url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg",
