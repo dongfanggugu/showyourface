@@ -199,7 +199,24 @@ Page({
       }
     })
   },
+  getSelEffectCount: function () {
+    var amount = 0;
+    for (var i = 0; i < this.data.effectArray.length; i++) {
+      amount += this.data.effectArray[i].sel ? 1 : 0;
+    }
+    return amount;
+  } 
+  ,
   clickEffect: function(e) {
+    var amount = this.getSelEffectCount();
+    console.log("amount: " + amount);
+    if (amount >= 3) {
+      wx.showToast({
+        title: '最多选择三个纪要!',
+        icon: ''
+      });
+      return;
+    }
     var index = parseInt(e.currentTarget.id);
     console.log(index);
     var sel = this.data.effectArray[index].sel;
