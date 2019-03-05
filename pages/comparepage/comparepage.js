@@ -238,7 +238,7 @@ Page({
             var newW = width * scale;
             var newH = height * scale;
             var x = 205;
-            var y = (300 - newW) / 2;
+            var y = (300 - newH) / 2;
             ctx.drawImage(res.path, x, y, newW, newH);
             ctx.draw(true, setTimeout(() => {
               wx.canvasToTempFilePath({

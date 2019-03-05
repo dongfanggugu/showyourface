@@ -14,9 +14,9 @@ Page({
     third: false,
 
     itemArray: [
-      { "name": "日记", image: "/images/tab_add_sel.png", image_width: '40rpx', text_height: '25rpx', text_color:'rgb(255,109,138)'},
-      { "name": "", image: "/images/tab_add.png", image_width: '75rpx', text_height: '0rpx', text_color: '#333333'},
-      { "name": "我的", image: "/images/tab_person_nor.png", image_width: '40rpx', text_height: '25rpx', text_color: 'rgb(177,177,177)'}
+      { "name": "日记", image: "/images/tab_add_sel.png", image_width: '20px', image_height: '20px', text_height: '25rpx', text_color:'rgb(255,109,138)'},
+      { "name": "", image: "/images/tab_add.png", image_width: '38px', image_height: '35px', text_height: '0rpx', text_color: '#333333'},
+      { "name": "我的", image: "/images/tab_person_nor.png", image_width: '20px', image_height: '20px', text_height: '25rpx', text_color: 'rgb(177,177,177)'}
     ],
     array: [],
     url: "https://improxy.starmakerstudios.com/tools/im/0/files/6192448705691759/e1d952c2ea2e046adda99cee1c94ca90.jpg",
@@ -35,10 +35,10 @@ Page({
     swiperCurrent: 0,
 
     //详细信息
-    totalNumber: 34,
-    continuedDays: 23,
-    totalProduct: 4,
-    lastDay: 2,
+    totalNumber: 0,
+    continuedDays: 0,
+    totalProduct: 0,
+    lastDay: 0,
 
      //个人页
      motto: 'Hello World',
@@ -317,7 +317,8 @@ Page({
         var picCount = parseInt(res.data.pic_num);
         var dayCount = parseInt(res.data.day_count);
         var productCount = parseInt(res.data.product_count);
-        var lastCreateTime = parseInt(res['last_record_time']);
+        var lastCreateTime = parseInt(res.data.last_record_time);
+        console.log("last:" + lastCreateTime);
         var lastRecord = "上次记录" + that.getInterval(lastCreateTime * 1000);
         that.setData({
           totalNumber: picCount,
@@ -370,7 +371,6 @@ Page({
   getInterval: function (inputTime) {
     var today = new Date();
     var interval = today.getTime() - inputTime;
-    console.log(interval);
     if (interval <= 0) {
       return "刚刚";
     }

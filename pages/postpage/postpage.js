@@ -225,18 +225,30 @@ Page({
       // header: {}, // 设置请求的 header
       success: function(res){
         console.log(res);
-        wx.navigateTo({
-          url: '/pages/photocompare/photocompare?product_id=' + res.data.product_record_id,
-          success: function (res) {
+        wx.navigateBack({
+          delta: 1, // 回退前 delta(默认为1) 页面
+          success: function(res){
             // success
           },
-          fail: function () {
+          fail: function() {
             // fail
           },
-          complete: function () {
+          complete: function() {
             // complete
           }
         })
+        // wx.navigateTo({
+        //   url: '/pages/photocompare/photocompare?product_id=' + res.data.product_record_id,
+        //   success: function (res) {
+        //     // success
+        //   },
+        //   fail: function () {
+        //     // fail
+        //   },
+        //   complete: function () {
+        //     // complete
+        //   }
+        // })
       },
       fail: function () {
         // fail
@@ -315,6 +327,9 @@ Page({
       url: uploadURL,
       filePath: path,
       name: imageType,
+      formData: {
+        token: app.globalData.token
+      },
       // header: {}, // 设置请求的 header
       formData: {
         token: app.globalData.token,
