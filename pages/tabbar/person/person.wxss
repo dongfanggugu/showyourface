@@ -148,11 +148,13 @@
 }
 
 .person_pic_label {
-  margin-left:-150rpx;
-  margin-bottom: -75rpx;
-  width:150prx;
+  margin-left:-158rpx;
+  margin-top: 120rpx;
+  width:150rpx;
   height:30rpx;
-  font-size: 12rpx;
+  font-size: 15rpx;
   text-align: center;
   line-height: 30rpx;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
 }

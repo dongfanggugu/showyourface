@@ -18,6 +18,7 @@
 
                             <view class="itemContainer">
                                    <image src='{{path}}/static/{{item.skin_record.skin_record_new_iamge}}' class='imgItem'></image>
+                                   <view class="person_pic_label">第一天</view>
 
                                    <image src='{{path}}/static/{{item.skin_record.skin_record_old_iamge}}' class='imgItem'></image>
                                    <view class='itemTextContainer'>
