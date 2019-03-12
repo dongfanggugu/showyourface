@@ -14,8 +14,8 @@ Page({
     tagRight:[],
     path: baseURL,
     animationChange:"",
-    leftLabel: "第1天",
-    rightLabel: "第1天",
+    leftLabel: "日记1",
+    rightLabel: "日记1",
     imageArray: [],
     leftSel:0,
     rightSel:0
@@ -108,14 +108,14 @@ Page({
     var that = this;
     that.data.leftSel = e.detail.current;
     this.setData({
-      leftLabel: '第' + (that.data.leftSel + 1) + '天'
+      leftLabel: '日记' + (that.data.leftSel + 1) 
     });
   },
   swiperRightChange: function (e) {
     var that = this;
     that.data.rightSel = e.detail.current;
     this.setData({
-      rightLabel: '第' + (that.data.rightSel  + 1) + '天'
+      rightLabel: '日记' + (that.data.rightSel  + 1)
     });
   },
   comparePic: function(e) {
@@ -162,5 +162,20 @@ Page({
         // complete
       }
     })
+  },
+  delProduct: function (e) {
+    wx.showToast({
+      title: "产品删除成功"
+    });
+  },
+  delLeft: function (e) {
+    wx.showToast({
+      title: "左侧删除成功"
+    }); 
+  },
+  delRight: function (e) {
+    wx.showToast({
+      title: "右侧删除成功"
+    });
   }
 })

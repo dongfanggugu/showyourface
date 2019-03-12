@@ -1,65 +1,70 @@
 <view class="compare_origin">
-    <view class="post_product_photo">
-      <text class="post_product_text">我的产品</text>
-      <view class="post_product_image_view">
-        <image src="{{productSrc}}" style="width:90px;height:90px;flex:0 0 auto"></image>
-        <view>
-          <view style="font-size:15px;margin:8px">{{productName}}</view>
-          <view class="post_product_tag_parent">
-            <text class="post_product_tag_sel" wx:for="{{tagArray}}" wx:for-index="index"
-              wx:for-item="item">{{item.name}}</text>
-          </view>
+  <view class="post_product_photo">
+    <text class="post_product_text">我的产品</text>
+    <view class="post_product_image_view">
+      <image src="{{productSrc}}" style="width:90px;height:90px;flex:0 0 auto"></image>
+      <view style="display:flex;flex-direction:column;align-items: stretch;flex:1 1 auto">
+        <view style="font-size:15px;margin:8px">{{productName}}</view>
+        <view class="post_product_tag_parent">
+          <text class="post_product_tag_sel" wx:for="{{tagArray}}" wx:for-index="index"
+            wx:for-item="item">{{item.name}}</text>
+        </view>
+        <view style="display:flex;flex-direction:row-reverse;margin-right: 16px">
+            <image style="width:25px;height:25px;flex: 0 0 auto" src="/images/icon_trash.png" bindtap='delProduct'></image>
         </view>
       </view>
     </view>
-    
-    <view class="compare_container">
-      <view class="compare_left">
-        <swiper vertical="true" current="0" class="compare_swiper" circular="true" bindchange='swiperLeftChange'>
-          <block wx:for="{{imageArray}}" wx:for-index="index" wx:for-item="itemName">
-            <swiper-item>
-              <image src="{{path}}/static/{{itemName.image}}" mode="aspectFit" style="width:100%;height:175px" />
-            </swiper-item>
-          </block>
-        </swiper>
-        <view class="right_label">{{leftLabel}}</view>
-        <view class="post_product_tag_parent">
-          <text class="post_product_tag_sel" wx:for="{{tagLeft}}" wx:for-index="index"
-            wx:for-item="item">{{item.name}}</text>
-        </view>
+  </view>
+
+  <view class="compare_container">
+    <view class="compare_left">
+      <swiper vertical="true" current="0" class="compare_swiper" circular="true" bindchange='swiperLeftChange'>
+        <block wx:for="{{imageArray}}" wx:for-index="index" wx:for-item="itemName">
+          <swiper-item>
+            <image src="{{path}}/static/{{itemName.image}}" mode="aspectFit" style="width:100%;height:175px" />
+          </swiper-item>
+        </block>
+      </swiper>
+      <view class="right_label">{{leftLabel}}</view>
+      <image class="left_del" src="/images/icon_del.png" bindtap='delLeft'></image>
+      <view class="post_product_tag_parent">
+        <text class="post_product_tag_sel" wx:for="{{tagLeft}}" wx:for-index="index"
+          wx:for-item="item">{{item.name}}</text>
       </view>
-      <view class="compare_right">
-        <!-- <view class='compare_up_2'>
+    </view>
+    <view class="compare_right">
+      <!-- <view class='compare_up_2'>
             <image src="{{up_2_item}}" mode="top" style="width:100%;height:100%" />
           </view>
           <view class='compare_up_1' animation="{{animationChange}}">
             <image src="{{up_1_item}}" mode="top" style="width:100%;height:100%" />
           </view> -->
-    
-        <swiper vertical="true" current="0" class="compare_swiper" circular="true" bindchange='swiperRightChange'>
-          <block wx:for="{{imageArray}}" wx:for-index="index" wx:for-item="itemName">
-            <swiper-item>
-              <image src="{{path}}/static/{{itemName.image}}" mode="aspectFit" style="width:100%;height:100%" />
-            </swiper-item>
-          </block>
-        </swiper>
-        <view class="right_label">{{rightLabel}}</view>
-        <view class="post_product_tag_parent">
-          <text class="post_product_tag_sel" wx:for="{{tagRight}}" wx:for-index="index"
-            wx:for-item="item">{{item.name}}</text>
-        </view>
-        <!-- <view class='compare_up_1'>
+
+      <swiper vertical="true" current="0" class="compare_swiper" circular="true" bindchange='swiperRightChange'>
+        <block wx:for="{{imageArray}}" wx:for-index="index" wx:for-item="itemName">
+          <swiper-item>
+            <image src="{{path}}/static/{{itemName.image}}" mode="aspectFit" style="width:100%;height:100%" />
+          </swiper-item>
+        </block>
+      </swiper>
+      <view class="right_label">{{rightLabel}}</view>
+      <image class="left_del" src="/images/icon_del.png" bindtap='delRight'></image>
+      <view class="post_product_tag_parent">
+        <text class="post_product_tag_sel" wx:for="{{tagRight}}" wx:for-index="index"
+          wx:for-item="item">{{item.name}}</text>
+      </view>
+      <!-- <view class='compare_up_1'>
             <image src="{{down_1_item}}" mode="top" style="width:100%;height:100%" />
           </view>
           <view class='compare_up_2'>
             <image class="compare_up_2" src="{{down_2_item}}" mode="top" style="width:100%;height:100%" />
           </view> -->
-    
-      </view>
+
     </view>
-    
-    <view class="post_complete_parent">
-      <view class="post_complete" bindtap='comparePic'>对比</view>
-    </view>
-    
-    </view>
+  </view>
+
+  <view class="post_complete_parent">
+    <view class="post_complete" bindtap='comparePic'>对比</view>
+  </view>
+
+</view>
