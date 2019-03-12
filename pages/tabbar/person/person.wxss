@@ -29,6 +29,7 @@
 
 .itemContainer {
     display: flex;
+    flex: 0 0 auto;
     flex-direction: row;
     justify-content: flex-start;
     /* flex-wrap: wrap; */
@@ -39,6 +40,15 @@
     width: 100%;
     height: 1px;
     background-color: rgb(240, 240, 240);
+  }
+
+  .itemImageContainer {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: row;
+    justify-content: flex-start;
+    /* flex-wrap: wrap; */
+    align-items: center;
   }
   
   .itemTextContainer {
@@ -151,10 +161,10 @@
   margin-left:-158rpx;
   margin-top: 120rpx;
   width:150rpx;
-  height:30rpx;
-  font-size: 15rpx;
+  height:15px;
+  font-size: 10px;
   text-align: center;
-  line-height: 30rpx;
+  line-height: 15px;
   color: white;
   background-color: rgba(0, 0, 0, 0.5);
 }

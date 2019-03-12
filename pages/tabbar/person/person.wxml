@@ -17,10 +17,13 @@
                             <view class="person_separator"></view>
 
                             <view class="itemContainer">
-                                   <image src='{{path}}/static/{{item.skin_record.skin_record_new_iamge}}' class='imgItem'></image>
-                                   <view class="person_pic_label">第一天</view>
-
-                                   <image src='{{path}}/static/{{item.skin_record.skin_record_old_iamge}}' class='imgItem'></image>
+                                   <view class="itemImageContainer">
+                                          <image src='{{path}}/static/{{item.skin_record.skin_record_old_iamge}}' class='imgItem'></image>
+                                          <view class="person_pic_label">{{item.skin_record.skin_record_old_create_time}}</view>
+                            
+                                          <image src='{{path}}/static/{{item.skin_record.skin_record_new_iamge}}' class='imgItem'></image>
+                                          <view class="person_pic_label">{{item.skin_record.skin_record_new_create_time}}</view>
+                                   </view>
                                    <view class='itemTextContainer'>
                                           <label class="lableItem">{{item.product_name}}</label>
                                           <view style="display:flex;flex-direction:row;justify-content:flex-start;align-items:flex-end; margin-right: 4px">

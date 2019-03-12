@@ -11,14 +11,16 @@
                     </scroll-view>
     </view>
     
-
-    <view class="bottom">
-
-        <view class="item" wx:for="{{itemArray}}" wx:for-index="index" wx:for-item="item"  bindtap="tapItem" data-id="{{index}}">
+<view>
+    <!-- <view style="background-color:#333333;height: 1px"></view> -->
+    <view class="item_container">
+        <view class="item" wx:for="{{itemArray}}" wx:for-index="index" wx:for-item="item" bindtap="tapItem"
+            data-id="{{index}}">
             <include src="tabitem/record.wxml" />
         </view>
-      
-        
+
+
     </view>
+</view>
 
 </view>

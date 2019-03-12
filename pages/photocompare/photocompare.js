@@ -7,6 +7,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    product:'',
+    productSrc: '',
+    tagArray:[],
+    tagLeft:[],
+    tagRight:[],
     path: baseURL,
     animationChange:"",
     leftLabel: "第1天",
@@ -35,6 +40,33 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.data.tagArray = [];
+    var product = app.globalData.appendProduct;
+    this.data.product = product;
+    for (var i = 0; i < product.product_tags.length; i++) {
+      var tag = {
+        id: i,
+        name: product.product_tags[i]
+      }
+      this.data.tagArray.push(tag);
+    }
+    console.log(this.data.tagArray);
+    var that = this;
+    this.setData({
+      productSrc: baseURL + "/static/" + product.product_image,
+      productName: product.product_name,
+      tagArray: that.data.tagArray
+    });
+
+    var tagLeft = [
+      {name: '吃辣的'},
+      {name: "感冒了"},
+      {name:"心情好"}
+    ];
+    this.setData({
+      tagLeft: tagLeft,
+      tagRight: tagLeft
+    });
 
   },
 
@@ -116,6 +148,7 @@ Page({
       success: function(res) {
         console.log(res);
         that.data.imageArray = res.data;
+        console.log(res.data);
         // success
         that.setData({
           imageArray: that.data.imageArray
