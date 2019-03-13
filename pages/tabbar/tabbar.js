@@ -132,6 +132,12 @@ Page({
         }
       })
     }
+    that.setData({
+      totalNumber: 0,
+      continuedDays: 0,
+      totalProduct: 0,
+      lastDay:""
+    });
 
   },
   getUserInfo: function(e) {
