@@ -18,11 +18,15 @@
             <image class="main_avatar_image" src="{{path}}/static/{{itemName.product_image}}" />
             <view class='main_list_part2'>
                 <text>{{itemName.product_name}}</text>
-                <text>{{itemName.info}}</text>
+                <!-- <text>{{itemName.info}}</text> -->
+                <view class="post_product_tag_parent">
+                        <text class="post_product_tag" wx:for="{{itemName.product_tags}}" wx:for-index="index"
+                          wx:for-item="item">{{item}}</text>
+                      </view>
             </view>
 
             <view id="{{index}}" class="main_list_part3" bindtap='appendRecord'>
-                <image class='main_list_info' src='/images/icon_camera.png'></image>
+                <image class='main_list_info' src='{{itemName.operationIcon}}'></image>
                 <text class='main_list_tip'>{{itemName.createTime}}</text>
             </view>
         </view>

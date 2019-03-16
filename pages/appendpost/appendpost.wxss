@@ -149,3 +149,11 @@
     line-height: 60rpx;
     background: linear-gradient(rgb(253, 154, 136), rgb(248, 0, 72));
 }
+
+.append_skin_img_del {
+    flex:0 0 auto;
+    margin-left: -16px;
+    margin-top: -65px;
+    width: 15px;
+    height: 15px;
+}

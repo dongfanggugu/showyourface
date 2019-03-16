@@ -41,8 +41,8 @@
 
     <view class="compare_operaion">
         <view class="compare_direction">
-        <image src="/images/icon_camera.png" bindtap='verticalMode' style="width:45px;height:45px;margin:4px"></image>
-        <image src="/images/icon_camera.png" bindtap='horizonMode' style="width:45px;height:45px;margin:4px"></image>
+        <image src="{{verImage}}" bindtap='verticalMode' style="width:45px;height:45px;margin:4px"></image>
+        <image src="{{horImage}}" bindtap='horizonMode' style="width:45px;height:45px;margin:4px"></image>
     </view>
         <view style="display: flex;flex-direction: column;margin:8px">
             <button class="compare_share_btn" open-type='share'>分享好友</button>

@@ -7,10 +7,15 @@ Page({
    * 页面的初始数据
    */
   data: {
+    product:'',
+    productSrc: '',
+    tagArray:[],
+    tagLeft:[],
+    tagRight:[],
     path: baseURL,
     animationChange:"",
-    leftLabel: "第1天",
-    rightLabel: "第1天",
+    leftLabel: "日记1",
+    rightLabel: "日记1",
     imageArray: [],
     leftSel:0,
     rightSel:0
@@ -35,6 +40,33 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.data.tagArray = [];
+    var product = app.globalData.appendProduct;
+    this.data.product = product;
+    for (var i = 0; i < product.product_tags.length; i++) {
+      var tag = {
+        id: i,
+        name: product.product_tags[i]
+      }
+      this.data.tagArray.push(tag);
+    }
+    console.log(this.data.tagArray);
+    var that = this;
+    this.setData({
+      productSrc: baseURL + "/static/" + product.product_image,
+      productName: product.product_name,
+      tagArray: that.data.tagArray
+    });
+
+    var tagLeft = [
+      {name: '吃辣的'},
+      {name: "感冒了"},
+      {name:"心情好"}
+    ];
+    this.setData({
+      tagLeft: tagLeft,
+      tagRight: tagLeft
+    });
 
   },
 
@@ -76,14 +108,14 @@ Page({
     var that = this;
     that.data.leftSel = e.detail.current;
     this.setData({
-      leftLabel: '第' + (that.data.leftSel + 1) + '天'
+      leftLabel: '日记' + (that.data.leftSel + 1) 
     });
   },
   swiperRightChange: function (e) {
     var that = this;
     that.data.rightSel = e.detail.current;
     this.setData({
-      rightLabel: '第' + (that.data.rightSel  + 1) + '天'
+      rightLabel: '日记' + (that.data.rightSel  + 1)
     });
   },
   comparePic: function(e) {
@@ -116,6 +148,7 @@ Page({
       success: function(res) {
         console.log(res);
         that.data.imageArray = res.data;
+        console.log(res.data);
         // success
         that.setData({
           imageArray: that.data.imageArray
@@ -129,5 +162,20 @@ Page({
         // complete
       }
     })
+  },
+  delProduct: function (e) {
+    wx.showToast({
+      title: "产品删除成功"
+    });
+  },
+  delLeft: function (e) {
+    wx.showToast({
+      title: "左侧删除成功"
+    }); 
+  },
+  delRight: function (e) {
+    wx.showToast({
+      title: "右侧删除成功"
+    });
   }
 })

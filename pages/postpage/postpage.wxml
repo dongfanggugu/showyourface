@@ -7,6 +7,7 @@
       <text class="post_product_text">产品照片</text>
       <view class="post_product_image_view">
         <image src="{{productSrc}}" style="width:90px;height:90px;flex:0 0 auto" bindtap="chooseImage"></image>
+        <image class="post_pro_img_del" src="/images/icon_del.png" hidden="{{hideImgDel}}" bindtap="delProImg"></image>
         <view class="post_product_tag_parent">
           <view wx:for="{{tagArray}}" wx:for-index="index" wx:for-item="item">
             <view id="{{index}}" bindtap="clickTag">
@@ -28,6 +29,7 @@
       <text class="post_product_text">皮肤照片</text>
       <view class="post_product_image_view">
         <image src="{{skinSrc1}}" style="width:90px;height:90px;flex:0 0 auto" bindtap="chooseSkinImage1"></image>
+        <image class="post_pro_img_del" src="/images/icon_del.png" hidden="{{hideSkinDel}}" bindtap="delSkinImg"></image>
         <image src="{{skinSrc2}}" style="width:90px;height:90px;flex:0 0 auto;margin-left:8px" bindtap="chooseSkinImage2" hidden="true"></image>
       </view>
     

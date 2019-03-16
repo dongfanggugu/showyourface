@@ -108,7 +108,6 @@ Page({
     //login
     this.initToken();
     if (app.globalData.userInfo) {
-      console.log(app.globalData.userInfo);
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
@@ -117,7 +116,6 @@ Page({
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
-        console.log(res.userInfo);
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true
@@ -128,7 +126,6 @@ Page({
       wx.getUserInfo({
         success: res => {
           app.globalData.userInfo = res.userInfo
-          console.log(res.userInfo);
           this.setData({
             userInfo: res.userInfo,
             hasUserInfo: true
@@ -136,13 +133,18 @@ Page({
         }
       })
     }
+    that.setData({
+      totalNumber: 0,
+      continuedDays: 0,
+      totalProduct: 0,
+      lastDay:""
+    });
 
   },
   getUserInfo: function(e) {
     wx.getUserInfo({
       success: res => {
         app.globalData.userInfo = res.userInfo
-        console.log(res.userInfo);
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true
@@ -183,7 +185,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    console.log("pull down");
+    this.getServerInfo();
   },
 
   /**
@@ -207,7 +210,6 @@ Page({
   },
   //轮播图点击事件
   swipclick: function (e) {
-    console.log(this.data.swiperCurrent)
   },
   addRecord: function() {
     wx.navigateTo({
@@ -224,7 +226,6 @@ Page({
     });
   },
   initToken: function () {
-    console.log("init token");
     var that = this;
     that.wxLogin();
     // wx.getStorage({
@@ -263,7 +264,6 @@ Page({
             // header: {}, // 设置请求的 header
             success: function (res) {
               // success
-              console.log("remote token:" + res.data.token);
               app.globalData.token = res.data.token;
               that.getServerInfo();
               wx.setStorage({
@@ -314,12 +314,10 @@ Page({
       // header: {}, // 设置请求的 header
       success: function(res){
         // success
-        console.log(res);
         var picCount = parseInt(res.data.pic_num);
         var dayCount = parseInt(res.data.day_count);
         var productCount = parseInt(res.data.product_count);
         var lastCreateTime = parseInt(res.data.last_record_time);
-        console.log("last:" + lastCreateTime);
         var lastRecord = "上次记录" + that.getInterval(lastCreateTime * 1000);
         that.setData({
           totalNumber: picCount,
@@ -352,9 +350,15 @@ Page({
         for (var i = 0; i < that.data.array.length; i++) {
           var seconds = that.data.array[i].create_time;
           that.data.array[i].createTime = that.getInterval(seconds * 1000);
+          that.data.array[i].operationIcon = "/images/icon_camera.png";
+          var skinRecord = that.data.array[i].skin_record;
+          var skinNewTime = skinRecord.skin_record_new_create_time;
+          skinRecord.skin_record_new_create_time = that.getInterval(skinNewTime * 1000);
+          var skinOldTime = skinRecord.skin_record_old_create_time;
+          skinRecord.skin_record_old_create_time = that.getInterval(skinOldTime * 1000);
         }
-        var moreData = {};
-        that.data.array.push(moreData);
+        // var moreData = {};
+        // that.data.array.push(moreData);
         
         that.setData({
           array: that.data.array
@@ -403,7 +407,6 @@ Page({
       // header: {}, // 设置请求的 header
       success: function(res){
         // success
-        console.log(res);
         that.data.imgUrls = [];
         for (var i = 0; i < res.data.length; i++) {
           that.data.imgUrls.push(baseURL + "/static/images/banner/" + res.data[i].image);
@@ -443,10 +446,11 @@ Page({
   },
   compareRecord: function (e) {
     var index = e.currentTarget.id;
-    console.log(index);
     if (index >= this.data.array.length) {
       return;
     }
+    var product = this.data.array[index];
+    app.globalData.appendProduct = product;
     var productId = this.data.array[index].product_id;
     app.globalData.pageDelta = 2;
     wx.navigateTo({

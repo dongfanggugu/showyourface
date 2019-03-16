@@ -32,7 +32,9 @@ Page({
     var that = this;
     this.setData({
       imageLeft: that.data.imageLeft,
-      imageRight: that.data.imageRight
+      imageRight: that.data.imageRight,
+      verImage: "/images/ver_sel.png",
+      horImage: "/images/hor_unsel.png"
     });
   },
 
@@ -297,13 +299,17 @@ Page({
   horizonMode: function (e) {
     this.data.showVertical = false;
     this.setData({
-      showVertical: false
+      showVertical: false,
+      verImage: "/images/ver_unsel.png",
+      horImage: "/images/hor_sel.png"
     });
   },
   verticalMode: function (e) {
     this.data.showVertical = true;
     this.setData({
-      showVertical: true 
+      showVertical: true,
+      verImage: "/images/ver_sel.png",
+      horImage: "/images/hor_unsel.png"
     });
   },
   onShareAppMessage: function (e) {

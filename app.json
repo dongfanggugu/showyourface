@@ -13,8 +13,8 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "ç¾Žè®°",
+    "navigationBarTitleText": "ÃÀ¼Ç",
     "navigationBarTextStyle": "black",
-    "navigationStyle":"default"
+    "enablePullDownRefresh": true
   }
 }

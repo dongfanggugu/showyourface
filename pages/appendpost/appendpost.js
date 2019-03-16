@@ -25,6 +25,9 @@ Page({
    */
   onLoad: function (options) {
     this.getHotTags();
+    this.setData({
+      hideSkinDel: true
+    });
   },
 
   /**
@@ -266,7 +269,8 @@ Page({
       success: function(res) {
         that.data.skinSrc1 = res.tempFilePaths[0];
         that.setData({
-          skinSrc1: that.data.skinSrc1
+          skinSrc1: that.data.skinSrc1,
+          hideSkinDel: false
         });
         that.uploadImage(that.data.skinSrc1, 'face1');
       }, fail: function() {
@@ -328,5 +332,13 @@ Page({
         // complete
       }
     })
+  },
+  delSkinImg: function (e) {
+    var that = this;
+    this.data.skinSrc1 = "/images/icon_add_pic.png";
+    this.setData({
+      skinSrc1: that.data.skinSrc1,
+      hideSkinDel: true
+    });
   }
 })
