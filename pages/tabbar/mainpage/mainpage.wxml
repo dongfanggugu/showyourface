@@ -2,17 +2,18 @@
     <view id="mainpage" class="main_loop">
         <include src="/modules/viewpager/viewpager.wxml" />
     </view>
-    <view class="main_showinfo">
-        <include src="/modules/statisticspage/statisticspage.wxml" />
+    <view class="main_showinfo" style='background-color: #ffffff;'>
+        <include src="/modules/statisticspage/statisticspage.wxml"/>
     </view>
     <view class="main_operation">
         <text class="main_add_rocord_label">我的日记</text>
         <view class="main_add_record_button">
-            <image src='/images/icon_add_record.png' style='height:15px;width:15px;margin-right:4px' bindtap='addRecord'></image>
+            <image src='/images/icon_add_record.png' style='height:15px;width:15px;margin-right:4px;' bindtap='addRecord'></image>
             <text bindtap='addRecord'>添加日记</text>
         </view>
 
     </view>
+    <view class= "main_separation"></view>
     <view id="{{itemName.product_id}}" wx:for="{{array}}" wx:for-index="index" wx:for-item="itemName">
         <view id="{{index}}" class="main_list" bindtap="compareRecord">
             <image class="main_avatar_image" src="{{path}}/static/{{itemName.product_image}}" />
@@ -30,6 +31,8 @@
                 <text class='main_list_tip'>{{itemName.createTime}}</text>
             </view>
         </view>
+
+        <view class= "main_separation"></view>
     
     </view>
 </view>

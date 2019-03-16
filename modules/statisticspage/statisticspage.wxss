@@ -4,12 +4,13 @@
     justify-content: space-between;
     align-items: stretch;
     background: linear-gradient(to right, rgb(252, 48, 97), rgb(252, 90, 65));
-    margin: 10rpx 20rpx;
-    border-radius: 15rpx;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    /* margin: 10rpx 20rpx; */
+    /* border-radius: 15rpx; */
+    padding-left: 32rpx;
+    padding-right: 32rpx;
+    padding-top: 0rpx;
+    padding-bottom: 8rpx;
+    margin-bottom: 6rpx;
 }
 
 .first_row {

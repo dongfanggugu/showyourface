@@ -50,6 +50,7 @@ App({
     appendProduct:"",
     pageDelta: 1,
     baseURL: "https://www.skinrec.com"
+    // baseURL: "http://127.0.0.1:8080"
   },
   getUserInfo: function (e) {
     console.log(e)
