@@ -6,3 +6,6 @@
   width: 100%;
   flex-direction: column;
 } 
+.ipx-bottom{
+    padding-bottom: 24px!important;
+}

@@ -26,7 +26,6 @@
                 <text class='main_list_tip'>{{itemName.createTime}}</text>
             </view>
         </view>
-        <view class="main_separation"></view>
-
+    
     </view>
 </view>

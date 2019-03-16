@@ -12,6 +12,7 @@ Page({
     first: true,
     second:false,
     third: false,
+    isIpx: app.globalData.isIpx,
 
     itemArray: [
       { "name": "日记", image: "/images/tab_add_sel.png", image_width: '20px', image_height: '20px', text_height: '25rpx', text_color:'rgb(255,109,138)'},

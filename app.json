@@ -13,7 +13,8 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "ShowYourFace",
-    "navigationBarTextStyle": "black"
+    "navigationBarTitleText": "美记",
+    "navigationBarTextStyle": "black",
+    "navigationStyle":"default"
   }
 }
