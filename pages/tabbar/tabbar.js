@@ -348,7 +348,7 @@ Page({
         console.log(res);
         that.data.array = res.data;
         for (var i = 0; i < that.data.array.length; i++) {
-          var seconds = that.data.array[i].create_time;
+          var seconds = that.data.array[i].update_time;
           that.data.array[i].createTime = that.getInterval(seconds * 1000);
           that.data.array[i].operationIcon = "/images/icon_camera.png";
           var skinRecord = that.data.array[i].skin_record;
@@ -384,11 +384,11 @@ Page({
       return days + "天前";
     } else {
       var hours = parseInt(interval / (3600 * 1000));
-      if (hours > 1) {
+      if (hours > 0) {
         return hours + "小时前";
       } else {
         var minutes = parseInt(interval / (60 * 1000));
-        if (minutes > 1) {
+        if (minutes > 0) {
           return minutes + "分钟前";
         } else {
           return "刚刚";

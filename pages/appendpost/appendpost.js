@@ -137,16 +137,43 @@ Page({
       }
     });
   },
+
+  getInterval: function (inputTime) {
+    var today = new Date();
+    var now = today.getTime();
+    var today_start = now - now % (24 * 3600 * 1000);
+    console.log(today_start)
+    console.log(inputTime)
+    if (inputTime >= today_start){
+      return 1;
+    }
+    else{
+      return 0;
+    }
+  },
+
   completePost: function () {
+    console.log(this.data.product.update_time);
     var that = this;
+    if (that.getInterval(this.data.product.update_time * 1000)){
+      wx.showToast({
+        title: '今天已添加过哦',
+        // icon: "",
+        image: '/images/icon_exclamation.png',
+      })
+      return;
+    }
 
     if (utils.emptyStr(this.data.skinSrc1URL)) {
       wx.showToast({
         title: '请添加皮肤照片',
-        icon: ""
+        icon: "",
+        image: '/images/icon_exclamation.png',
       })
       return;
     }
+
+
    
     //获取选中的皮肤标签
     var skinTags = [];
@@ -160,7 +187,8 @@ Page({
     if (0 == skinTags.length) {
       wx.showToast({
         title: '请选择日记标签',
-        icon: ""
+        icon: "",
+        image: '/images/icon_exclamation.png',
       })
       return; 
     }
@@ -213,16 +241,21 @@ Page({
   clickEffect: function(e) {
     var amount = this.getSelEffectCount();
     console.log("amount: " + amount);
-    if (amount >= 3) {
-      wx.showToast({
-        title: '最多选择三个纪要!',
-        icon: ''
-      });
-      return;
-    }
+
     var index = parseInt(e.currentTarget.id);
     console.log(index);
     var sel = this.data.effectArray[index].sel;
+
+    if (amount >= 3 && !sel) {
+      wx.showToast({
+        title: '最多选三个纪要!',
+        icon: '',
+        image: '/images/icon_exclamation.png',
+      });
+      return;
+    }
+
+
     var selKey = "effectArray[" + index + "].sel";
     this.setData({
       [selKey] : !sel

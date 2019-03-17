@@ -14,8 +14,8 @@ Page({
     tagRight:[],
     path: baseURL,
     animationChange:"",
-    leftLabel: "日记1",
-    rightLabel: "日记1",
+    leftLabel: "",
+    rightLabel: "",
     imageArray: [],
     lableArray: [],
     leftSel:0,
@@ -145,7 +145,6 @@ Page({
   swiperRightChange: function (e) {
     var that = this;
     that.data.rightSel = (e.detail.current + that.data.imageArray.length - 1) % that.data.imageArray.length;
-    console.log(e.detail.current);
 
     var right_label = that.getInterval(that.data.imageArray[that.data.rightSel].create_time);
     this.setData({
