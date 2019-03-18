@@ -14,9 +14,9 @@
 
     </view>
     <view id="{{itemName.product_id}}" wx:for="{{array}}" wx:for-index="index" wx:for-item="itemName">
-        <view id="{{index}}" class="main_list" bindtap="compareRecord">
-            <image class="main_avatar_image" src="{{path}}/static/{{itemName.product_image}}" />
-            <view class='main_list_part2'>
+        <view id="{{index}}" class="main_list">
+            <image class="main_avatar_image" src="{{path}}/static/{{itemName.product_image}}" bindtap="compareRecord"/>
+            <view class='main_list_part2' bindtap="compareRecord">
                 <text>{{itemName.product_name}}</text>
                 <!-- <text>{{itemName.info}}</text> -->
                 <view class="post_product_tag_parent">

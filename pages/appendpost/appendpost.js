@@ -211,18 +211,20 @@ Page({
   } 
   ,
   clickEffect: function(e) {
-    var amount = this.getSelEffectCount();
-    console.log("amount: " + amount);
-    if (amount >= 3) {
-      wx.showToast({
-        title: '最多选择三个纪要!',
-        icon: ''
-      });
-      return;
-    }
+ 
     var index = parseInt(e.currentTarget.id);
-    console.log(index);
     var sel = this.data.effectArray[index].sel;
+    //选择新的标签，不大于3个
+    if (!sel) {
+      var amount = this.getSelEffectCount();
+      if (amount >= 3) {
+        wx.showToast({
+          title: '最多选择三个纪要!',
+          icon: ''
+        });
+        return;
+      }
+    }
     var selKey = "effectArray[" + index + "].sel";
     this.setData({
       [selKey] : !sel
