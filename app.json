@@ -13,7 +13,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "ShowYourFace",
+    "navigationBarTitleText": "肌肤日记",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   }

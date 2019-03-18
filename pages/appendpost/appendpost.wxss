@@ -10,13 +10,29 @@
     height: 0px;
 }
 
+.post_breaker {
+    padding: 20rpx;
+    padding-bottom: 10rpx;
+    margin-top: 35rpx;
+    margin-left: 20rpx;
+    margin-right: 20rpx;
+    border-radius: 10rpx;
+
+    background-color: #F6F6F6;
+}
+
+
 .post_product_photo {
-    display: flex;
+    display:flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     width: 100%;
     padding: 16rpx;
+    font-weight: bold;
+    margin: 10rpx;
+    /* border-radius: 15rpx; */
+    /* align-items: center; */
 }
 
 .post_skin_photo {
@@ -25,6 +41,8 @@
     justify-content: flex-start;
     align-items: start;
     padding: 16rpx;
+    font-weight: bold;
+    margin: 10rpx;
 }
 
 .post_brand_sel {
@@ -51,7 +69,7 @@
 
 .post_product_text {
     font: medium;
-    font-size: 28rpx;
+    font-size: 32rpx;
     margin-bottom: 24rpx;
 }
 
@@ -60,6 +78,8 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    border-radius: 24rpx;
+    /* background:linear-gradient(to right, rgb(252, 48, 97), rgb(252, 90, 65)); */
 }
 
 .post_product_input_parent {
@@ -93,34 +113,38 @@
     flex-direction: row;
     align-items: flex-start;
     flex-wrap: wrap;
-    margin: 4px;
+    margin: 10rpx;
 }
 
 .post_product_tag_sel {
-    border: 1px solid rgba(241, 241, 241, 1);
-    border-radius: 20rpx;
-    padding-left: 16rpx;
-    padding-right: 16rpx;
-    margin: 4px;
-    height: 20px;
-    line-height: 20px;
-    font-size: 25rpx;
+    border-radius: 24rpx;
+    padding-left: 18rpx;
+    padding-right: 18rpx;
+    padding-top: 5rpx;
+    padding-bottom: 5rpx;
+    margin: 10rpx;
+    height: 40rpx;
+    line-height: 60rpx;
+    font-size: 27rpx;
     text-align: center;
-    color: white;
-    background: linear-gradient(rgb(253, 154, 136), rgb(248, 0, 72));
+    color:white;
+    /* background:linear-gradient(rgb(253,154,136),rgb(248,0,72)); */
+    background:linear-gradient(to right, rgb(252, 48, 97), rgb(252, 90, 65));
 }
 
 .post_product_tag {
-    border: 1px solid rgb(241, 241, 241);
+    border: 2rpx solid rgb(241, 241, 241);
     border-radius: 24rpx;
     padding-left: 16rpx;
     padding-right: 16rpx;
-    margin: 4px;
-    height: 20px;
-    line-height: 20px;
-    font-size: 25rpx;
+    padding-top: 5rpx;
+    padding-bottom: 5rpx;
+    margin: 10rpx;
+    height: 40rpx;
+    line-height: 60rpx;
+    font-size: 27rpx;
     text-align: center;
-    color: rgb(81, 81, 81);
+    color:rgb(81, 81, 81);
 }
 
 .post_daily_des {
@@ -135,6 +159,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    height: 100%;
 }
 
 .post_complete {
@@ -144,10 +169,11 @@
     color: white;
     font-size: 35rpx;
     text-align: center;
-    height: 60rpx;
+    height: 80rpx;
     width: 100%;
-    line-height: 60rpx;
-    background: linear-gradient(rgb(253, 154, 136), rgb(248, 0, 72));
+    line-height: 80rpx;
+    /* background:linear-gradient(rgb(253,154,136),rgb(248,0,72)); */
+    background:linear-gradient(to right, rgb(252, 48, 97), rgb(252, 90, 65));
 }
 
 .append_skin_img_del {

@@ -12,10 +12,11 @@ Page({
     first: true,
     second:false,
     third: false,
+    isIpx: app.globalData.isIpx,
 
     itemArray: [
       { "name": "日记", image: "/images/tab_add_sel.png", image_width: '20px', image_height: '20px', text_height: '25rpx', text_color:'rgb(255,109,138)'},
-      { "name": "", image: "/images/tab_add.png", image_width: '38px', image_height: '35px', text_height: '0rpx', text_color: '#333333'},
+      { "name": "", image: "/images/tab_add.png", image_width: '35px', image_height: '35px', text_height: '0rpx', text_color: '#333333'},
       { "name": "我的", image: "/images/tab_person_nor.png", image_width: '20px', image_height: '20px', text_height: '25rpx', text_color: 'rgb(177,177,177)'}
     ],
     array: [],
@@ -347,7 +348,7 @@ Page({
         console.log(res);
         that.data.array = res.data;
         for (var i = 0; i < that.data.array.length; i++) {
-          var seconds = that.data.array[i].create_time;
+          var seconds = that.data.array[i].update_time;
           that.data.array[i].createTime = that.getInterval(seconds * 1000);
           that.data.array[i].operationIcon = "/images/icon_camera.png";
           var skinRecord = that.data.array[i].skin_record;
@@ -383,11 +384,11 @@ Page({
       return days + "天前";
     } else {
       var hours = parseInt(interval / (3600 * 1000));
-      if (hours > 1) {
+      if (hours > 0) {
         return hours + "小时前";
       } else {
         var minutes = parseInt(interval / (60 * 1000));
-        if (minutes > 1) {
+        if (minutes > 0) {
           return minutes + "分钟前";
         } else {
           return "刚刚";

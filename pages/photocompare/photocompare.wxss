@@ -3,6 +3,14 @@ page {
     height: 100%;
 }
 
+.main_separation {
+    background-color: rgb(246, 246, 246);
+    /* width: 100%; */
+    height: 1px;
+    margin: 25rpx;
+    /* background: linear-gradient(to right, rgb(252, 48, 97), rgb(252, 90, 65)); */
+}
+
 .compare_origin {
     display: flex;
     flex-direction: column;
@@ -10,6 +18,7 @@ page {
     align-items: stretch;
     width: 100%;
     height: 100%;
+    position: fixed;
 }
 
 .compare_container {
@@ -17,32 +26,44 @@ page {
     flex-direction: row;
     align-items: stretch;
     width: 100%;
-    height: 200px;
-    background-color: antiquewhite;
+    height: 800rpx;
+    /* background: linear-gradient(to top, white, black); */
+    /* background: linear-gradient(to right, rgb(252, 48, 97), rgb(252, 90, 65)); */
 }
 
 .compare_left {
+    border: 2rpx solid rgb(241, 241, 241);
     display: flex;
     width:50%;
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
-    margin-top: 20px;
+    /* background: linear-gradient(to top, white, black); */
+    /* background:linear-gradient(to right, rgb(252, 48, 97), rgb(252, 90, 65)); */
+    border-radius: 20rpx;
+    margin-left: 1rpx;
+    margin-right: 1rpx;
+    /* margin-top: 20px; */
 }
 
 .compare_right {
+    border: 2rpx solid rgb(241, 241, 241);
     display: flex;
     width:50%;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    margin-top: 20px;
+    margin-left: 1rpx;
+    margin-right: 1rpx;
+    /* background:linear-gradient(to right, rgb(252, 48, 97), rgb(252, 90, 65)); */
+    border-radius: 20rpx;
+    /* margin-top: 20px; */
 }
 
 .compare_swiper {
     display: flex;
     flex: 0 0 auto;
-    height: 175px;
+    height: 600rpx;
     width:100%;
 }
 .compare_up_1 {
@@ -62,11 +83,13 @@ page {
 .right_label {
     position: relative;
     border-radius: 10px;
+    padding: 2rpx;
     width:60px;
-    height: 20px;
-    bottom: 25px;
-    left: 15px;
-    background-color: rgb(255,147,136);
+    height: 40rpx;
+    line-height: 40rpx;
+    bottom: 20rpx;
+    left: 0rpx;
+    background: linear-gradient(to right, rgb(252, 48, 97), rgb(252, 90, 65));
     color: white;
     font-size: 13px;
     text-align: center;
@@ -75,11 +98,13 @@ page {
 .left_label {
     position: relative;
     border-radius: 10px;
+    padding: 2rpx;
     width:60px;
-    height: 20px;
-    bottom: 25px;
-    left: 15px;
-    background-color: rgb(255,147,136);
+    height: 40rpx;
+    line-height: 40rpx;
+    bottom: 20rpx;
+    left: 0rpx;
+    background: linear-gradient(to right, rgb(252, 48, 97), rgb(252, 90, 65));
     color: white;
     font-size: 13px;
     text-align: center;
@@ -91,8 +116,8 @@ page {
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-bottom: 40px;
-    margin-top: 100px;
+    margin-bottom: 100rpx;
+    margin-top: 100rpx;
 }
 
 .post_complete {
@@ -102,10 +127,11 @@ page {
     color: white;
     font-size: 35rpx;
     text-align: center;
-    height: 60rpx;
+    height: 70rpx;
     width: 100%;
-    line-height: 60rpx;
-    background:linear-gradient(rgb(253,154,136),rgb(248,0,72));
+    line-height: 70rpx;
+    /* background:linear-gradient(rgb(253,154,136),rgb(248,0,72)); */
+    background:linear-gradient(to right, rgb(252, 48, 97), rgb(252, 90, 65));
 }
 
 .post_product_text {
@@ -119,6 +145,7 @@ page {
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    border-radius:  100rpx;
 }
 
 .post_product_tag_parent {
@@ -127,21 +154,63 @@ page {
     flex-direction: row;
     align-items: flex-start;
     flex-wrap: wrap;
-    margin: 4px;
+    margin: 20rpx;
 }
 
 .post_product_tag_sel {
-    border: 1px solid rgba(241, 241, 241, 0);
-    border-radius: 20rpx;
-    padding-left: 16rpx;
-    padding-right: 16rpx;
-    margin: 4px;
+    border-radius: 24rpx;
+    padding-left: 18rpx;
+    padding-right: 18rpx;
+    padding-top: 5rpx;
+    padding-bottom: 5rpx;
+    margin: 10rpx;
     height: 40rpx;
     line-height: 40rpx;
     font-size: 25rpx;
     text-align: center;
-    color: white;
-    background: linear-gradient(rgb(253, 154, 136), rgb(248, 0, 72));
+    color:white;
+    background:linear-gradient(to right, rgb(252, 48, 97), rgb(252, 90, 65));
+}
+
+.post_product_tag {
+    border: 2rpx solid rgb(241, 241, 241);
+    border-radius: 24rpx;
+    padding-left: 16rpx;
+    padding-right: 16rpx;
+    /* padding-top: 5rpx; */
+    /* padding-bottom: 5rpx; */
+    margin-left: 10rpx;
+    margin-bottom: 10rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    font-size: 25rpx;
+    text-align: center;
+    color: rgb(200, 200, 200);
+}
+
+.post_skin_tag_parent {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 10rpx;
+}
+
+.post_skin_tag {
+    border: 1rpx solid rgb(241, 241, 241);
+    border-radius: 24rpx;
+    padding-left: 16rpx;
+    padding-right: 16rpx;
+    /* padding-top: 5rpx; */
+    /* padding-bottom: 5rpx; */
+    margin-left: 10rpx;
+    /* margin-bottom: -1000rpx; */
+    height: 40rpx;
+    line-height: 40rpx;
+    font-size: 25rpx;
+    text-align: center;
+    color: rgb(200, 200, 200);
 }
 
 .post_product_photo {

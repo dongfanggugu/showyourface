@@ -1,5 +1,5 @@
 .swiper {
-  height: 240rpx;
+  height: 100%;
   width: 100%;
   background-color: azure;
 }

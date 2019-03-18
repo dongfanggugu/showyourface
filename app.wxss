@@ -6,3 +6,10 @@
   width: 100%;
   flex-direction: column;
 } 
+.ipx-bottom{
+    padding-bottom: 24px!important;
+    /* background-color: rgb(81, 81, 81); */
+    /* background-color: rgb(81, 81, 81); */
+    /* background-color: rgb(81, 81, 81); */
+    background-color: #ffffff;
+}

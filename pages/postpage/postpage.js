@@ -264,19 +264,62 @@ Page({
       }
     })
   },
+
+  getSelTagCount: function () {
+    var amount = 0;
+    for (var i = 0; i < this.data.tagArray.length; i++) {
+      amount += this.data.tagArray[i].sel ? 1 : 0;
+    }
+    return amount;
+  }, 
+
+
   clickTag: function (e) {
+    var amount = this.getSelTagCount();
+    console.log("amount: " + amount);
+
     var index = parseInt(e.currentTarget.id);
     console.log(index);
     var sel = this.data.tagArray[index].sel;
+
+    if (amount >= 3 && !sel) {
+      wx.showToast({
+        title: '最多选三个功效!',
+        icon: ''
+      });
+      return;
+    }
+
     this.data.tagArray[index].sel = !sel;
     var selKey = "tagArray[" + index + "].sel";
     this.setData({
       [selKey]: !sel
     });
   },
+
+  getSelEffectCount: function () {
+    var amount = 0;
+    for (var i = 0; i < this.data.effectArray.length; i++) {
+      amount += this.data.effectArray[i].sel ? 1 : 0;
+    }
+    return amount;
+  }, 
+
   clickEffect: function (e) {
+    var amount = this.getSelEffectCount();
+    console.log("amount: " + amount);
+
     var index = parseInt(e.currentTarget.id);
     var sel = this.data.effectArray[index].sel;
+
+    if (amount >= 3 && !sel) {
+      wx.showToast({
+        title: '最多选三个纪要!',
+        icon: ''
+      });
+      return;
+    }
+
     this.data.effectArray[index].sel = !sel;
     var selKey = "effectArray[" + index + "].sel";
     this.setData({

@@ -18,10 +18,10 @@
 
                             <view class="itemContainer">
                                    <view class="itemImageContainer">
-                                          <image src='{{path}}/static/{{item.skin_record.skin_record_old_iamge}}' class='imgItem'></image>
+                                          <image src='{{path}}/static/{{item.skin_record.skin_record_old_iamge}}' mode="aspectFill" class='imgItem'></image>
                                           <view class="person_pic_label">{{item.skin_record.skin_record_old_create_time}}</view>
                             
-                                          <image src='{{path}}/static/{{item.skin_record.skin_record_new_iamge}}' class='imgItem'></image>
+                                          <image src='{{path}}/static/{{item.skin_record.skin_record_new_iamge}}' mode="aspectFill" class='imgItem'></image>
                                           <view class="person_pic_label">{{item.skin_record.skin_record_new_create_time}}</view>
                                    </view>
                                    <view class='itemTextContainer'>

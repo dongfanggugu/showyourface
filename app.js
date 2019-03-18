@@ -12,6 +12,16 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
+
+    wx.getSystemInfo({
+      success: res => {
+        if (res.model.indexOf("X") > -1) {
+          this.globalData.isIpx = true
+          console.log(res.model)
+        }
+      }
+    })
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -34,11 +44,13 @@ App({
     })
   },
   globalData: {
+    isIpx: false,
     userInfo: null,
     token: "",
     appendProduct:"",
     pageDelta: 1,
     baseURL: "https://www.skinrec.com"
+    // baseURL: "http://127.0.0.1:8080"
   },
   getUserInfo: function (e) {
     console.log(e)
@@ -46,6 +58,17 @@ App({
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    })
+  },
+  checkIphoneX: function () {
+    wx.getSystemInfo({
+      success: res => {
+        console.log('手机信息res' + res.model)
+        let model = res.model;
+        if (model.search('X') != -1) {
+          this.globalData.isIphoneX = true
+        }
+      }
     })
   },
 })

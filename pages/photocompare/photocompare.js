@@ -14,11 +14,24 @@ Page({
     tagRight:[],
     path: baseURL,
     animationChange:"",
-    leftLabel: "日记1",
-    rightLabel: "日记1",
+    leftLabel: "",
+    rightLabel: "",
     imageArray: [],
+    lableArray: [],
     leftSel:0,
     rightSel:0
+  },
+
+  getInterval: function (inputTime) {
+    var today = new Date();
+    var interval = today.getTime()/1000 - inputTime;
+
+    var days = parseInt(interval / (24 * 3600));
+    if (days > 0) {
+      return days + "天前";
+    } else {
+      return "今天";
+    }
   },
 
   /**
@@ -58,15 +71,15 @@ Page({
       tagArray: that.data.tagArray
     });
 
-    var tagLeft = [
-      {name: '吃辣的'},
-      {name: "感冒了"},
-      {name:"心情好"}
-    ];
-    this.setData({
-      tagLeft: tagLeft,
-      tagRight: tagLeft
-    });
+    // var tagLeft = [
+    //   {name: '吃辣的'},
+    //   {name: "感冒了"},
+    //   {name:"心情好"}
+    // ];
+    // this.setData({
+    //   tagLeft: tagLeft,
+    //   tagRight: tagLeft
+    // });
 
   },
 
@@ -107,17 +120,52 @@ Page({
   swiperLeftChange: function (e) {
     var that = this;
     that.data.leftSel = e.detail.current;
+
+    var left_label = that.getInterval(that.data.imageArray[that.data.leftSel].create_time);
     this.setData({
-      leftLabel: '日记' + (that.data.leftSel + 1) 
+      leftLabel: left_label
     });
+
+    that.data.tagLeft = [];
+    var left_tags = that.data.imageArray[that.data.leftSel].tags;
+    for (var i = 0; i < left_tags.length; i++) {
+      var tag = {
+        id: i,
+        name: left_tags[i]
+      }
+      that.data.tagLeft.push(tag);
+    }
+
+    that.setData({
+      tagLeft: that.data.tagLeft,
+    });
+
   },
+
   swiperRightChange: function (e) {
     var that = this;
-    that.data.rightSel = e.detail.current;
+    that.data.rightSel = (e.detail.current + that.data.imageArray.length - 1) % that.data.imageArray.length;
+
+    var right_label = that.getInterval(that.data.imageArray[that.data.rightSel].create_time);
     this.setData({
-      rightLabel: '日记' + (that.data.rightSel  + 1)
+      rightLabel: right_label
+    });
+
+    that.data.tagRight = [];
+    var right_tags = that.data.imageArray[that.data.rightSel].tags;
+    for (var i = 0; i < right_tags.length; i++) {
+      var tag = {
+        id: i,
+        name: right_tags[i]
+      }
+      that.data.tagRight.push(tag);
+    }
+
+    that.setData({
+      tagRight: that.data.tagRight,
     });
   },
+
   comparePic: function(e) {
     var that = this;
     var left = that.data.imageArray[that.data.leftSel].image;
@@ -148,11 +196,50 @@ Page({
       success: function(res) {
         console.log(res);
         that.data.imageArray = res.data;
+        // that.data.lableArray = res.
         console.log(res.data);
         // success
         that.setData({
           imageArray: that.data.imageArray
         });
+
+        that.data.leftSel = 0;
+        that.data.rightSel = that.data.imageArray.length - 1;
+       
+        var left_tags = that.data.imageArray[that.data.leftSel].tags;
+        var right_tags = that.data.imageArray[that.data.rightSel].tags;
+
+        for (var i = 0; i < left_tags.length; i++) {
+          var tag = {
+            id: i,
+            name: left_tags[i]
+          }
+          that.data.tagLeft.push(tag);
+        }
+
+        for (var i = 0; i < right_tags.length; i++) {
+          var tag = {
+            id: i,
+            name: right_tags[i]
+          }
+          that.data.tagRight.push(tag);
+        }
+
+      that.setData({
+      tagLeft: that.data.tagLeft,
+      tagRight: that.data.tagRight
+      });
+
+        var left_label = that.getInterval(that.data.imageArray[that.data.leftSel].create_time);
+        that.setData({
+          leftLabel: left_label
+        });
+
+        var right_label = that.getInterval(that.data.imageArray[that.data.rightSel].create_time);
+        that.setData({
+          rightLabel: right_label
+        });
+      
 
       },
       fail: function() {
