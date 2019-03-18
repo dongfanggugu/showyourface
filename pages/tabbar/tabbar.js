@@ -320,10 +320,10 @@ Page({
         var lastCreateTime = parseInt(res.data.last_record_time);
         var lastRecord = "上次记录" + that.getInterval(lastCreateTime * 1000);
         that.setData({
-          totalNumber: picCount,
-          continuedDays: dayCount,
-          totalProduct: productCount,
-          lastDay:lastRecord
+          totalNumber: picCount == null ? 0 : picCount,
+          continuedDays: dayCount == null ? 0 : picCount,
+          totalProduct: productCount == null ? 0 : productCount,
+          lastDay:lastRecord == null ? "" : lastRecord
         });
       },
       fail: function() {
