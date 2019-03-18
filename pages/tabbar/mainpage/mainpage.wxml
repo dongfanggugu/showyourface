@@ -16,12 +16,12 @@
     <view class= "main_separation"></view>
     <view id="{{itemName.product_id}}" wx:for="{{array}}" wx:for-index="index" wx:for-item="itemName">
         <view id="{{index}}" class="main_list">
-            <image class="main_avatar_image" src="{{path}}/static/{{itemName.product_image}}" bindtap="compareRecord"/>
-            <view class='main_list_part2' bindtap="compareRecord">
+            <image id="{{index}}" class="main_avatar_image" src="{{path}}/static/{{itemName.product_image}}" mode="aspectFill" bindtap="compareRecord"/>
+            <view id="{{index}}" class='main_list_part2' bindtap="compareRecord">
                 <!-- <text>{{itemName.product_name}}</text> -->
-                <view name="product_name" bindinput="inputProductName" style='margin-left:22rpx;padding:10rpx;font-size:25rpx'>{{itemName.product_name}}</view>
+                <text id="{{index}}" name="product_name" style='margin-left:22rpx;padding:10rpx;font-size:30rpx;font-weight:bold'>{{itemName.product_name}}</text>
                 <!-- <text>{{itemName.info}}</text> -->
-                <view class="post_product_tag_parent">
+                <view id="{{index}}" class="post_product_tag_parent">
                         <text class="post_product_tag" wx:for="{{itemName.product_tags}}" wx:for-index="index"
                           wx:for-item="item">{{item}}</text>
                       </view>
