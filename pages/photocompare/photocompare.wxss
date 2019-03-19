@@ -4,7 +4,7 @@ page {
 }
 
 .active{
-  transform: scale(1.14);
+  transform: scale(1.16);
   transition:all .5s ease-in 0s;
   /* z-index: 20;  */
 }
@@ -20,9 +20,9 @@ page {
 .slide-image{
   height:90%;
   width: 90%;
-  margin-left: 18rpx;
+  margin-left: 19rpx;
   border-radius:20rpx;
-  box-shadow: 0px 10rpx 30rpx rgba(0, 0, 0, .4); 
+  box-shadow: 0px 10rpx 10rpx rgba(0, 0, 0, .6); 
   /* margin: 0rpx 30rpx; */
   /* z-index: 100;   */
 }
@@ -114,7 +114,7 @@ page {
     width:60px;
     height: 40rpx;
     line-height: 40rpx;
-    bottom: 90rpx;
+    bottom: 87rpx;
     left: 0rpx;
     background: linear-gradient(to right, rgb(252, 48, 97), rgb(252, 90, 65));
     color: white;

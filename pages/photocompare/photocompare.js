@@ -161,7 +161,8 @@ Page({
     that.data.rightSel = (e.detail.current + that.data.imageArray.length - 1) % that.data.imageArray.length;
 
     that.setData({
-      rightSel: (e.detail.current + that.data.imageArray.length - 1) % that.data.imageArray.length,
+      // rightSel: (e.detail.current + that.data.imageArray.length - 1) % that.data.imageArray.length,
+      rightSel: that.data.imageArray.length - 1 - e.detail.current,
       rightSwiperIndex: e.detail.current,
     })
 
