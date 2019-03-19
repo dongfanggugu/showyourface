@@ -19,18 +19,27 @@ Page({
     imageArray: [],
     lableArray: [],
     leftSel:0,
-    rightSel:0
+    rightSel:0,
+    leftSwiperIndex:0,
+    rightSwiperIndex: 0,
   },
 
   getInterval: function (inputTime) {
     var today = new Date();
-    var interval = today.getTime()/1000 - inputTime;
+    var now = today.getTime() / 1000;
+    var interval = now - inputTime;
+    var today_start = now - (now + 8 * 3600) % (24 * 3600);
 
     var days = parseInt(interval / (24 * 3600));
     if (days > 0) {
       return days + "天前";
     } else {
-      return "今天";
+      if (inputTime > today_start){
+        return "今天";
+      }
+      else{
+        return "昨天";
+      }
     }
   },
 
@@ -119,7 +128,12 @@ Page({
   },
   swiperLeftChange: function (e) {
     var that = this;
-    that.data.leftSel = e.detail.current;
+    // that.data.leftSel = e.detail.current;
+
+    that.setData({
+      leftSel: e.detail.current,
+      leftSwiperIndex: e.detail.current,
+    })
 
     var left_label = that.getInterval(that.data.imageArray[that.data.leftSel].create_time);
     this.setData({
@@ -145,6 +159,12 @@ Page({
   swiperRightChange: function (e) {
     var that = this;
     that.data.rightSel = (e.detail.current + that.data.imageArray.length - 1) % that.data.imageArray.length;
+
+    that.setData({
+      rightSel: (e.detail.current + that.data.imageArray.length - 1) % that.data.imageArray.length,
+      rightSwiperIndex: e.detail.current,
+    })
+
 
     var right_label = that.getInterval(that.data.imageArray[that.data.rightSel].create_time);
     this.setData({

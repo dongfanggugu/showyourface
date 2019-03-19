@@ -140,15 +140,13 @@ Page({
 
   getInterval: function (inputTime) {
     var today = new Date();
-    var now = today.getTime();
-    var today_start = now - now % (24 * 3600 * 1000);
-    console.log(today_start)
-    console.log(inputTime)
+    var now = today.getTime();    
+    var today_start = now - (now + 8 * 3600 * 1000) % (24 * 3600 * 1000);
     if (inputTime >= today_start){
-      return 1;
+      return true;
     }
     else{
-      return 0;
+      return false;
     }
   },
 
@@ -247,8 +245,9 @@ Page({
       var amount = this.getSelEffectCount();
       if (amount >= 3) {
         wx.showToast({
-          title: '最多选择三个纪要!',
-          icon: ''
+          title: '最多选三个纪要!',
+          icon: '',
+          image: '/images/icon_exclamation.png',
         });
         return;
       }
