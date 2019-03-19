@@ -2,8 +2,8 @@
   <view class="post_product_photo">
     <!-- <text class="post_product_text">我的产品</text> -->
     <view class="post_product_image_view">
-      <image src="{{productSrc}}" style="width:200rpx;height:200rpx;flex:0 0 auto;border-radius:150rpx;" mode="aspectFill"></image>
-      <view style="display:flex;flex-direction:column;align-items: stretch;flex:1 1 auto">
+      <image src="{{productSrc}}" style="width:200rpx;height:200rpx;flex:0 0 auto;border-radius:150rpx;box-shadow: 8rpx 8rpx 8rpx rgba(0, 0, 0, .2); " mode="aspectFill"></image>
+      <view style="display:flex;flex-direction:column;align-items: stretch;flex:1 1 auto;">
         <view style="font-size:40rpx;margin-top:40rpx;padding-left:40rpx">{{productName}}</view>
         <view class="post_product_tag_parent">
           <text class="post_product_tag" wx:for="{{tagArray}}" wx:for-index="index"

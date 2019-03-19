@@ -5,7 +5,7 @@
     <view class="post_product_photo">
       <text class="post_product_text">产品照片</text>
       <view class="post_product_image_view">
-        <image src="{{productSrc}}" style="width:240rpx;height:240rpx;flex:0 0 auto" mode="aspectFill"></image>
+        <image src="{{productSrc}}" style="width:240rpx;height:240rpx;flex:0 0 auto;border-radius: 35rpx" mode="aspectFill"></image>
       </view>
     </view>
 
@@ -29,7 +29,7 @@
     <view class="post_skin_photo">
       <text class="post_product_text">皮肤照片</text>
       <view class="post_product_image_view">
-        <image src="{{skinSrc1}}" style="width:240rpx;height:240rpx;flex:0 0 auto" mode="aspectFill" bindtap="chooseSkinImage1"></image>
+        <image src="{{skinSrc1}}" style="width:240rpx;height:240rpx;flex:0 0 auto;border-radius: 35rpx" mode="aspectFill" bindtap="chooseSkinImage1"></image>
       </view>
     </view>
 

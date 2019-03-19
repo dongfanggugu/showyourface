@@ -22,15 +22,18 @@ page {
   width: 90%;
   margin-left: 19rpx;
   border-radius:20rpx;
-  box-shadow: 0px 10rpx 10rpx rgba(0, 0, 0, .6); 
+  box-shadow: 0rpx -8rpx 8rpx rgba(0, 0, 0, .2); 
   /* margin: 0rpx 30rpx; */
   /* z-index: 100;   */
 }
 
 .main_separation {
     /* background-color: rgb(246, 246, 246); */
-    /* height: 1px; */
+    /* height: 10px; */
     /* margin: 0rpx 25rpx; */
+    /* margin-top: 25rpx; */
+    /* border-right: 1rpx dashed #a7a8a8; */
+    /* border-top:1rpx #a7a8a8 dashed; */
     /* height: 100rpx; */
     /* background: linear-gradient(to top, rgb(109, 102, 102), rgb(255, 255, 255)); */
     /* box-shadow: 0px 10rpx 30rpx rgba(0, 0, 0, .4); */
@@ -66,6 +69,7 @@ page {
     /* background: linear-gradient(to top, white, black); */
     /* background:linear-gradient(to right, rgb(252, 48, 97), rgb(252, 90, 65)); */
     border-radius: 20rpx;
+    margin-right: 1rpx;
     /* margin-top: 20px; */
 }
 
@@ -76,6 +80,7 @@ page {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    margin-left: 1rpx;
     /* background:linear-gradient(to right, rgb(252, 48, 97), rgb(252, 90, 65)); */
     border-radius: 20rpx;
     /* margin-top: 20px; */
@@ -86,7 +91,7 @@ page {
     flex: 0 0 auto;
     height: 800rpx;
     width:100%;
-    box-shadow: 0px 10rpx 30rpx rgba(0, 0, 0, .4);
+    /* box-shadow: 0px 10rpx 30rpx rgba(0, 0, 0, .4); */
 }
 .compare_up_1 {
     display: flex;
@@ -154,6 +159,7 @@ page {
     line-height: 70rpx;
     /* background:linear-gradient(rgb(253,154,136),rgb(248,0,72)); */
     background:linear-gradient(to right, rgb(252, 48, 97), rgb(252, 90, 65));
+    box-shadow: 8rpx 8rpx 8rpx rgba(0, 0, 0, .2); 
 }
 
 .post_product_text {
@@ -208,6 +214,7 @@ page {
     font-size: 25rpx;
     text-align: center;
     color: rgb(200, 200, 200);
+    box-shadow: 8rpx 8rpx 8rpx rgba(0, 0, 0, .2); 
 }
 
 .post_skin_tag_parent {
@@ -233,6 +240,7 @@ page {
     font-size: 25rpx;
     text-align: center;
     color: rgb(200, 200, 200);
+    box-shadow: 8rpx 8rpx 8rpx rgba(0, 0, 0, .2); 
 }
 
 .post_product_photo {

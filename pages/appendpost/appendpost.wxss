@@ -78,7 +78,8 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    border-radius: 24rpx;
+    border-radius: 35rpx;
+    box-shadow: 8rpx 8rpx 8rpx rgba(0, 0, 0, .2);
     /* background:linear-gradient(to right, rgb(252, 48, 97), rgb(252, 90, 65)); */
 }
 
@@ -130,6 +131,7 @@
     color:white;
     /* background:linear-gradient(rgb(253,154,136),rgb(248,0,72)); */
     background:linear-gradient(to right, rgb(252, 48, 97), rgb(252, 90, 65));
+    box-shadow: 8rpx 8rpx 8rpx rgba(0, 0, 0, .2);
 }
 
 .post_product_tag {
@@ -145,6 +147,7 @@
     font-size: 27rpx;
     text-align: center;
     color:rgb(81, 81, 81);
+    box-shadow: 8rpx 8rpx 8rpx rgba(0, 0, 0, .2);
 }
 
 .post_daily_des {
@@ -174,6 +177,7 @@
     line-height: 80rpx;
     /* background:linear-gradient(rgb(253,154,136),rgb(248,0,72)); */
     background:linear-gradient(to right, rgb(252, 48, 97), rgb(252, 90, 65));
+    box-shadow: 8rpx 8rpx 8rpx rgba(0, 0, 0, .2);
 }
 
 .append_skin_img_del {

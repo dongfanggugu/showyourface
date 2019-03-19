@@ -1,12 +1,12 @@
 <scrollView scroll-y class="post_global" scroll-info-view="post_head">
     <view id="post_head" class="post_sel">
-      <input name="product_name" bindinput="inputProductName" placeholder='产品名称 如: 兰蔻小黑瓶精华肌底液' style='background-color:#F6F6F6;border-radius:15rpx;width:100%;margin-left:20rpx;margin-right:20rpx;padding:10rpx;font-size:28rpx'></input>
+      <input name="product_name" bindinput="inputProductName" placeholder='产品名称 如: 兰蔻小黑瓶精华肌底液' style='background-color:#F6F6F6;border-radius:15rpx;width:100%;margin-left:20rpx;margin-right:20rpx;padding:10rpx;font-size:28rpx;box-shadow:8rpx 8rpx 8rpx rgba(0, 0, 0, .2);'></input>
     
     </view>
     <view class="post_product_photo">
       <text class="post_product_text">产品照片</text>
       <view class="post_product_image_view">
-        <image src="{{productSrc}}" style="width:240rpx;height:240rpx;flex:0 0 auto" mode="aspectFill" bindtap="chooseImage"></image>
+        <image src="{{productSrc}}" style="width:240rpx;height:240rpx;flex:0 0 auto;border-radius: 35rpx;" mode="aspectFill" bindtap="chooseImage"></image>
         <image class="post_pro_img_del" src="/images/icon_del.png" hidden="{{hideImgDel}}" bindtap="delProImg"></image>
         <!-- <view class="post_product_tag_parent">
           <view wx:for="{{tagArray}}" wx:for-index="index" wx:for-item="item">
@@ -41,7 +41,7 @@
     <view class="post_skin_photo">
       <text class="post_product_text">皮肤照片</text>
       <view class="post_product_image_view">
-        <image src="{{skinSrc1}}" style="width:240rpx;height:240rpx;flex:0 0 auto" mode="aspectFill" bindtap="chooseSkinImage1"></image>
+        <image src="{{skinSrc1}}" style="width:240rpx;height:240rpx;flex:0 0 auto;border-radius: 35rpx;" mode="aspectFill" bindtap="chooseSkinImage1"></image>
         <image class="post_pro_img_del" src="/images/icon_del.png" hidden="{{hideSkinDel}}" bindtap="delSkinImg"></image>
         <image src="{{skinSrc2}}" style="width:240rpx;height:240rpx;flex:0 0 auto;margin-left:8px" bindtap="chooseSkinImage2" hidden="true"></image>
       </view>
