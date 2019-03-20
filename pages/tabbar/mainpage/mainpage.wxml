@@ -16,7 +16,7 @@
     <view class= "main_separation"></view>
     <view id="{{itemName.product_id}}" wx:for="{{array}}" wx:for-index="index" wx:for-item="itemName" class="main_item_container">
             <view id="{{itemName.product_id}}" class="remove" bindtap='delProduct'>删除</view>
-        <view id="{{index}}" animation='{{moveData}}' class="main_list" bindtouchstart="drawStart" bindtouchmove="drawMove" bindtouchend="drawEnd" style="right:{{itemName.right}}px">
+        <view id="{{index}}" animation='{{moveData}}' class="main_list" bindtouchstart="drawStart" bindtouchmove="drawMove" bindtouchend="drawEnd" style="right:{{itemName.right}}px" animation="{{moveData}}">
             <image id="{{index}}" class="main_avatar_image" src="{{path}}/static/{{itemName.product_image}}" mode="aspectFill" bindtap="compareRecord"/>
             <view id="{{index}}" class='main_list_part2' bindtap="compareRecord">
                 <!-- <text>{{itemName.product_name}}</text> -->
