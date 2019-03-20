@@ -21,7 +21,7 @@
 
   <view class="compare_container">
     <view class="compare_left">
-      <swiper vertical="true" current="0" previous-margin="60rpx" next-margin="60rpx" class="compare_swiper" bindchange='swiperLeftChange'>
+      <swiper vertical="true" current="0" previous-margin="80rpx" next-margin="80rpx" class="compare_swiper" bindchange='swiperLeftChange'>
         <block wx:for="{{imageArray}}" wx:for-index="index" wx:for-item="itemName">
           <swiper-item class="swiper-item">
             <image src="{{path}}/static/{{imageArray[index].image}}" class="slide-image {{leftSwiperIndex == index ? 'active' : ''}}" mode="aspectFill" />
@@ -43,7 +43,7 @@
             <image src="{{up_1_item}}" mode="top" style="width:100%;height:100%" />
           </view> -->
 
-      <swiper vertical="true" previous-margin="60rpx" next-margin="60rpx" current="0" class="compare_swiper" bindchange='swiperRightChange'>
+      <swiper vertical="true" previous-margin="80rpx" next-margin="80rpx" current="0" class="compare_swiper" bindchange='swiperRightChange'>
         <block wx:for="{{imageArray}}" wx:for-index="index" wx:for-item="itemName">
           <swiper-item class="swiper-item">
             <image src="{{path}}/static/{{imageArray[imageArray.length-1-index].image}}" class="slide-image {{rightSwiperIndex == index ? 'active' : ''}}" mode="aspectFill" />

@@ -153,14 +153,14 @@ Page({
   completePost: function () {
     console.log(this.data.product.update_time);
     var that = this;
-    if (that.getInterval(this.data.product.update_time * 1000)){
-      wx.showToast({
-        title: '今天已添加过哦',
-        // icon: "",
-        image: '/images/icon_exclamation.png',
-      })
-      return;
-    }
+    // if (that.getInterval(this.data.product.update_time * 1000)){
+    //   wx.showToast({
+    //     title: '今天已添加过哦',
+    //     // icon: "",
+    //     image: '/images/icon_exclamation.png',
+    //   })
+    //   return;
+    // }
 
     if (utils.emptyStr(this.data.skinSrc1URL)) {
       wx.showToast({
