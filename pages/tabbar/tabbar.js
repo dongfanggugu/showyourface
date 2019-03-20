@@ -560,6 +560,7 @@ Page({
       // header: {}, // 设置请求的 header
       success: function (res) {
         console.log(res);
+        that.getTotoalInfo(token);
         that.getRecordInfo(token);
       },
       fail: function () {
@@ -641,6 +642,7 @@ Page({
       // header: {}, // 设置请求的 header
       success: function (res) {
         console.log(res);
+        that.getTotoalInfo(token);
         that.getRecordInfo(token);
       },
       fail: function () {
