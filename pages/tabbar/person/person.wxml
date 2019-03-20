@@ -13,10 +13,13 @@
               </view>
 
               <view class="my-content" wx:for="{{array}}" wx:for-index="index" wx:for-item="item">
-                     <view id="{{index}}" style="display: flex; flex-direction:column" bindtap="compareRecord">
+                     <view id="{{index}}" style="display: flex; flex-direction:column">
                             <view class="person_separator"></view>
 
-                            <view class="itemContainer">
+                            <view class="person_item_container">
+                                          <view id="{{item.product_id}}" class="person_remove" bindtap='delProductp'>删除</view>
+
+                            <view id="{{index}}" class="itemContainer" bindtouchstart="drawStartp" bindtouchmove="drawMovep" bindtouchend="drawEndp" style="right:{{item.rightp}}px" bindtap="compareRecord">
                                    <view class="itemImageContainer">
                                           <image src='{{path}}/static/{{item.skin_record.skin_record_old_iamge}}' mode="aspectFill" class='imgItem'></image>
                                           <view class="person_pic_label">{{item.skin_record.skin_record_old_create_time}}</view>
@@ -37,6 +40,7 @@
                                           </view>
                                    </view>
                             </view>
+                     </view>
                      </view>
               </view>
        </view>

@@ -1,12 +1,15 @@
 // pages/tabbar/tabbar.js
 const app = getApp();
 let baseURL = app.globalData.baseURL;
+
+const delWidth = 80;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    delBtnWidth: 80,
     path: baseURL,
     tabItem: "发布",
     first: true,
@@ -356,6 +359,8 @@ Page({
           skinRecord.skin_record_new_create_time = that.getInterval(skinNewTime * 1000);
           var skinOldTime = skinRecord.skin_record_old_create_time;
           skinRecord.skin_record_old_create_time = that.getInterval(skinOldTime * 1000);
+          that.data.array[i].right = -delWidth; 
+          that.data.array[i].pright = -delWidth; 
         }
         // var moreData = {};
         // that.data.array.push(moreData);
@@ -465,5 +470,121 @@ Page({
         // complete
       }
     })
+  },
+  drawStart: function (e) {
+    // console.log("drawStart");  
+    var touch = e.touches[0]
+    var id = e.currentTarget.id;
+    // this.data.array[id].right = -delWidth;
+    this.data.array[id].startX = touch.clientX;
+    var that = this;
+    this.setData({
+      array: that.data.array,
+      startX: touch.clientX,
+    })
+
+  },
+  drawMove: function (e) {
+    var touch = e.touches[0]
+    var item = this.data.array[e.currentTarget.id]    
+    var disX = this.data.startX - touch.clientX
+    
+    var that = this;
+    if (disX >= 10) {
+      if (disX > delWidth) {
+        disX = delWidth
+      }
+
+      item.right = disX - delWidth;
+      this.setData({
+        // isScroll: false,
+        array: that.data.array
+      })
+    } else {
+      item.right = - delWidth
+      this.setData({
+        // isScroll: true,
+        array: that.data.array
+      })
+    }
+  },  
+  drawEnd: function (e) {
+    var item = this.data.array[e.currentTarget.id]
+    var that = this;
+    if (item.right  >= -delWidth / 2) {
+      item.right = delWidth + (-delWidth)
+      this.setData({
+        // isScroll: true,
+        array: that.data.array,
+      })
+    } else {
+      item.right = -delWidth
+      this.setData({
+        // isScroll: true,
+        array: that.data.array,
+      })
+    }
+  },
+  delProduct: function(e) {
+    var id = e.currentTarget.id;
+    console.log("del:" + id);
+  },
+  drawStartp: function (e) {
+    // console.log("drawStart");  
+    var touch = e.touches[0]
+    var id = e.currentTarget.id;
+    // this.data.array[id].right = -delWidth;
+    this.data.array[id].startX = touch.clientX;
+    var that = this;
+    this.setData({
+      array: that.data.array,
+      startX: touch.clientX,
+    })
+
+  },
+  drawMovep: function (e) {
+    var touch = e.touches[0]
+    var item = this.data.array[e.currentTarget.id]    
+    var disX = this.data.startX - touch.clientX
+    
+    var that = this;
+    if (disX >= 10) {
+      if (disX > delWidth) {
+        disX = delWidth
+      }
+
+      item.rightp = disX - delWidth;
+      this.setData({
+        // isScroll: false,
+        array: that.data.array
+      })
+    } else {
+      item.rightp = - delWidth
+      this.setData({
+        // isScroll: true,
+        array: that.data.array
+      })
+    }
+  },  
+  drawEndp: function (e) {
+    var item = this.data.array[e.currentTarget.id]
+    var that = this;
+    if (item.rightp  >= -delWidth / 2) {
+      item.rightp = delWidth + (-delWidth)
+      this.setData({
+        // isScroll: true,
+        array: that.data.array,
+      })
+    } else {
+      item.rightp = -delWidth
+      this.setData({
+        // isScroll: true,
+        array: that.data.array,
+      })
+    }
+  },
+  delProductp: function(e) {
+    var id = e.currentTarget.id;
+    console.log("del:" + id);
   }
 })
