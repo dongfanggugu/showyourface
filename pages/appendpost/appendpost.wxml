@@ -8,7 +8,7 @@
       <view class="post_product_image_view">
         <image src="{{productSrc}}" style="width:240rpx;height:240rpx;flex:0 0 auto;border-radius: 35rpx" mode="aspectFill"></image>
       </view>
-      <view style="margin-left:10px;margin-top:4px">{{productName}}</view>
+      <view style="margin:100rpx;font-weight:bold;font-size:40rpx">{{productName}}</view>
       </view>
     </view>
 
