@@ -548,6 +548,7 @@ Page({
     var token = app.globalData.token;
     console.log("del:" + id);
     console.log("token:" + token);
+    var that = this;
 
     wx.request({
       url: baseURL + "/del_product_record",
@@ -559,32 +560,7 @@ Page({
       // header: {}, // 设置请求的 header
       success: function (res) {
         console.log(res);
-        wx.navigateBack({
-          delta: 1, // 回退前 delta(默认为1) 页面
-          success: function (res) {
-            if (res.data.errcode == 0){
-              getRecordInfo(token)
-            }
-          },
-          fail: function () {
-            // fail
-          },
-          complete: function () {
-            // complete
-          }
-        })
-        // wx.navigateTo({
-        //   url: '/pages/photocompare/photocompare?product_id=' + res.data.product_record_id,
-        //   success: function (res) {
-        //     // success
-        //   },
-        //   fail: function () {
-        //     // fail
-        //   },
-        //   complete: function () {
-        //     // complete
-        //   }
-        // })
+        that.getRecordInfo(token);
       },
       fail: function () {
         // fail
@@ -653,5 +629,26 @@ Page({
     var token = app.globalData.token;
     console.log("del:" + id);
     console.log("token:" + token);
+    var that = this;
+
+    wx.request({
+      url: baseURL + "/del_product_record",
+      data: {
+        token: token,
+        product_record_id: id,
+      },
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
+      success: function (res) {
+        console.log(res);
+        that.getRecordInfo(token);
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
   }
 })
