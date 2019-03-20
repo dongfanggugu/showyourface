@@ -360,7 +360,7 @@ Page({
           var skinOldTime = skinRecord.skin_record_old_create_time;
           skinRecord.skin_record_old_create_time = that.getInterval(skinOldTime * 1000);
           that.data.array[i].right = -delWidth; 
-          that.data.array[i].pright = -delWidth; 
+          that.data.array[i].rightp = -delWidth; 
         }
         // var moreData = {};
         // that.data.array.push(moreData);
@@ -490,7 +490,7 @@ Page({
     var disX = this.data.startX - touch.clientX
     
     var that = this;
-    if (disX >= 10) {
+    if (disX >= 20) {
       if (disX > delWidth) {
         disX = delWidth
       }
@@ -512,13 +512,31 @@ Page({
     var item = this.data.array[e.currentTarget.id]
     var that = this;
     if (item.right  >= -delWidth / 2) {
-      item.right = delWidth + (-delWidth)
+      // var animation = wx.createAnimation({
+      //   duration: 300,
+      //   delay: 0,
+      //   timingFunction: "linear",
+      // });
+      // animation.translateX(item.right + delWidth).step();
+      // this.setData({
+      //   moveData: animation.export()
+      // })
+      item.right = 0
       this.setData({
         // isScroll: true,
         array: that.data.array,
+        animation: ''
       })
     } else {
+      // var animation = wx.createAnimation({
+      //   duration: 300,
+      //   delay: 0,
+      //   timingFunction: "linear",
+      // });
+      // animation.translateX(item.right + delWidth).step();
+      // this.setData({moveData: animation.export()})
       item.right = -delWidth
+  
       this.setData({
         // isScroll: true,
         array: that.data.array,
@@ -548,7 +566,7 @@ Page({
     var disX = this.data.startX - touch.clientX
     
     var that = this;
-    if (disX >= 10) {
+    if (disX >= 20) {
       if (disX > delWidth) {
         disX = delWidth
       }
