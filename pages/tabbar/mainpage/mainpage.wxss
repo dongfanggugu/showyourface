@@ -88,7 +88,10 @@
     width: 60px;
     height: 60px;
     border-radius: 30px;
-    margin: 10rpx;
+    margin-left: 30rpx;
+    margin-right: 10rpx;
+    margin-top: 10rpx;
+    margin-bottom: 10rpx;
     box-shadow: 8rpx 8rpx 8rpx rgba(0, 0, 0, .2);
 }
 

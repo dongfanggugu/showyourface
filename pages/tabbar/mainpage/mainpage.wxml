@@ -20,7 +20,7 @@
             <image id="{{index}}" class="main_avatar_image" src="{{path}}/static/{{itemName.product_image}}" mode="aspectFill" bindtap="compareRecord"/>
             <view id="{{index}}" class='main_list_part2' bindtap="compareRecord">
                 <!-- <text>{{itemName.product_name}}</text> -->
-                <text id="{{index}}" name="product_name" style='margin-left:22rpx;padding:10rpx;font-size:30rpx;font-weight:bold'>{{itemName.product_name}}</text>
+                <text id="{{index}}" name="product_name" style='margin-left:20rpx;padding:10rpx;font-size:28rpx;font-weight:bold'>{{itemName.product_name}}</text>
                 <!-- <text>{{itemName.info}}</text> -->
                 <view id="{{index}}" class="post_product_tag_parent">
                         <text class="post_product_tag" wx:for="{{itemName.product_tags}}" wx:for-index="index"
