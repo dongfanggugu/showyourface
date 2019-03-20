@@ -324,7 +324,7 @@ Page({
         var lastRecord = "上次记录" + that.getInterval(lastCreateTime * 1000);
         that.setData({
           totalNumber: picCount == null ? 0 : picCount,
-          continuedDays: dayCount == null ? 0 : picCount,
+          continuedDays: dayCount == null ? 0 : dayCount,
           totalProduct: productCount == null ? 0 : productCount,
           lastDay:lastRecord == null ? "" : lastRecord
         });
@@ -545,7 +545,54 @@ Page({
   },
   delProduct: function(e) {
     var id = e.currentTarget.id;
+    var token = app.globalData.token;
     console.log("del:" + id);
+    console.log("token:" + token);
+
+    wx.request({
+      url: baseURL + "/del_product_record",
+      data: {
+        token: token,
+        product_record_id: id,
+      },
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
+      success: function (res) {
+        console.log(res);
+        wx.navigateBack({
+          delta: 1, // 回退前 delta(默认为1) 页面
+          success: function (res) {
+            if (res.data.errcode == 0){
+              getRecordInfo(token)
+            }
+          },
+          fail: function () {
+            // fail
+          },
+          complete: function () {
+            // complete
+          }
+        })
+        // wx.navigateTo({
+        //   url: '/pages/photocompare/photocompare?product_id=' + res.data.product_record_id,
+        //   success: function (res) {
+        //     // success
+        //   },
+        //   fail: function () {
+        //     // fail
+        //   },
+        //   complete: function () {
+        //     // complete
+        //   }
+        // })
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
   },
   drawStartp: function (e) {
     // console.log("drawStart");  
@@ -603,6 +650,8 @@ Page({
   },
   delProductp: function(e) {
     var id = e.currentTarget.id;
+    var token = app.globalData.token;
     console.log("del:" + id);
+    console.log("token:" + token);
   }
 })
