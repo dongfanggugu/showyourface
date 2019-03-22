@@ -372,7 +372,7 @@ Page({
       var tag = { ids: i, name: name, sel: false };
       this.data.tagArray.push(tag);
     }
-    var tag = { ids: array.length, name: '++添加标签++', sel: false};
+    var tag = { ids: array.length, name: '+添加标签', sel: false};
     this.data.tagArray.push(tag);
     this.setData({
       tagArray: this.data.tagArray
@@ -385,7 +385,7 @@ Page({
       this.data.effectArray.push(tag);
     }
 
-    var tag = { ids: array.length, name: '++添加标签++', sel: false};
+    var tag = { ids: array.length, name: '+添加标签', sel: false};
     this.data.effectArray.push(tag);
 
     this.setData({

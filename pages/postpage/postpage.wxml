@@ -19,7 +19,7 @@
             <text class="post_product_tag_sel">{{item.name}}</text>
           </block>
           <block wx:else>
-            <text class="post_product_tag">{{item.name}}</text>
+            <text class="{{index == tagArray.length - 1 ? 'post_product_tag_add' : 'post_product_tag'}}">{{item.name}}</text>
           </block>
         </view>
       </view>
@@ -45,7 +45,7 @@
             <text class="post_product_tag_sel">{{item.name}}</text>
           </block>
           <block wx:else>
-            <text class="post_product_tag">{{item.name}}</text>
+            <text class="{{index == effectArray.length - 1 ? 'post_product_tag_add' : 'post_product_tag'}}">{{item.name}}</text>
           </block>
         </view>
       </view>

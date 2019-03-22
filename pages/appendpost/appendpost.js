@@ -295,7 +295,7 @@ Page({
       var tag = { ids: i, name: name, sel: false };
       this.data.effectArray.push(tag);
     }
-    var tag = { ids: array.length, name: '++添加标签++', sel: false};
+    var tag = { ids: array.length, name: '+添加标签', sel: false};
     this.data.effectArray.push(tag);
     this.setData({
       effectArray: this.data.effectArray
