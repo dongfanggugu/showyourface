@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    newSkinTag: '',
     product:'',
     productSrc: '',
     skinSrc1: '/images/icon_add_pic.png',
@@ -26,7 +27,8 @@ Page({
   onLoad: function (options) {
     this.getHotTags();
     this.setData({
-      hideSkinDel: true
+      hideSkinDel: true,
+      hiddenSkinModal: true
     });
   },
 
@@ -252,6 +254,14 @@ Page({
         return;
       }
     }
+
+    if (index == this.data.effectArray.length - 1) {
+      this.setData({
+        hiddenSkinModal: false 
+      })
+      return;
+    }
+
     var selKey = "effectArray[" + index + "].sel";
     this.setData({
       [selKey] : !sel
@@ -285,6 +295,8 @@ Page({
       var tag = { ids: i, name: name, sel: false };
       this.data.effectArray.push(tag);
     }
+    var tag = { ids: array.length, name: '++添加标签++', sel: false};
+    this.data.effectArray.push(tag);
     this.setData({
       effectArray: this.data.effectArray
     });
@@ -369,5 +381,56 @@ Page({
       skinSrc1: that.data.skinSrc1,
       hideSkinDel: true
     });
+  },
+  skinTagExist: function (name) {
+    for (var i =0; i < this.data.effectArray.length; i++) {
+      var tag = this.data.effectArray[i];
+      if (tag.name == name) {
+        return true;
+      }
+    }
+    return false;
+  },
+  skinInput: function (e) {
+    var value = e.detail.value;
+    var that = this;
+    if (value.length > 5) {
+      var validValue = value.substr(0, 5);
+      this.data.newSkinTag = validValue;
+      this.setData({
+          inputSkinValue: that.data.newSkinTag
+        }
+      );
+      return;
+    }
+    this.data.newSkinTag = e.detail.value;
+  },
+  skinConfirm: function (e) {
+    if (this.skinTagExist(this.data.newSkinTag)) {
+      wx.showToast({
+        title: '纪要标签已经存在，请输入新的标签',
+        icon: ''
+      })
+      return;
+    }
+    var that = this;
+    var tag = this.data.effectArray.pop();
+    var newTag = {ids: tag.ids, name: this.data.newSkinTag, sel: true};
+    this.data.effectArray.push(newTag);
+    tag.ids += 1;
+    this.data.effectArray.push(tag);
+    this.setData({ 
+      hiddenSkinModal: true,
+      effectArray: that.data.effectArray,
+      inputSkinValue: ''
+     });
+  },
+  skinCancel: function (e) {
+    this.data.newSkinTag = '';
+    var that = this;
+    this.setData({ 
+      hiddenSkinModal: true,
+      inputSkinValue: ''
+    })
   }
 })
