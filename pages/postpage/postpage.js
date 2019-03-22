@@ -7,6 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    newProTag: '',
+    newSkinTag: '',
     productName: '',
     productSrc: '/images/icon_add_pic.png',
     productURL: "",
@@ -25,7 +27,9 @@ Page({
     this.getHotTags();
     this.setData({
       hideImgDel: true,
-      hideSkinDel: true
+      hideSkinDel: true,
+      hiddenProModal: true,
+      hiddenSkinModal: true
     });
   },
 
@@ -276,9 +280,8 @@ Page({
 
   clickTag: function (e) {
     var amount = this.getSelTagCount();
-    console.log("amount: " + amount);
-
     var index = parseInt(e.currentTarget.id);
+   
     console.log(index);
     var sel = this.data.tagArray[index].sel;
 
@@ -287,6 +290,13 @@ Page({
         title: '最多选三个功效!',
         icon: ''
       });
+      return;
+    }
+
+    if (index == this.data.tagArray.length - 1) {
+      this.setData({
+        hiddenProModal: false 
+      })
       return;
     }
 
@@ -320,6 +330,13 @@ Page({
       return;
     }
 
+    if (index == this.data.effectArray.length - 1) {
+      this.setData({
+        hiddenSkinModal: false 
+      })
+      return;
+    }
+
     this.data.effectArray[index].sel = !sel;
     var selKey = "effectArray[" + index + "].sel";
     this.setData({
@@ -338,8 +355,8 @@ Page({
       // header: {}, // 设置请求的 header
       success: function (res) {
         // success
-        that.showEffectTags(res.data.effect_tags);
-        that.showSummaryTags(res.data.summary_tags);
+        that.showProTags(res.data.effect_tags);
+        that.showSkinTags(res.data.summary_tags);
       },
       fail: function () {
         // fail
@@ -349,22 +366,28 @@ Page({
       }
     })
   },
-  showEffectTags: function (array) {
+  showProTags: function (array) {
     for (var i = 0; i < array.length; i++) {
       var name = array[i];
       var tag = { ids: i, name: name, sel: false };
       this.data.tagArray.push(tag);
     }
+    var tag = { ids: array.length, name: '++添加标签++', sel: false};
+    this.data.tagArray.push(tag);
     this.setData({
       tagArray: this.data.tagArray
     });
   },
-  showSummaryTags: function (array) {
+  showSkinTags: function (array) {
     for (var i = 0; i < array.length; i++) {
       var name = array[i];
       var tag = { ids: i, name: name, sel: false };
       this.data.effectArray.push(tag);
     }
+
+    var tag = { ids: array.length, name: '++添加标签++', sel: false};
+    this.data.effectArray.push(tag);
+
     this.setData({
       effectArray: this.data.effectArray
     });
@@ -420,5 +443,107 @@ Page({
       skinSrc1: that.data.skinSrc1,
       hideSkinDel: true
     });
+  },
+  proInput: function (e) {
+    var value = e.detail.value;
+    var that = this;
+    if (value.length > 5) {
+      var validValue = value.substr(0, 5);
+      this.data.newProTag = validValue;
+      this.setData({
+          inputProValue: that.data.newProTag
+        }
+      );
+      return;
+    }
+    this.data.newProTag = e.detail.value;
+  },
+  proConfirm: function (e) {
+    if (this.proTagExist(this.data.newProTag)) {
+      wx.showToast({
+        title: '产品标签已经存在，请输入新的标签',
+        icon: ''
+      })
+      return;
+    }
+    var that = this;
+    var tag = this.data.tagArray.pop();
+    var newTag = {ids: tag.ids, name: this.data.newProTag, sel: true};
+    this.data.tagArray.push(newTag);
+    tag.ids += 1;
+    this.data.tagArray.push(tag);
+    this.setData({ 
+      hiddenProModal: true,
+      tagArray: that.data.tagArray,
+      inputProValue: ''
+     });
+  },
+  proCancel: function (e) {
+    this.data.newProTag = '';
+    var that = this;
+    this.setData({ 
+      hiddenProModal: true,
+      inputProValue: ''
+    })
+  },
+  proTagExist: function (name) {
+    for (var i =0; i < this.data.tagArray.length; i++) {
+      var tag = this.data.tagArray[i];
+      if (tag.name == name) {
+        return true;
+      }
+    }
+    return false;
+  },
+  skinTagExist: function (name) {
+    for (var i =0; i < this.data.effectArray.length; i++) {
+      var tag = this.data.effectArray[i];
+      if (tag.name == name) {
+        return true;
+      }
+    }
+    return false;
+  },
+  skinInput: function (e) {
+    var value = e.detail.value;
+    var that = this;
+    if (value.length > 5) {
+      var validValue = value.substr(0, 5);
+      this.data.newSkinTag = validValue;
+      this.setData({
+          inputSkinValue: that.data.newSkinTag
+        }
+      );
+      return;
+    }
+    this.data.newSkinTag = e.detail.value;
+  },
+  skinConfirm: function (e) {
+    if (this.skinTagExist(this.data.newSkinTag)) {
+      wx.showToast({
+        title: '纪要标签已经存在，请输入新的标签',
+        icon: ''
+      })
+      return;
+    }
+    var that = this;
+    var tag = this.data.effectArray.pop();
+    var newTag = {ids: tag.ids, name: this.data.newSkinTag, sel: true};
+    this.data.effectArray.push(newTag);
+    tag.ids += 1;
+    this.data.effectArray.push(tag);
+    this.setData({ 
+      hiddenSkinModal: true,
+      effectArray: that.data.effectArray,
+      inputSkinValue: ''
+     });
+  },
+  skinCancel: function (e) {
+    this.data.newSkinTag = '';
+    var that = this;
+    this.setData({ 
+      hiddenSkinModal: true,
+      inputSkinValue: ''
+    })
   }
 })

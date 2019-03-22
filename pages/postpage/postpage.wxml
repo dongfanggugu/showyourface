@@ -6,61 +6,59 @@
     <view class="post_product_photo">
       <text class="post_product_text">产品照片</text>
       <view class="post_product_image_view">
-        <image src="{{productSrc}}" style="width:240rpx;height:240rpx;flex:0 0 auto;border-radius: 35rpx;" mode="aspectFill" bindtap="chooseImage"></image>
+        <image src="{{productSrc}}" style="width:240rpx;height:240rpx;flex:0 0 auto;border-radius: 35rpx;" mode="aspectFill"
+          bindtap="chooseImage"></image>
         <image class="post_pro_img_del" src="/images/icon_del.png" hidden="{{hideImgDel}}" bindtap="delProImg"></image>
-        <!-- <view class="post_product_tag_parent">
-          <view wx:for="{{tagArray}}" wx:for-index="index" wx:for-item="item">
-            <view id="{{index}}" bindtap="clickTag">
-            <block wx:if="{{item.sel}}">
-              <text  class="post_product_tag_sel">{{item.name}}</text>
-            </block>
-            <block wx:else>
-              <text class="post_product_tag">{{item.name}}</text>
-            </block>
-          </view>
-          </view>
-        </view> -->
       </view>
     </view>
     
     <view class="post_product_tag_parent">
-        <view wx:for="{{tagArray}}" wx:for-index="index" wx:for-item="item">
-          <view id="{{index}}" bindtap="clickTag">
+      <view wx:for="{{tagArray}}" wx:for-index="index" wx:for-item="item">
+        <view id="{{index}}" bindtap="clickTag">
           <block wx:if="{{item.sel}}">
-            <text  class="post_product_tag_sel">{{item.name}}</text>
+            <text class="post_product_tag_sel">{{item.name}}</text>
           </block>
           <block wx:else>
             <text class="post_product_tag">{{item.name}}</text>
           </block>
         </view>
-        </view>
       </view>
+    </view>
     
     <view class='post_breaker'></view>
     
     <view class="post_skin_photo">
       <text class="post_product_text">皮肤照片</text>
       <view class="post_product_image_view">
-        <image src="{{skinSrc1}}" style="width:240rpx;height:240rpx;flex:0 0 auto;border-radius: 35rpx;" mode="aspectFill" bindtap="chooseSkinImage1"></image>
+        <image src="{{skinSrc1}}" style="width:240rpx;height:240rpx;flex:0 0 auto;border-radius: 35rpx;" mode="aspectFill"
+          bindtap="chooseSkinImage1"></image>
         <image class="post_pro_img_del" src="/images/icon_del.png" hidden="{{hideSkinDel}}" bindtap="delSkinImg"></image>
-        <image src="{{skinSrc2}}" style="width:240rpx;height:240rpx;flex:0 0 auto;margin-left:8px" bindtap="chooseSkinImage2" hidden="true"></image>
+        <image src="{{skinSrc2}}" style="width:240rpx;height:240rpx;flex:0 0 auto;margin-left:8px"
+          bindtap="chooseSkinImage2" hidden="true"></image>
       </view>
     </view>
-
+    
     <view class="post_product_tag_parent">
-        <view wx:for="{{effectArray}}" wx:for-index="index" wx:for-item="item">
-          <view id="{{index}}" bindtap="clickEffect">
+      <view wx:for="{{effectArray}}" wx:for-index="index" wx:for-item="item">
+        <view id="{{index}}" bindtap="clickEffect">
           <block wx:if="{{item.sel}}">
-            <text  class="post_product_tag_sel">{{item.name}}</text>
+            <text class="post_product_tag_sel">{{item.name}}</text>
           </block>
           <block wx:else>
             <text class="post_product_tag">{{item.name}}</text>
           </block>
         </view>
-        </view>
       </view>
+    </view>
     
     <view class="post_complete_parent">
       <view class="post_complete" bindtap='completePost'>保存日记</view>
     </view>
     </scrollView>
+    <modal hidden="{{hiddenProModal}}" title="自定义产品标签" confirm-text="确认" cancel-text="取消" bindconfirm="proConfirm" bindcancel="proCancel">
+      <input placeholder='请输入产品标签(不超过5个字符)' bindinput='proInput' value="{{inputSkinValue}}"/>
+  </modal>
+
+  <modal hidden="{{hiddenSkinModal}}" title="自定义纪要标签" confirm-text="确认" cancel-text="取消" bindconfirm="skinConfirm" bindcancel="skinCancel">
+    <input placeholder='请输入纪要标签(不超过5个字符)' bindinput='skinInput' value="{{inputSkinValue}}"/>
+</modal>
