@@ -207,9 +207,10 @@ Page({
   },
   //轮播图的切换事件
   swiperChange: function (e) {
-    this.setData({
-      swiperCurrent: e.detail.current
-    })
+    console.log(e.detail);
+    // this.setData({
+    //   swiperCurrent: e.detail.current
+    // })
   },
   //轮播图点击事件
   swipclick: function (e) {
